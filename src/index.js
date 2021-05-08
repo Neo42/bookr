@@ -1,32 +1,32 @@
 import React, { useState } from "react"
 import ReactDOM from "react-dom"
 import logo from "./assets/logo.svg"
-import Modal from "./components/modal"
+import Modal from "./components/Modal"
 
 const App = () => {
-	const [showLogin, setShowLogin] = useState(false)
-	const [showRegister, setShowRegister] = useState(false)
-
-	const openLogin = () => setShowLogin(true)
-	const closeLogin = () => setShowLogin(false)
-	const openRegister = () => setShowRegister(true)
-	const closeRegister = () => setShowRegister(false)
+	const [showDialog, setShowDialog] = useState("false")
 
 	return (
 		<div>
 			<img src={logo} alt="Booker Logo" />
 			<h1>Booker</h1>
 			<div>
-				<button onClick={openLogin}>Login</button>
+				<button onClick={() => setShowDialog("login")}>Login</button>
 			</div>
 			<div>
-				<button onClick={openRegister}>Register</button>
+				<button onClick={() => setShowDialog("register")}>
+					Register
+				</button>
 			</div>
 
-			<Modal isOpen={showLogin} onDismiss={closeLogin} title={"Login"} />
 			<Modal
-				isOpen={showRegister}
-				onDismiss={closeRegister}
+				isOpen={showDialog === "login"}
+				onDismiss={() => setShowDialog("none")}
+				title={"Login"}
+			/>
+			<Modal
+				isOpen={showDialog === "register"}
+				onDismiss={() => setShowDialog("none")}
 				title={"Register"}
 			/>
 		</div>

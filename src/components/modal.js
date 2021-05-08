@@ -1,12 +1,23 @@
 import React from "react"
-import { Dialog } from "@reach/dialog"
+import Dialog from "@reach/dialog"
 import "@reach/dialog/styles.css"
+import Form from "./Form"
 
 export default function Modal({ isOpen, onDismiss, title }) {
 	return (
-		<Dialog isOpen={isOpen} onDismiss={onDismiss}>
+		<Dialog
+			onDismiss={onDismiss}
+			isOpen={isOpen}
+			aria-label={`${title} form`}
+		>
+			<div>
+				<button onClick={onDismiss}>Close</button>
+			</div>
 			<h3>{title}</h3>
-			<button onClick={onDismiss}>Okay</button>
+			<Form
+				buttonText={title}
+				onsubmit={(user) => console.log(title, user)}
+			/>
 		</Dialog>
 	)
 }
