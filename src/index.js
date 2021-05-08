@@ -1,17 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState } from "react"
+import ReactDOM from "react-dom"
+import logo from "./assets/logo.svg"
+import Modal from "./components/modal"
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const App = () => {
+	const [showLogin, setShowLogin] = useState(false)
+	const [showRegister, setShowRegister] = useState(false)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+	const openLogin = () => setShowLogin(true)
+	const closeLogin = () => setShowLogin(false)
+	const openRegister = () => setShowRegister(true)
+	const closeRegister = () => setShowRegister(false)
+
+	return (
+		<div>
+			<img src={logo} alt="Booker Logo" />
+			<h1>Booker</h1>
+			<div>
+				<button onClick={openLogin}>Login</button>
+			</div>
+			<div>
+				<button onClick={openRegister}>Register</button>
+			</div>
+
+			<Modal isOpen={showLogin} onDismiss={closeLogin} title={"Login"} />
+			<Modal
+				isOpen={showRegister}
+				onDismiss={closeRegister}
+				title={"Register"}
+			/>
+		</div>
+	)
+}
+
+ReactDOM.render(<App />, document.querySelector("#root"))
+
+if (module.hot) {
+	module.hot.accept()
+}
