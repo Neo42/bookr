@@ -3,7 +3,7 @@ import Dialog from "@reach/dialog"
 import "@reach/dialog/styles.css"
 import Form from "./Form"
 
-export default function Modal({ isOpen, onDismiss, title }) {
+export default function Modal({isOpen, onDismiss, title}) {
 	return (
 		<Dialog
 			onDismiss={onDismiss}

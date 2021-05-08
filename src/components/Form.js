@@ -1,12 +1,12 @@
 import React from "react"
 
-export default function Form({ onsubmit, buttonText }) {
+export default function Form({onsubmit, buttonText}) {
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		const [username, password] = Array.from(event.target.elements).map(
-			({ value }) => value
+			({value}) => value
 		)
-		onsubmit({ username, password })
+		onsubmit({username, password})
 	}
 
 	return (

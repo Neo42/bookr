@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import ReactDOM from "react-dom"
 import logo from "./assets/logo.svg"
 import Modal from "./components/Modal"
