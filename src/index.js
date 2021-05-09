@@ -3,7 +3,7 @@
 import * as React from "react"
 import ReactDOM from "react-dom"
 import "bootstrap/dist/css/bootstrap-reboot.css"
-import {css, jsx} from "@emotion/react"
+import {jsx} from "@emotion/react"
 import {Logo} from "./components/logo"
 import {Button, FormGroup, Input, Loader} from "./components/lib"
 import {Modal, ModalContents, ModalOpenButton} from "./components/modal"
@@ -51,14 +51,14 @@ const App = () => {
     console.log(fieldName, formData)
   return (
     <div
-      css={css`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-        height: 100vh;
-      `}>
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "100%",
+        height: "100vh",
+      }}>
       <Logo width="80" height="80" />
       <h1>簿客</h1>
       <div

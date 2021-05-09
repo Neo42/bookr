@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import {cloneElement, createContext, useContext, useState} from "react"
 import "@reach/dialog/styles.css"
-import {jsx, css} from "@emotion/react"
+import {jsx} from "@emotion/react"
 import {CircleButton, Dialog} from "./lib"
 import VisuallyHidden from "@reach/visually-hidden"
 
@@ -38,11 +38,7 @@ const ModalContentBase = (props) => {
 const ModalContents = ({title, children, ...props}) => {
   return (
     <ModalContentBase {...props}>
-      <div
-        css={css`
-          display: flex;
-          justify-content: flex-end;
-        `}>
+      <div css={{display: "flex", justifyContent: "flex-end"}}>
         <ModalDismissButton>
           <CircleButton>
             <VisuallyHidden>关闭</VisuallyHidden>

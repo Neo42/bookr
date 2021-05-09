@@ -3,6 +3,20 @@ import {Dialog as ReachDialog} from "@reach/dialog"
 import SyncLoader from "react-spinners/SyncLoader"
 import {black, primary, secondary, white} from "../tokens/colors"
 
+const loaderVariants = {
+  primary,
+  secondary,
+}
+
+const Loader = ({variant = "primary"}) => (
+  <SyncLoader
+    color={loaderVariants[variant]}
+    aria-label="加载中"
+    size="10px"
+    css={{marginLeft: "55px"}}
+  />
+)
+
 const buttonVariants = {
   primary: {
     background: primary,
@@ -16,19 +30,19 @@ const buttonVariants = {
 
 const Button = styled.button(
   {
-    padding: `10px 20px`,
+    padding: `0.75em 1.5em`,
     lineHeight: 1,
     border: "none",
-    borderRadius: 5,
+    borderRadius: "0.3em",
   },
   ({variant = "primary"}) => buttonVariants[variant]
 )
 
 const CircleButton = styled.button({
-  borderRadius: 30,
+  borderRadius: "30px",
   padding: 0,
-  width: 40,
-  height: 40,
+  width: "40px",
+  height: "40px",
   lineHeight: 1,
   display: "flex",
   alignItems: "center",
@@ -40,7 +54,7 @@ const CircleButton = styled.button({
 })
 
 const Input = styled.input({
-  borderRadius: 3,
+  borderRadius: "3px",
   border: `1px solid rgb(241, 241, 244)`,
   background: `rgb(241, 242, 247)`,
   padding: `8px 12px`,
@@ -63,18 +77,4 @@ const Dialog = styled(ReachDialog)({
   },
 })
 
-const loaderVariants = {
-  primary,
-  secondary,
-}
-
-const Loader = ({variant}) => (
-  <SyncLoader
-    color={loaderVariants[variant]}
-    aria-label="加载中"
-    size="10"
-    css={{marginLeft: 55}}
-  />
-)
-
-export {Button, CircleButton, Dialog, Input, FormGroup, Loader}
+export {Button, Loader, CircleButton, Dialog, Input, FormGroup}
