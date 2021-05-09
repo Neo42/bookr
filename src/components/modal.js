@@ -1,47 +1,65 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-
-import Dialog from "@reach/dialog"
+import {cloneElement, createContext, useContext, useState} from "react"
 import "@reach/dialog/styles.css"
-import Form from "./Form"
 import {jsx, css} from "@emotion/react"
-import {Button, CircleButton} from "./lib"
+import {CircleButton, Dialog} from "./lib"
+import VisuallyHidden from "@reach/visually-hidden"
 
-export default function Modal({isOpen, onDismiss, title, variant, onsubmit}) {
-	return (
-		<Dialog
-			isOpen={isOpen}
-			aria-label={`${title === "注册" ? "Registration" : "Login"} form`}
-			onDismiss={onDismiss}
-			css={css`
-				margin: 20vh auto;
-				max-width: 450px;
-				border-radius: 3px;
-				padding-bottom: 3.5em;
-				box-shadow: rgb(0 0 0 / 20%) 0px 10px 30px -5px;
-			`}
-		>
-			<div
-				css={css`
-					display: flex;
-					justify-content: flex-end;
-				`}
-			>
-				<CircleButton onClick={onDismiss}>
-					<span aria-hidden="true">×</span>
-				</CircleButton>
-			</div>
-			<h3
-				css={css`
-					text-align: center;
-				`}
-			>
-				{title}
-			</h3>
-			<Form
-				submitButton={<Button variant={variant}>{title}</Button>}
-				onsubmit={onsubmit}
-			></Form>
-		</Dialog>
-	)
+const callAll = (...fns) => (...args) => fns.forEach((fn) => fn && fn(...args))
+
+const ModalContext = createContext()
+
+const Modal = (props) => (
+  <ModalContext.Provider value={useState(false)} {...props} />
+)
+
+const ModalDismissButton = ({children: child}) => {
+  const [, setIsOpen] = useContext(ModalContext)
+  return cloneElement(child, {
+    onClick: callAll(() => setIsOpen(false), child.props.onClick),
+  })
+}
+
+const ModalOpenButton = ({children: child}) => {
+  const [, setIsOpen] = useContext(ModalContext)
+  return cloneElement(child, {
+    onClick: callAll(() => setIsOpen(true), child.props.onClick),
+  })
+}
+
+const ModalContentBase = (props) => {
+  const [isOpen, setIsOpen] = useContext(ModalContext)
+  return (
+    <Dialog isOpen={isOpen} onDismiss={() => setIsOpen(false)} {...props} />
+  )
+}
+
+const ModalContents = ({title, children, ...props}) => {
+  return (
+    <ModalContentBase {...props}>
+      <div
+        css={css`
+          display: flex;
+          justify-content: flex-end;
+        `}>
+        <ModalDismissButton>
+          <CircleButton>
+            <VisuallyHidden>关闭</VisuallyHidden>
+            <span aria-hidden>×</span>
+          </CircleButton>
+        </ModalDismissButton>
+      </div>
+      <h3 css={{textAlign: "center", fontSize: "2em"}}>{title}</h3>
+      {children}
+    </ModalContentBase>
+  )
+}
+
+export {
+  Modal,
+  ModalDismissButton,
+  ModalOpenButton,
+  ModalContentBase,
+  ModalContents,
 }
