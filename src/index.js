@@ -1,9 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import {jsx} from "@emotion/react"
-
-import "bootstrap/dist/css/bootstrap-reboot.css"
-import "@reach/dialog/styles.css"
+import "./bootstrap"
 import * as React from "react"
 import ReactDOM from "react-dom"
 import {Button, FormGroup, Input, Loader} from "./components/lib"
