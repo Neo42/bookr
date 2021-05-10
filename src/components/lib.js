@@ -32,8 +32,12 @@ const Button = styled.button(
   {
     padding: `0.75em 1.5em`,
     lineHeight: 1,
+    borderRadius: "0.2em",
     border: "none",
-    borderRadius: "0.3em",
+    transition: "ease 0.3s",
+    ":hover": {
+      filter: "brightness(1.06)",
+    },
   },
   ({variant = "primary"}) => buttonVariants[variant]
 )
@@ -51,6 +55,10 @@ const CircleButton = styled.button({
   color: black,
   border: `1px solid rgb(241, 241, 244)`,
   cursor: "pointer",
+  transition: "ease 0.3s",
+  ":hover": {
+    filter: "brightness(0.97)",
+  },
 })
 
 const Input = styled.input({

@@ -49,6 +49,7 @@ function LoginForm({onSubmit, submitButton, loader}) {
 const App = () => {
   const handleSubmit = (fieldName) => (formData) =>
     console.log(fieldName, formData)
+
   return (
     <div
       css={{
