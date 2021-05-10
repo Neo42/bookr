@@ -93,7 +93,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 - [Higher-Order Components](https://reactjs.org/docs/higher-order-components.html)
 - [Emotion CSS prop](https://emotion.sh/docs/css-prop)
 
-### How I built this
+### Topics covered in this app
 
 1.  Scaffold
 2.  Styles
@@ -101,6 +101,14 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 4.  Authentication
 5.  Routing
 6.  Cache management
+7.  Context
+8.  Compound components
+9.  Performance
+10. Render as you fetch
+11. Unit testing
+12. Testing hooks and components
+13. Integration testing
+14. E2e testing
 
 <!-- GETTING STARTED -->
 
