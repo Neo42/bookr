@@ -74,8 +74,6 @@ An awesome bookshelf built with React & friends!
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]()
-
 The React and JavaScript ecosystem is full of tools and libraries to help us build our applications. In this project, I built this bookshelf application from scratch using my favorite widely supported and proven tools and techniques. I'll cover everything about building frontend React applications, from the absolute basics to the tricky parts I'll run into building real-world React apps and how to create concise abstractions.
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
@@ -156,12 +154,13 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 
-## Contact
+## Contact Me
 
 Hao Jiang
 
+- Personal site: [Neo42](http://neo42.cc) (with a [contact](http://neo42.cc/contact) page)
 - Twitter: [@Hao](https://twitter.com/neo42_)
-- haojiang_neo42@163.com
+- Email: haojiang_neo42@163.com
 
 Project Link: [https://github.com/Neo42/booker](https://github.com/Neo42/booker)
 
