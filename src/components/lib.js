@@ -1,11 +1,12 @@
 import styled from "@emotion/styled"
 import {Dialog as ReachDialog} from "@reach/dialog"
 import SyncLoader from "react-spinners/SyncLoader"
-import {black, primary, secondary, white} from "../tokens/colors"
+import * as colors from "../styles/colors"
+import * as mq from "../styles/media-queries"
 
 const loaderVariants = {
-  primary,
-  secondary,
+  primary: colors.primary,
+  secondary: colors.secondary,
 }
 
 const Loader = ({variant = "primary"}) => (
@@ -19,12 +20,12 @@ const Loader = ({variant = "primary"}) => (
 
 const buttonVariants = {
   primary: {
-    background: primary,
-    color: black,
+    background: colors.primary,
+    color: colors.text,
   },
   secondary: {
-    background: secondary,
-    color: white,
+    background: colors.secondary,
+    color: colors.base,
   },
 }
 
@@ -51,9 +52,9 @@ const CircleButton = styled.button({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  background: white,
-  color: black,
-  border: `1px solid rgb(241, 241, 244)`,
+  background: colors.base,
+  color: colors.text,
+  border: `1px solid ${colors.gray10}`,
   cursor: "pointer",
   transition: "ease 0.3s",
   ":hover": {
@@ -63,8 +64,8 @@ const CircleButton = styled.button({
 
 const Input = styled.input({
   borderRadius: "3px",
-  border: `1px solid rgb(241, 241, 244)`,
-  background: `rgb(241, 242, 247)`,
+  border: `1px solid ${colors.gray10}`,
+  background: colors.gray,
   padding: `8px 12px`,
 })
 
@@ -77,9 +78,9 @@ const Dialog = styled(ReachDialog)({
   maxWidth: "450px",
   borderRadius: "3px",
   paddingBottom: "3.5em",
-  boxShadow: "0 10px 30px -5px rgba(0, 0, 0, 0.2)",
+  boxShadow: `0 10px 30px -5px ${colors.boxShadow}`,
   margin: "20vh auto",
-  "@media (max-width: 991px)": {
+  [mq.small]: {
     width: "100%",
     margin: "10vh auto",
   },

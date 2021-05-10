@@ -1,35 +1,34 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import {cloneElement, createContext, useContext, useState} from "react"
-import "@reach/dialog/styles.css"
+import * as React from "react"
 import {jsx} from "@emotion/react"
 import {CircleButton, Dialog} from "./lib"
 import VisuallyHidden from "@reach/visually-hidden"
 
 const callAll = (...fns) => (...args) => fns.forEach((fn) => fn && fn(...args))
 
-const ModalContext = createContext()
+const ModalContext = React.createContext()
 
 const Modal = (props) => (
-  <ModalContext.Provider value={useState(false)} {...props} />
+  <ModalContext.Provider value={React.useState(false)} {...props} />
 )
 
 const ModalDismissButton = ({children: child}) => {
-  const [, setIsOpen] = useContext(ModalContext)
-  return cloneElement(child, {
+  const [, setIsOpen] = React.useContext(ModalContext)
+  return React.cloneElement(child, {
     onClick: callAll(() => setIsOpen(false), child.props.onClick),
   })
 }
 
 const ModalOpenButton = ({children: child}) => {
-  const [, setIsOpen] = useContext(ModalContext)
-  return cloneElement(child, {
+  const [, setIsOpen] = React.useContext(ModalContext)
+  return React.cloneElement(child, {
     onClick: callAll(() => setIsOpen(true), child.props.onClick),
   })
 }
 
 const ModalContentBase = (props) => {
-  const [isOpen, setIsOpen] = useContext(ModalContext)
+  const [isOpen, setIsOpen] = React.useContext(ModalContext)
   return (
     <Dialog isOpen={isOpen} onDismiss={() => setIsOpen(false)} {...props} />
   )

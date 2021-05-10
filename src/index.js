@@ -1,19 +1,19 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
+import {jsx} from "@emotion/react"
+
+import "bootstrap/dist/css/bootstrap-reboot.css"
+import "@reach/dialog/styles.css"
 import * as React from "react"
 import ReactDOM from "react-dom"
-import "bootstrap/dist/css/bootstrap-reboot.css"
-import {jsx} from "@emotion/react"
-import {Logo} from "./components/logo"
 import {Button, FormGroup, Input, Loader} from "./components/lib"
 import {Modal, ModalContents, ModalOpenButton} from "./components/modal"
+import {Logo} from "./components/logo"
 
 function LoginForm({onSubmit, submitButton, loader}) {
   const handleSubmit = (event) => {
     event.preventDefault()
-    const [username, password] = Array.from(event.target.elements).map(
-      ({value}) => value
-    )
+    const [{value: username}, {value: password}] = event.target.elements
     onSubmit({username, password})
   }
 
