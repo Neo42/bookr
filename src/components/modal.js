@@ -1,9 +1,8 @@
-/** @jsxRuntime classic */
 /** @jsx jsx */
-import * as React from "react"
-import {jsx} from "@emotion/react"
-import {CircleButton, Dialog} from "./lib"
-import VisuallyHidden from "@reach/visually-hidden"
+import * as React from 'react'
+import {jsx} from '@emotion/react'
+import {CircleButton, Dialog} from './lib'
+import VisuallyHidden from '@reach/visually-hidden'
 
 const callAll = (...fns) => (...args) => fns.forEach((fn) => fn && fn(...args))
 
@@ -37,7 +36,7 @@ const ModalContentBase = (props) => {
 const ModalContents = ({title, children, ...props}) => {
   return (
     <ModalContentBase {...props}>
-      <div css={{display: "flex", justifyContent: "flex-end"}}>
+      <div css={{display: 'flex', justifyContent: 'flex-end'}}>
         <ModalDismissButton>
           <CircleButton>
             <VisuallyHidden>关闭</VisuallyHidden>
@@ -45,7 +44,7 @@ const ModalContents = ({title, children, ...props}) => {
           </CircleButton>
         </ModalDismissButton>
       </div>
-      <h3 css={{textAlign: "center", fontSize: "2em"}}>{title}</h3>
+      <h3 css={{textAlign: 'center', fontSize: '2em'}}>{title}</h3>
       {children}
     </ModalContentBase>
   )
