@@ -3,6 +3,7 @@
 		"components",
 		"backend",
 		"dependencies",
-		"ide"
+		"ide",
+		"docs"
 	]
 }

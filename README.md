@@ -14,12 +14,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -168,7 +163,7 @@ Project Link: [https://github.com/Neo42/booker](https://github.com/Neo42/booker)
 
 ## Acknowledgements
 
-- [React Spinners](https://www.davidhu.io/react-spinners/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -183,6 +178,3 @@ Project Link: [https://github.com/Neo42/booker](https://github.com/Neo42/booker)
 [issues-url]: https://github.com/Neo42/booker/issues
 [license-shield]: https://img.shields.io/github/license/Neo42/booker.svg?style=for-the-badge
 [license-url]: https://github.com/Neo42/booker/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: public/screenshot.png
