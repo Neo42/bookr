@@ -31,7 +31,7 @@
   <h3 align="center">Booker 簿客</h3>
 
   <p align="center">
-An awesome bookshelf built with React & friends!
+An awesome bookshelf app built with React & friends!
     <br />
     <a href="https://github.com/Neo42/booker"><strong>Explore the docs »</strong></a>
     <br />

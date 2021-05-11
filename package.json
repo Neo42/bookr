@@ -2,10 +2,12 @@
   "name": "react-bookshelf",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://localhost:3001/",
   "dependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@reach/dialog": "^0.15.0",
+    "@reach/tooltip": "^0.15.0",
     "@reach/visually-hidden": "^0.15.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -13,10 +15,13 @@
     "bootstrap": "^5.0.0",
     "match-sorter": "^6.3.0",
     "msw": "^0.28.2",
+    "node-match-path": "^0.6.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-feather": "^2.0.9",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "react-spinners": "^0.10.6",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
