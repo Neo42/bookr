@@ -1,5 +1,5 @@
-import bookData from "./booksData.json"
-import {matchSorter} from "match-sorter"
+import bookData from './books-data.json'
+import {matchSorter} from 'match-sorter'
 
 let books = [...bookData]
 
@@ -15,10 +15,10 @@ async function read(bookId) {
 async function query(search) {
   return matchSorter(books, search, {
     keys: [
-      "title",
-      "author",
-      "publisher",
-      {threshold: matchSorter.rankings.CONTAINS, key: "summary"},
+      'title',
+      'author',
+      'publisher',
+      {threshold: matchSorter.rankings.CONTAINS, key: 'summary'},
     ],
   })
 }

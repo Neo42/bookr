@@ -1,6 +1,6 @@
-import * as BooksDB from "./books"
+import * as booksDB from './books'
 
-const listItemsKey = "__list_items_key__"
+const listItemsKey = '__list_items_key__'
 let listItems = {}
 
 const save = () =>
@@ -53,27 +53,27 @@ function validateListItem(id) {
 async function authorize(userId, listItemId) {
   const listItem = await read(listItemId)
   if (listItem.ownerId !== userId) {
-    const erorr = new Error("当前用户没有权限查看该条目。")
+    const erorr = new Error('当前用户没有权限查看该条目。')
     erorr.status = 403
     throw erorr
   }
 }
 
 async function create({
-  bookId = required("bookId"),
-  ownerId = required("ownerId"),
+  bookId = required('bookId'),
+  ownerId = required('ownerId'),
   rating = -1,
-  notes = "",
+  notes = '',
   startDate = Date.now(),
   finishDate = null,
 }) {
   const id = hash(`${bookId}${ownerId}`)
   if (listItems[id]) {
-    const error = new Error("书籍已存在，不能重复添加。")
+    const error = new Error('书籍已存在，不能重复添加。')
     error.status = 400
     throw error
   }
-  const book = await BooksDB.read(bookId)
+  const book = await booksDB.read(bookId)
   if (!book) {
     const error = new Error(`没有找到 ID 为 ${bookId} 的书籍。`)
     error.status = 400
