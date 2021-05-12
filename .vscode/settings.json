@@ -4,6 +4,7 @@
 		"backend",
 		"dependencies",
 		"ide",
-		"docs"
+		"docs",
+		"utils"
 	]
 }
