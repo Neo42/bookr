@@ -1,8 +1,4 @@
-const statuses = {
-  IDLE: 'IDLE',
-  PENDING: 'PENDING',
-  RESOLVED: 'RESOLVED',
-  REJECTED: 'REJECTED',
-}
-
-export default statuses
+export const IDLE = 'IDLE'
+export const PENDING = 'PENDING'
+export const RESOLVED = 'RESOLVED'
+export const REJECTED = 'REJECTED'

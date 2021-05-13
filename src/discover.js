@@ -5,42 +5,24 @@ import Tooltip from '@reach/tooltip'
 import {FiSearch, FiX} from 'react-icons/fi'
 import {BookListUL, Input, Spinner} from './components/lib'
 import BookItem from './components/book-item'
-import {statuses} from './constants'
-import client from './utils/api-client'
 import * as colors from './styles/colors'
+import client from './utils/api-client'
+import {useAsync} from './utils/hooks'
 
 function DiscoverScreen() {
-  const {LOADING, IDLE, SUCCESS, ERROR} = statuses
   const [query, setQuery] = React.useState('')
-  const [data, setData] = React.useState(null)
-  const [error, setError] = React.useState(null)
-
   const [queried, setQueried] = React.useState(false)
-  const [status, setStatus] = React.useState(IDLE)
-
-  const isLoading = status === LOADING
-  const isSuccess = status === SUCCESS
-  const isError = status === ERROR
-
+  const {data, error, run, isSuccess, isError, isLoading} = useAsync()
   React.useEffect(() => {
     if (!queried) {
       return
     }
-    setStatus(LOADING)
-
-    client(`books?query=${encodeURIComponent(query)}`)
-      .then((bookData) => {
-        setData(bookData)
-        setStatus(SUCCESS)
-      })
-      .catch((errorData) => {
-        setError(errorData)
-        setStatus(ERROR)
-      })
-  }, [ERROR, LOADING, SUCCESS, queried, query])
+    run(client(`books?query=${encodeURIComponent(query)}`))
+  }, [queried, query, run])
 
   function handleSubmit(event) {
     event.preventDefault()
+    console.log('Query')
     setQuery(event.target.elements.search.value)
     setQueried(true)
   }
@@ -58,7 +40,7 @@ function DiscoverScreen() {
           placeholder="搜索书籍…"
           id="search"
           css={{width: '100%'}}
-          variant="secondary"
+          variant="primary"
         />
         <Tooltip label="搜索书籍">
           <label htmlFor="search">

@@ -1,18 +1,15 @@
 import * as React from 'react'
-import statuses from '../constants'
-
-const {RESOLVED, REJECTED, PENDING, IDLE} = statuses
+import {PENDING, IDLE, RESOLVED, REJECTED} from '../constants'
 
 function useSafeDispatch(dispatch) {
   const mounted = React.useRef(false)
-
   React.useLayoutEffect(() => {
     mounted.current = true
     return () => (mounted.current = false)
   }, [])
-
   return React.useCallback(
-    (...args) => (mounted ? dispatch(args) : void 0),
+    // tricky part: args forward (destructuring) & ref.current
+    (...args) => (mounted.current ? dispatch(...args) : void 0),
     [dispatch]
   )
 }
@@ -23,25 +20,24 @@ const defaultInitialState = {
   error: null,
 }
 
-export default function useAsync(initialState) {
+export function useAsync(initialState) {
   const initialStateRef = React.useRef({
     ...defaultInitialState,
     ...initialState,
   })
-
-  const [{data, error, status}, setState] = React.useReducer(
-    (s, a) => ({...s, ...a}),
-    initialStateRef.current
-  )
+  const [{data, error, status}, setState] = React.useReducer((s, a) => {
+    console.log(a)
+    return {...s, ...a}
+  }, initialStateRef.current)
 
   const safeSetState = useSafeDispatch(setState)
 
   const setData = React.useCallback(
-    (data) => safeSetState({status: RESOLVED, data}),
+    (data) => safeSetState({data, status: RESOLVED}),
     [safeSetState]
   )
   const setError = React.useCallback(
-    (error) => safeSetState({status: REJECTED, error}),
+    (error) => safeSetState({error, status: REJECTED}),
     [safeSetState]
   )
   const reset = React.useCallback(
@@ -59,17 +55,16 @@ export default function useAsync(initialState) {
       safeSetState({status: PENDING})
       return promise
         .then((data) => {
-          setData({data})
+          setData(data)
           return data
         })
         .catch((error) => {
-          setError({error})
+          setError(error)
           return error
         })
     },
     [safeSetState, setData, setError]
   )
-
   return {
     isSuccess: status === RESOLVED,
     isError: status === REJECTED,
