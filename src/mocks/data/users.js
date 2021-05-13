@@ -1,8 +1,8 @@
-const usersKey = "__users_key__"
+import {usersKey} from '../../constants'
+
 let users = {}
 
-const save = () =>
-  window.localStorage.setItem(usersKey, JSON.stringify(users))
+const save = () => window.localStorage.setItem(usersKey, JSON.stringify(users))
 
 const load = () =>
   Object.assign(users, JSON.parse(window.localStorage.getItem(usersKey)))
@@ -21,12 +21,12 @@ window.__bookshelf.deleteUsers = () => {
 
 function validateUserForm({username, password}) {
   if (!username) {
-    const error = new Error("用户名是必填项。")
+    const error = new Error('用户名是必填项。')
     error.status = 400
     throw error
   }
   if (!password) {
-    const error = new Error("密码是必填项。")
+    const error = new Error('密码是必填项。')
     error.status = 400
     throw error
   }
@@ -51,7 +51,7 @@ async function authenticate({username, password}) {
   if (user.passwordHash === hash(password)) {
     return {...sanitizeUser(user), token: btoa(user.id)}
   }
-  const error = new Error("用户名或密码错误。")
+  const error = new Error('用户名或密码错误。')
   error.status = 400
   throw error
 }

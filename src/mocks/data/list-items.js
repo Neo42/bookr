@@ -1,6 +1,6 @@
+import {listItemsKey} from '../../constants'
 import * as booksDB from './books'
 
-const listItemsKey = '__list_items_key__'
 let listItems = {}
 
 const save = () =>

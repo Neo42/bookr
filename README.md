@@ -14,8 +14,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -26,7 +24,7 @@
   <h3 align="center">Booker 簿客</h3>
 
   <p align="center">
-An awesome bookshelf app built with React & friends!
+    An awesome bookshelf app built with React & friends! (Built for private use)
     <br />
     <a href="https://github.com/Neo42/booker"><strong>Explore the docs »</strong></a>
     <br />
@@ -163,7 +161,13 @@ Project Link: [https://github.com/Neo42/booker](https://github.com/Neo42/booker)
 
 ## Acknowledgements
 
+- [Reactjs](https://reactjs.org)
+- [Emotion](https://emotion.sh/docs/introduction)
+- [Reach UI](https://reach.tech/)
 - [React Icons](https://react-icons.github.io/react-icons/)
+- [Bootstrap](https://getbootstrap.com/)
+- [match-sorter](https://github.com/kentcdodds/match-sorter)
+- [msw](https://mswjs.io/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
