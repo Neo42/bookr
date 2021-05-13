@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import {keyframes} from '@emotion/react'
+import {jsx, keyframes} from '@emotion/react'
 import styled from '@emotion/styled'
 import {Dialog as ReachDialog} from '@reach/dialog'
 import {Link as RouterLink} from 'react-router-dom'
-import {FiLoader} from 'react-icons/fi'
+import {ImSpinner2} from 'react-icons/im'
 import * as colors from '../styles/colors'
 import * as mq from '../styles/media-queries'
 
@@ -12,7 +12,7 @@ const spin = keyframes({
   '100%': {transform: 'rotate(360deg)'},
 })
 
-const Spinner = styled(FiLoader)({
+const Spinner = styled(ImSpinner2)({
   animation: `${spin} 0.5s linear infinite`,
 })
 
@@ -34,8 +34,9 @@ const buttonVariants = {
 const Button = styled.button(
   {
     boxSizing: 'border-box',
-    width: '6.5em',
     display: 'flex',
+    minWidth: '6.5em',
+    width: 'content-width',
     alignItems: 'center',
     justifyContent: 'center',
     padding: `0.75em 1.5em`,
@@ -113,6 +114,43 @@ const BookListUL = styled.ul({
   background: 'transparent',
 })
 
+const errorMessageVariants = {
+  stacked: {display: 'block'},
+  inline: {display: 'inline-block'},
+}
+
+const ErrorMessage = ({error: {message}, variant = 'stacked', ...props}) => (
+  <div
+    role="alert"
+    css={[{color: colors.danger}, errorMessageVariants[variant]]}
+    {...props}>
+    <span>出错了：</span>
+    <pre
+      css={[
+        {whiteSpace: 'break-spaces', margin: 0, marginBottom: -5},
+        errorMessageVariants[variant],
+      ]}>
+      {message}
+    </pre>
+  </div>
+)
+
+const FullPageFallback = ({error: {message}}) => (
+  <div
+    role="alert"
+    css={{
+      color: colors.danger,
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+    <p>Emm…没加载出来…麻烦帮我刷新一下页面</p>
+    <pre>{message}</pre>
+  </div>
+)
+
 export {
   Button,
   CircleButton,
@@ -122,4 +160,5 @@ export {
   Spinner,
   Link,
   BookListUL,
+  ErrorMessage,
 }
