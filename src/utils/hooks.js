@@ -25,10 +25,11 @@ export function useAsync(initialState) {
     ...defaultInitialState,
     ...initialState,
   })
-  const [{data, error, status}, setState] = React.useReducer((s, a) => {
-    console.log(a)
-    return {...s, ...a}
-  }, initialStateRef.current)
+
+  const [{data, error, status}, setState] = React.useReducer(
+    (s, a) => ({...s, ...a}),
+    initialStateRef.current
+  )
 
   const safeSetState = useSafeDispatch(setState)
 
@@ -36,6 +37,7 @@ export function useAsync(initialState) {
     (data) => safeSetState({data, status: RESOLVED}),
     [safeSetState]
   )
+
   const setError = React.useCallback(
     (error) => safeSetState({error, status: REJECTED}),
     [safeSetState]
@@ -47,10 +49,8 @@ export function useAsync(initialState) {
 
   const run = React.useCallback(
     (promise) => {
-      if (!promise || !promise instanceof Promise) {
-        throw new Error(
-          'TypeError: A promise must be passed into useAsync.run()'
-        )
+      if (!promise || !promise.then) {
+        throw new Error('TypeError: useAsync.run 需要一个 promise 类型的参数。')
       }
       safeSetState({status: PENDING})
       return promise

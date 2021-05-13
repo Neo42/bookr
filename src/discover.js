@@ -9,10 +9,11 @@ import * as colors from './styles/colors'
 import client from './utils/api-client'
 import {useAsync} from './utils/hooks'
 
-function DiscoverScreen() {
+export default function DiscoverScreen() {
   const [query, setQuery] = React.useState('')
   const [queried, setQueried] = React.useState(false)
   const {data, error, run, isSuccess, isError, isLoading} = useAsync()
+
   React.useEffect(() => {
     if (!queried) {
       return
@@ -22,7 +23,6 @@ function DiscoverScreen() {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log('Query')
     setQuery(event.target.elements.search.value)
     setQueried(true)
   }
@@ -93,5 +93,3 @@ function DiscoverScreen() {
     </div>
   )
 }
-
-export {DiscoverScreen}

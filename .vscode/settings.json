@@ -5,6 +5,7 @@
 		"dependencies",
 		"ide",
 		"docs",
-		"utils"
+		"utils",
+		"constants"
 	]
 }
