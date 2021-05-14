@@ -3,7 +3,7 @@ import {jsx, keyframes} from '@emotion/react'
 import styled from '@emotion/styled'
 import {Dialog as ReachDialog} from '@reach/dialog'
 import {Link as RouterLink} from 'react-router-dom'
-import {ImSpinner2} from 'react-icons/im'
+import {ImSpinner2 as RawSpinner} from 'react-icons/im'
 import * as colors from '../styles/colors'
 import * as mq from '../styles/media-queries'
 
@@ -12,8 +12,8 @@ const spin = keyframes({
   '100%': {transform: 'rotate(360deg)'},
 })
 
-const Spinner = styled(ImSpinner2)({
-  animation: `${spin} 0.5s linear infinite`,
+const Spinner = styled(RawSpinner)({
+  animation: `${spin} 0.15s linear infinite`,
 })
 
 Spinner.defaultProps = {

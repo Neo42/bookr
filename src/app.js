@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import * as React from 'react'
-import * as colors from './styles/colors'
 import client from './utils/api-client'
 import {useAsync} from './utils/hooks'
 import UnAuthorizedApp from './unauthorized-app'
@@ -41,6 +40,7 @@ export default function App() {
   if (isLoading || isIdle) {
     return <FullPageSpinner />
   }
+
   if (isError) {
     return <FullPageFallback />
   }
