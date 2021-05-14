@@ -5,7 +5,8 @@ import * as mq from './styles/media-queries'
 import {Button} from './components/lib'
 import DiscoverScreen from './discover'
 
-export default function AuthorizedApp({user: username, logout}) {
+export default function AuthorizedApp({user, logout}) {
+  const {username} = user
   return (
     <React.Fragment>
       <div
@@ -17,10 +18,7 @@ export default function AuthorizedApp({user: username, logout}) {
           right: '10px',
         }}>
         {username}
-        <Button
-          variant="secondary"
-          css={{marginRight: '10px'}}
-          onClick={logout}>
+        <Button variant="secondary" css={{marginLeft: 10}} onClick={logout}>
           退出登录
         </Button>
       </div>
