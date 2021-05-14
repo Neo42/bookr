@@ -18,12 +18,12 @@ export default function App() {
   }
 
   async function getUser() {
-    let user = null
     const token = await auth.getToken()
     if (token) {
-      user = await client('me', {token})
+      const {user} = await client('me', {token})
+      return user
     }
-    return user
+    return null
   }
 
   return user ? (
