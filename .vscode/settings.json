@@ -6,6 +6,7 @@
 		"ide",
 		"docs",
 		"utils",
-		"constants"
+		"constants",
+		"styles"
 	]
 }

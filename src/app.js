@@ -4,6 +4,7 @@ import * as React from 'react'
 import UnAuthorizedApp from './unauthorized-app'
 import AuthorizedApp from './authorized-app'
 import * as auth from './auth-provider'
+
 export default function App() {
   const [user, setUser] = React.useState(null)
 

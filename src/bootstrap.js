@@ -1,5 +1,5 @@
 import './mocks/server'
-import './index.css'
 import 'bootstrap/dist/css/bootstrap-reboot.css'
+import './index.css'
 import '@reach/dialog/styles.css'
 import '@reach/tooltip/styles.css'

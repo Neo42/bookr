@@ -4,6 +4,7 @@ import React from 'react'
 import * as mq from './styles/media-queries'
 import {Button} from './components/lib'
 import DiscoverScreen from './discover'
+import * as colors from './styles/colors'
 
 export default function AuthorizedApp({user, logout}) {
   const {username} = user
@@ -18,12 +19,13 @@ export default function AuthorizedApp({user, logout}) {
           right: '10px',
         }}>
         {username}
-        <Button variant="secondary" css={{marginLeft: 10}} onClick={logout}>
+        <Button variant="secondary" css={{marginLeft: '1em'}} onClick={logout}>
           退出登录
         </Button>
       </div>
       <div
         css={{
+          background: colors.base,
           margin: '0 auto',
           padding: '4em 2em',
           maxWidth: '840px',
