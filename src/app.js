@@ -1,14 +1,26 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import * as React from 'react'
+import * as colors from './styles/colors'
+import client from './utils/api-client'
+import {useAsync} from './utils/hooks'
 import UnAuthorizedApp from './unauthorized-app'
 import AuthorizedApp from './authorized-app'
 import * as auth from './auth-provider'
-import client from './utils/api-client'
+import {FullPageFallback, FullPageSpinner} from '../src/components/lib'
 
 export default function App() {
-  const [user, setUser] = React.useState(null)
-  React.useEffect(() => getUser().then((u) => setUser(u)), [])
+  const {
+    data: user,
+    setData: setUser,
+    isLoading,
+    isIdle,
+    isError,
+    isSuccess,
+    run,
+  } = useAsync()
+
+  React.useEffect(() => run(getUser()), [run])
 
   const login = (form) => auth.login(form).then((u) => setUser(u))
   const register = (form) => auth.register(form).then((u) => setUser(u))
@@ -19,16 +31,25 @@ export default function App() {
 
   async function getUser() {
     const token = await auth.getToken()
-    if (token) {
-      const {user} = await client('me', {token})
-      return user
+    if (!token) {
+      return null
     }
-    return null
+    const data = await client('me', {token})
+    return data.user
   }
 
-  return user ? (
-    <AuthorizedApp logout={logout} user={user} />
-  ) : (
-    <UnAuthorizedApp login={login} register={register} />
-  )
+  if (isLoading || isIdle) {
+    return <FullPageSpinner />
+  }
+  if (isError) {
+    return <FullPageFallback />
+  }
+
+  if (isSuccess) {
+    return user ? (
+      <AuthorizedApp logout={logout} user={user} />
+    ) : (
+      <UnAuthorizedApp login={login} register={register} />
+    )
+  }
 }

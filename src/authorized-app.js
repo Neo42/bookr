@@ -15,8 +15,8 @@ export default function AuthorizedApp({user, logout}) {
           display: 'flex',
           alignItems: 'center',
           position: 'absolute',
-          top: '10px',
-          right: '10px',
+          top: '25px',
+          right: '30px',
         }}>
         {username}
         <Button variant="secondary" css={{marginLeft: '1em'}} onClick={logout}>

@@ -20,6 +20,22 @@ Spinner.defaultProps = {
   'aria-label': '加载中',
 }
 
+function FullPageSpinner() {
+  return (
+    <div
+      css={{
+        fontSize: '4em',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Spinner />
+    </div>
+  )
+}
+
 const buttonVariants = {
   primary: {
     background: colors.primary,
@@ -152,13 +168,15 @@ const FullPageFallback = ({error: {message}}) => (
 )
 
 export {
+  FullPageFallback,
+  Link,
+  Input,
   Button,
   CircleButton,
   Dialog,
-  Input,
   FormGroup,
   Spinner,
-  Link,
+  FullPageSpinner,
   BookListUL,
   ErrorMessage,
 }
