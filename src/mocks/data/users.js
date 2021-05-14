@@ -65,7 +65,7 @@ async function create({username, password}) {
     error.status = 400
     throw error
   }
-  users[id] = [id, username, passwordHash]
+  users[id] = {id, username, passwordHash}
   save()
   return read(id)
 }

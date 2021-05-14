@@ -10,5 +10,5 @@ export const usersKey = '__users_key__'
 export const userTokenKey = '__auth_provider_key__'
 
 // user endpoints
-export const LOGIN = 'LOGIN'
-export const REGISTER = 'REGISTER'
+export const LOGIN = 'login'
+export const REGISTER = 'register'
