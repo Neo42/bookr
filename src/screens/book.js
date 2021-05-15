@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom'
 import client from '../utils/api-client'
 import * as mq from '../styles/media-queries'
 import {useAsync} from '../utils/hooks'
-import {ReactComponent as bookPlaceholderSvg} from '../assets/placeholder.svg'
+import bookPlaceholderSvg from '../assets/placeholder.svg'
 
 const loading = {
   title: '加载中…',
@@ -14,6 +14,7 @@ const loading = {
   publisher: '加载中…',
   synopsis: '加载中…',
   loading: true,
+  coverImageUrl: bookPlaceholderSvg,
 }
 
 export default function BookScreen({user}) {
@@ -40,15 +41,11 @@ export default function BookScreen({user}) {
             flexDirection: 'column',
           },
         }}>
-        {coverImageUrl ? (
-          <img
-            src={coverImageUrl}
-            alt={`${title} book cover`}
-            css={{width: '100%', maxWidth: '14rem'}}
-          />
-        ) : (
-          <bookPlaceholderSvg />
-        )}
+        <img
+          src={coverImageUrl}
+          alt={`${title} book cover`}
+          css={{width: '100%', maxWidth: '14rem'}}
+        />
         <div>
           <div css={{display: 'flex', position: 'relative'}}>
             <div css={{flex: 1, justifyContent: 'space-between'}}>

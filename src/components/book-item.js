@@ -61,6 +61,7 @@ export default function BookItem({book}) {
                   fontWeight: 700,
                   margin: '0',
                   color: colors.secondary,
+                  lineHeight: '1.2em',
                 }}>
                 {title}
               </h2>
@@ -70,14 +71,19 @@ export default function BookItem({book}) {
                 css={{
                   marginTop: '0.4em',
                   fontStyle: 'italic',
-                  fontSize: '0.85em',
+                  fontSize: '80%',
                 }}>
                 {author}
               </div>
               <small>{book.publisher}</small>
             </div>
           </div>
-          <small css={{whiteSpace: 'break-spaces', display: 'block'}}>
+          <small
+            css={{
+              whiteSpace: 'break-spaces',
+              display: 'block',
+              fontSize: '80%',
+            }}>
             {book.summary.split(' ').slice(0, 70).join(' ')}...
           </small>
         </div>
