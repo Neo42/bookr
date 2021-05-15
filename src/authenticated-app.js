@@ -19,7 +19,7 @@ export default function AuthorizedApp({user, logout}) {
           alignItems: 'center',
           position: 'absolute',
           top: '1.2em',
-          right: '2.5em',
+          right: '2em',
         }}>
         {username}
         <Button variant="secondary" css={{marginLeft: '1em'}} onClick={logout}>
@@ -30,7 +30,7 @@ export default function AuthorizedApp({user, logout}) {
         css={{
           background: colors.base,
           margin: '0 auto',
-          padding: '4em 2em',
+          padding: '4.5em 2em',
           maxWidth: '840px',
           width: '100%',
           display: 'grid',

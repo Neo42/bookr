@@ -26,13 +26,15 @@ export default function BookItem({book}) {
           display: 'grid',
           gridTemplateColumns: '140px 1fr',
           gridGap: 20,
-          border: `1px solid ${colors.gray20}`,
+          border: `none`,
           color: colors.text,
           padding: '1.25em',
           borderRadius: '0.2em',
           textDecoration: 'none',
+          transition: '0.2s',
           ':hover,:focus': {
-            boxShadow: '0 5px 15px -5px rgba(0,0,0,.08)',
+            transform: 'translateY(-5px) scale(1.005) translateZ(0)',
+            boxShadow: '0 2px 10px 0px rgba(0,0,0,0.4)',
             color: 'inherit',
           },
         }}>

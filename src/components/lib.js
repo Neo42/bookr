@@ -55,7 +55,7 @@ const Button = styled.button(
     width: 'content-width',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: `0.75em 1.5em`,
+    padding: `0.6em`,
     lineHeight: 1,
     borderRadius: '0.2em',
     border: 'none',
