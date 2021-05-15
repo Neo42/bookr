@@ -7,7 +7,7 @@ import BookScreen from './screens/book'
 import NotFoundScreen from './screens/not-found'
 import {Button} from './components/lib'
 import * as colors from './styles/colors'
-import {Routes, Route, Link} from 'react-router-dom'
+import {Routes, Route, Link, useMatch} from 'react-router-dom'
 
 export default function AuthorizedApp({user, logout}) {
   const {username} = user
@@ -81,25 +81,35 @@ function Nav() {
 }
 
 function NavLink(props) {
+  const match = useMatch(props.to)
   return (
     <Link
-      css={{
-        display: 'block',
-        padding: '8px 15px',
-        margin: '5px 0',
-        width: '100%',
-        height: '100%',
-        color: colors.text,
-        borderRadius: '0.2em',
-        borderLeft: '0.8em solid transparent',
-        textDecoration: 'none',
-        transition: 'ease 0.3s',
-        ':hover': {
-          color: colors.gray80,
+      css={[
+        {
+          display: 'block',
+          padding: '8px 15px',
+          margin: '5px 0',
+          width: '100%',
+          height: '100%',
+          color: colors.text,
+          borderRadius: '0.2em',
+          borderLeft: '0.3em solid transparent',
           textDecoration: 'none',
-          background: colors.primary,
+          transition: 'ease 0.3s',
+          ':hover': {
+            color: colors.primary,
+            filter: 'brightness(0.98)',
+            textDecoration: 'none',
+            background: colors.gray10,
+          },
         },
-      }}
+        match
+          ? {
+              borderLeft: `0.5em solid ${colors.primary}`,
+              background: colors.gray10,
+            }
+          : null,
+      ]}
       {...props}
     />
   )
