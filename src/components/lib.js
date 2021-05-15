@@ -39,7 +39,7 @@ function FullPageSpinner() {
 const buttonVariants = {
   primary: {
     background: colors.primary,
-    color: colors.text,
+    color: colors.base,
   },
   secondary: {
     background: colors.secondary,

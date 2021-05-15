@@ -1,4 +1,4 @@
-export const primary = '#ffdbd4'
+export const primary = '#f4a9a8'
 export const secondary = '#489cb7'
 
 export const text = '#191919'
