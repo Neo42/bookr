@@ -61,7 +61,7 @@ const Button = styled.button(
     border: 'none',
     transition: 'ease 0.3s',
     ':hover': {
-      filter: 'brightness(1.06)',
+      filter: 'brightness(1.15)',
     },
   },
   ({variant = 'primary'}) => buttonVariants[variant]
@@ -91,6 +91,8 @@ const Input = styled.input(({variant = 'primary'}) => ({
   border: `1px solid ${colors.gray10}`,
   background: colors.gray,
   padding: `8px 12px`,
+  transition: '0.3s',
+  outlineColor: 'transparent',
   ':focus': {
     outlineColor: variant === 'primary' ? colors.primary : colors.secondary,
   },
