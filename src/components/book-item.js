@@ -1,12 +1,14 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
-
+import {Link} from 'react-router-dom'
 import * as mq from '../styles/media-queries'
 import * as colors from '../styles/colors'
 
 export default function BookItem({book}) {
   const {title, author, coverImageUrl} = book
-  const id = `book-row-book-${book.id}`
+
+  const id = `book-item-book-${book.id}`
+
   return (
     <div
       css={{
@@ -15,7 +17,8 @@ export default function BookItem({book}) {
         justifyContent: 'flex-end',
         position: 'relative',
       }}>
-      <div
+      <Link
+        to={`/book/${book.id}`}
         aria-labelledby={id}
         css={{
           minHeight: 270,
@@ -26,9 +29,9 @@ export default function BookItem({book}) {
           border: `1px solid ${colors.gray20}`,
           color: colors.text,
           padding: '1.25em',
-          borderRadius: '3px',
+          borderRadius: '0.2em',
+          textDecoration: 'none',
           ':hover,:focus': {
-            textDecoration: 'none',
             boxShadow: '0 5px 15px -5px rgba(0,0,0,.08)',
             color: 'inherit',
           },
@@ -53,6 +56,7 @@ export default function BookItem({book}) {
                 id={id}
                 css={{
                   fontSize: '1.25em',
+                  fontWeight: 700,
                   margin: '0',
                   color: colors.secondary,
                 }}>
@@ -72,10 +76,10 @@ export default function BookItem({book}) {
             </div>
           </div>
           <small css={{whiteSpace: 'break-spaces', display: 'block'}}>
-            {book.summary.substring(0, 500)}...
+            {book.summary.split(' ').slice(0, 70).join(' ')}...
           </small>
         </div>
-      </div>
+      </Link>
     </div>
   )
 }

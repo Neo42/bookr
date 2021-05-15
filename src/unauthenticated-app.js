@@ -50,7 +50,7 @@ function LoginForm({onSubmit, submitButton, variant}) {
   )
 }
 
-export default function UnAuthorizedApp({login, register}) {
+export default function UnAuthenticatedApp({login, register}) {
   return (
     <div
       css={{

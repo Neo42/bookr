@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import * as React from 'react'
-import client from './utils/api-client'
-import {useAsync} from './utils/hooks'
-import UnAuthorizedApp from './unauthorized-app'
-import AuthorizedApp from './authorized-app'
+import {BrowserRouter as Router} from 'react-router-dom'
 import * as auth from './auth-provider'
+import {useAsync} from './utils/hooks'
+import client from './utils/api-client'
+import UnAuthenticatedApp from './unauthenticated-app'
+import AuthenticatedApp from './authenticated-app'
 import {FullPageFallback, FullPageSpinner} from '../src/components/lib'
 
 export default function App() {
@@ -46,10 +47,13 @@ export default function App() {
   }
 
   if (isSuccess) {
+    const props = {register, login, logout, user}
     return user ? (
-      <AuthorizedApp logout={logout} user={user} />
+      <Router>
+        <AuthenticatedApp {...props} />
+      </Router>
     ) : (
-      <UnAuthorizedApp login={login} register={register} />
+      <UnAuthenticatedApp {...props} />
     )
   }
 }

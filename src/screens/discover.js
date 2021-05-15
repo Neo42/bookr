@@ -3,13 +3,13 @@ import {jsx} from '@emotion/react'
 import * as React from 'react'
 import Tooltip from '@reach/tooltip'
 import {FiSearch, FiX} from 'react-icons/fi'
-import {BookListUL, Input, Spinner} from './components/lib'
-import BookItem from './components/book-item'
-import * as colors from './styles/colors'
-import client from './utils/api-client'
-import {useAsync} from './utils/hooks'
+import {BookListUL, Input, Spinner} from '../components/lib'
+import BookItem from '../components/book-item'
+import * as colors from '../styles/colors'
+import client from '../utils/api-client'
+import {useAsync} from '../utils/hooks'
 
-export default function DiscoverScreen() {
+export default function DiscoverScreen({user}) {
   const [query, setQuery] = React.useState('')
   const [queried, setQueried] = React.useState(false)
   const {data, error, run, isSuccess, isError, isLoading} = useAsync()
@@ -18,23 +18,17 @@ export default function DiscoverScreen() {
     if (!queried) {
       return
     }
-    run(client(`books?query=${encodeURIComponent(query)}`))
-  }, [queried, query, run])
+    run(client(`books?query=${encodeURIComponent(query)}`, {token: user.token}))
+  }, [queried, query, run, user.token])
 
   function handleSubmit(event) {
     event.preventDefault()
-    setQuery(event.target.elements.search.value)
     setQueried(true)
+    setQuery(event.target.elements.search.value)
   }
 
   return (
-    <div
-      css={{
-        maxWidth: 800,
-        width: '90vw',
-        margin: 'auto',
-        padding: '40px 0',
-      }}>
+    <div>
       <form onSubmit={handleSubmit}>
         <Input
           placeholder="搜索书籍…"

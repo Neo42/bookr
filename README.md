@@ -163,11 +163,12 @@ Project Link: [https://github.com/Neo42/booker](https://github.com/Neo42/booker)
 
 - [Reactjs](https://reactjs.org)
 - [Emotion](https://emotion.sh/docs/introduction)
+- [React Router (web)](https://reactrouter.com/web/guides/quick-start)
+- [msw](https://mswjs.io/)
 - [Reach UI](https://reach.tech/)
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Bootstrap](https://getbootstrap.com/)
 - [match-sorter](https://github.com/kentcdodds/match-sorter)
-- [msw](https://mswjs.io/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
