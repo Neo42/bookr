@@ -2,7 +2,7 @@ export const primary = '#f4a9a8'
 export const secondary = '#489cb7'
 
 export const text = '#191919'
-export const base = '#fcfcfc'
+export const base = '#ffffff'
 
 export const gray = '#f1f2f7'
 export const gray10 = '#f1f1f4'
