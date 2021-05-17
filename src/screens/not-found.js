@@ -20,7 +20,7 @@ export default function NotFoundScreen() {
             color: colors.secondary,
             textDecoration: 'none',
             fontWeight: 600,
-            transition: '0.3s',
+            transition: '0.25s',
             ':hover': {
               color: colors.secondary,
               filter: 'brightness(1.2)',

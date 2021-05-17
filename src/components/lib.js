@@ -39,7 +39,7 @@ function FullPageSpinner() {
 const buttonVariants = {
   primary: {
     background: colors.primary,
-    color: colors.base,
+    color: colors.text,
   },
   secondary: {
     background: colors.secondary,
@@ -59,12 +59,12 @@ const Button = styled.button(
     lineHeight: 1,
     borderRadius: '0.2em',
     border: 'none',
-    transition: 'ease 0.3s',
+    transition: 'ease 0.25s',
     ':hover': {
       filter: 'brightness(1.15)',
     },
   },
-  ({variant = 'primary'}) => buttonVariants[variant]
+  ({variant = 'primary'}) => buttonVariants[variant],
 )
 
 const CircleButton = styled.button({
@@ -80,7 +80,7 @@ const CircleButton = styled.button({
   color: colors.text,
   border: `1px solid ${colors.gray10}`,
   cursor: 'pointer',
-  transition: 'ease 0.3s',
+  transition: 'ease 0.25s',
   ':hover': {
     filter: 'brightness(0.97)',
   },
@@ -91,7 +91,7 @@ const Input = styled.input(({variant = 'primary'}) => ({
   border: `1px solid ${colors.gray10}`,
   background: colors.gray,
   padding: `8px 12px`,
-  transition: '0.3s',
+  transition: '0.25s',
   outlineColor: 'transparent',
   ':focus': {
     outlineColor: variant === 'primary' ? colors.primary : colors.secondary,

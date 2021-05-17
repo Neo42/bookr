@@ -42,7 +42,7 @@ function LoginForm({onSubmit, submitButton, variant}) {
           ...(Array.isArray(submitButton.props.children)
             ? submitButton.props.children
             : [submitButton.props.children]),
-          isLoading ? <Spinner /> : null
+          isLoading ? <Spinner css={{marginLeft: '0.33em'}} /> : null,
         )}
         {isError ? <ErrorMessage error={error} /> : null}
       </div>
@@ -79,7 +79,7 @@ export default function UnAuthenticatedApp({login, register}) {
               onSubmit={login}
               submitButton={
                 <Button variant="primary">
-                  <span css={{marginRight: '0.33em'}}>登录</span>
+                  <span>登录</span>
                 </Button>
               }
             />
@@ -95,7 +95,7 @@ export default function UnAuthenticatedApp({login, register}) {
               onSubmit={register}
               submitButton={
                 <Button variant="secondary">
-                  <span css={{marginRight: '0.33em'}}>注册</span>
+                  <span>注册</span>
                 </Button>
               }
             />

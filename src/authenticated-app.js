@@ -95,7 +95,7 @@ function NavLink(props) {
           borderRadius: '0.2em',
           borderLeft: '0.3em solid transparent',
           textDecoration: 'none',
-          transition: 'ease 0.3s',
+          transition: 'ease 0.25s',
           ':hover': {
             color: colors.primary,
             filter: 'brightness(0.98)',

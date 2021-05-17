@@ -1,16 +1,8 @@
 /** @jsx jsx */
-import {jsx, keyframes} from '@emotion/react'
+import {jsx} from '@emotion/react'
 import {Link} from 'react-router-dom'
 import * as mq from '../styles/media-queries'
 import * as colors from '../styles/colors'
-
-const float = keyframes({
-  '0%': {transform: 'translateY(0px)'},
-  '25%': {transform: 'translateY(5px)'},
-  '50%': {transform: 'translateY(-5px)'},
-  '75%': {transform: 'translateY(5px)'},
-  '100%': {transform: 'translateY(0px)'},
-})
 
 export default function BookItem({book}) {
   const {title, author, coverImageUrl} = book
@@ -39,9 +31,9 @@ export default function BookItem({book}) {
           padding: '1.25em',
           borderRadius: '0.2em',
           textDecoration: 'none',
-          transition: '1s',
+          transition: '0.25s',
           ':hover,:focus': {
-            animation: `${float} 4s ease infinite`,
+            transform: 'translateY(-5px) scale(1.005) translateZ(0)',
             boxShadow: '0 2px 10px 0px rgba(0,0,0,0.4)',
             color: 'inherit',
           },
