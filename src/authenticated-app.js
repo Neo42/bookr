@@ -28,14 +28,14 @@ export default function AuthorizedApp({user, logout}) {
       </div>
       <div
         css={{
-          background: colors.base,
+          background: colors.secondary,
           margin: '0 auto',
           padding: '4.5em 2em',
           maxWidth: '840px',
           width: '100%',
           display: 'grid',
           gap: '1em',
-          gridTemplateColumns: '1fr 3fr',
+          gridTemplateColumns: '1fr 5fr',
           [mq.small]: {
             gridTemplateColumns: '1fr',
             gridTemplateRows: 'auto',
@@ -60,7 +60,6 @@ function Nav() {
         position: 'sticky',
         top: '64px',
         padding: '1em 1.5em',
-        border: `1px solid ${colors.gray10}`,
         borderRadius: '0.15em',
         [mq.small]: {
           position: 'static',
@@ -91,22 +90,19 @@ function NavLink(props) {
           margin: '5px 0',
           width: '100%',
           height: '100%',
-          color: colors.text,
+          color: colors.primary,
           borderRadius: '0.2em',
           borderLeft: '0.3em solid transparent',
           textDecoration: 'none',
           transition: 'ease 0.25s',
           ':hover': {
-            color: colors.primary,
-            filter: 'brightness(0.98)',
+            color: colors.grey6,
             textDecoration: 'none',
-            background: colors.gray10,
           },
         },
         match
           ? {
-              borderLeft: `0.5em solid ${colors.primary}`,
-              background: colors.gray10,
+              fontWeight: 600,
             }
           : null,
       ]}

@@ -4,9 +4,9 @@ import * as React from 'react'
 import {Button, FormGroup, Input, Spinner, ErrorMessage} from './components/lib'
 import {Modal, ModalContents, ModalOpenButton} from './components/modal'
 import {Logo} from './components/logo'
-import {useAsync} from './utils/hooks'
+import useAsync from './utils/hooks'
 
-function LoginForm({onSubmit, submitButton, variant}) {
+function LoginForm({onSubmit, submitButton}) {
   const {isLoading, isError, error, run} = useAsync()
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -29,11 +29,11 @@ function LoginForm({onSubmit, submitButton, variant}) {
       onSubmit={handleSubmit}>
       <FormGroup>
         <label htmlFor="username">用户名</label>
-        <Input id="username" variant={variant} />
+        <Input id="username" autoComplete="username" />
       </FormGroup>
       <FormGroup>
         <label htmlFor="password">密码</label>
-        <Input id="password" type="password" variant={variant} />
+        <Input id="password" type="password" autoComplete="current-password" />
       </FormGroup>
       <div>
         {React.cloneElement(
@@ -55,7 +55,8 @@ export default function UnAuthenticatedApp({login, register}) {
     <div
       css={{
         display: 'flex',
-        justifyContent: 'center',
+        position: 'fixed',
+        margin: '30vh auto',
         alignItems: 'center',
         flexDirection: 'column',
         width: '100%',

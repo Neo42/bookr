@@ -20,7 +20,7 @@ const defaultInitialState = {
   error: null,
 }
 
-export function useAsync(initialState) {
+export default function useAsync(initialState) {
   const initialStateRef = React.useRef({
     ...defaultInitialState,
     ...initialState,

@@ -27,14 +27,14 @@ export default function BookItem({book}) {
           gridTemplateColumns: '140px 1fr',
           gridGap: 20,
           border: `none`,
-          color: colors.text,
+          color: colors.primary,
           padding: '1.25em',
-          borderRadius: '0.2em',
+          borderRadius: '5px',
           textDecoration: 'none',
+          boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
           transition: '0.25s',
           ':hover,:focus': {
-            transform: 'translateY(-5px) scale(1.005) translateZ(0)',
-            boxShadow: '0 2px 10px 0px rgba(0,0,0,0.4)',
+            boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
             color: 'inherit',
           },
         }}>
@@ -52,7 +52,12 @@ export default function BookItem({book}) {
           />
         </div>
         <div css={{flex: 1}}>
-          <div css={{display: 'flex', justifyContent: 'space-between'}}>
+          <div
+            css={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              marginBottom: '1.5em',
+            }}>
             <div css={{flex: 1}}>
               <h2
                 id={id}
@@ -60,7 +65,7 @@ export default function BookItem({book}) {
                   fontSize: '1.25em',
                   fontWeight: 700,
                   margin: '0',
-                  color: colors.secondary,
+                  color: colors.primary,
                   lineHeight: '1.2em',
                 }}>
                 {title}

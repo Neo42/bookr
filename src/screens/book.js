@@ -5,7 +5,7 @@ import * as React from 'react'
 import {useParams} from 'react-router-dom'
 import client from '../utils/api-client'
 import * as mq from '../styles/media-queries'
-import {useAsync} from '../utils/hooks'
+import useAsync from '../utils/hooks'
 import bookPlaceholderSvg from '../assets/placeholder.svg'
 
 const loading = {

@@ -3,7 +3,7 @@ import {jsx, keyframes} from '@emotion/react'
 import styled from '@emotion/styled'
 import {Dialog as ReachDialog} from '@reach/dialog'
 import {Link as RouterLink} from 'react-router-dom'
-import {ImSpinner2 as RawSpinner} from 'react-icons/im'
+import {FiLoader as RawSpinner} from 'react-icons/fi'
 import * as colors from '../styles/colors'
 import * as mq from '../styles/media-queries'
 
@@ -38,12 +38,20 @@ function FullPageSpinner() {
 
 const buttonVariants = {
   primary: {
+    color: colors.secondary,
     background: colors.primary,
-    color: colors.text,
+    border: `solid 1px ${colors.primary}`,
+    ':hover': {
+      color: colors.primary,
+      background: colors.secondary,
+    },
   },
   secondary: {
+    border: 'solid 1px #eaeaea',
     background: colors.secondary,
-    color: colors.base,
+    ':hover': {
+      borderColor: colors.primary,
+    },
   },
 }
 
@@ -58,11 +66,7 @@ const Button = styled.button(
     padding: `0.6em`,
     lineHeight: 1,
     borderRadius: '0.2em',
-    border: 'none',
     transition: 'ease 0.25s',
-    ':hover': {
-      filter: 'brightness(1.15)',
-    },
   },
   ({variant = 'primary'}) => buttonVariants[variant],
 )
@@ -76,9 +80,9 @@ const CircleButton = styled.button({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: colors.base,
-  color: colors.text,
-  border: `1px solid ${colors.gray10}`,
+  background: colors.secondary,
+  color: colors.primary,
+  border: `1px solid ${colors.white1}`,
   cursor: 'pointer',
   transition: 'ease 0.25s',
   ':hover': {
@@ -86,17 +90,17 @@ const CircleButton = styled.button({
   },
 })
 
-const Input = styled.input(({variant = 'primary'}) => ({
-  borderRadius: '0.2em',
-  border: `1px solid ${colors.gray10}`,
-  background: colors.gray,
+const Input = styled.input({
+  borderRadius: '5px',
+  border: `1px solid ${colors.white2}`,
+  background: colors.secondary,
   padding: `8px 12px`,
   transition: '0.25s',
-  outlineColor: 'transparent',
+  outline: 'none',
   ':focus': {
-    outlineColor: variant === 'primary' ? colors.primary : colors.secondary,
+    borderColor: colors.primary,
   },
-}))
+})
 
 const FormGroup = styled.div({
   display: `flex`,

@@ -1,12 +1,15 @@
-export const primary = '#f4a9a8'
-export const secondary = '#489cb7'
+export const primary = '#000000'
+export const secondary = '#ffffff'
 
-export const text = '#191919'
-export const base = '#ffffff'
+export const white1 = '#f1f1f4'
+export const white2 = '#eaeaea'
+export const white3 = '#e4e5e9'
 
-export const gray = '#f1f2f7'
-export const gray10 = '#f1f1f4'
-export const gray20 = '#e4e5e9'
-export const gray80 = '#6f7077'
+export const grey1 = '#111'
+export const grey3 = '#333'
+export const grey4 = '#444'
+export const grey6 = '#666'
+export const grey8 = '#888'
+export const grey9 = '#999'
 
 export const danger = '#ef5350'

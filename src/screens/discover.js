@@ -7,7 +7,7 @@ import {BookListUL, Input, Spinner} from '../components/lib'
 import BookItem from '../components/book-item'
 import * as colors from '../styles/colors'
 import client from '../utils/api-client'
-import {useAsync} from '../utils/hooks'
+import useAsync from '../utils/hooks'
 
 export default function DiscoverScreen({user}) {
   const [query, setQuery] = React.useState('')
@@ -44,8 +44,12 @@ export default function DiscoverScreen({user}) {
                 border: '0',
                 position: 'relative',
                 marginLeft: '-35px',
+                top: '2px',
                 background: 'transparent',
                 height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignContent: 'center',
               }}>
               {isLoading ? (
                 <Spinner />
@@ -64,7 +68,7 @@ export default function DiscoverScreen({user}) {
           css={{
             color: colors.danger,
           }}>
-          <p>抱歉！出错了。</p>
+          <p>抱歉！出错了。刷新试试~</p>
           <pre>{error.message}</pre>
         </div>
       ) : null}
