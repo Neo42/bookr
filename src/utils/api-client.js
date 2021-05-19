@@ -2,10 +2,11 @@ import * as auth from '../auth-provider'
 
 export default function client(
   endpoint,
-  {data, token, headers: customHeaders, ...customConfig} = {}
+  {data, token, headers: customHeaders, ...customConfig} = {},
 ) {
   const config = {
     method: data ? 'POST' : 'GET',
+    body: data ? JSON.stringify(data) : undefined,
     headers: {
       Authorization: token ? `Bearer ${token}` : undefined, // "Bearer", not "Bear"
       'Content-Type': data ? 'application/json' : undefined,
