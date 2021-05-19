@@ -8,6 +8,7 @@
 		"utils",
 		"constants",
 		"styles",
-		"routes"
+		"routes",
+		"deps"
 	]
 }
