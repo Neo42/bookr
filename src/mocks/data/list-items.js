@@ -8,7 +8,7 @@ const save = () =>
 const load = () =>
   Object.assign(
     listItems,
-    JSON.parse(window.localStorage.getItem(listItemsKey))
+    JSON.parse(window.localStorage.getItem(listItemsKey)),
   )
 
 try {
@@ -26,7 +26,7 @@ window.__bookshelf.deleteListItems = () => {
 }
 
 function required(key) {
-  const error = new Error(`${key} is required`)
+  const error = new Error(`需要传入 ${key}。`)
   error.status = 400
   throw error
 }
@@ -44,7 +44,7 @@ function hash(str) {
 function validateListItem(id) {
   load()
   if (!listItems[id]) {
-    const error = new Error(`No list item with the id "${id}"`)
+    const error = new Error(`没有找到 id 为 "${id}" 的书籍。`)
     error.status = 404
     throw error
   }
@@ -53,9 +53,9 @@ function validateListItem(id) {
 async function authorize(userId, listItemId) {
   const listItem = await read(listItemId)
   if (listItem.ownerId !== userId) {
-    const erorr = new Error('当前用户没有权限查看该条目。')
-    erorr.status = 403
-    throw erorr
+    const error = new Error('当前用户没有权限查看该条目。')
+    error.status = 403
+    throw error
   }
 }
 
@@ -69,7 +69,7 @@ async function create({
 }) {
   const id = hash(`${bookId}${ownerId}`)
   if (listItems[id]) {
-    const error = new Error('书籍已存在，不能重复添加。')
+    const error = new Error(`书籍已存在，不能重复添加。`)
     error.status = 400
     throw error
   }
@@ -86,7 +86,7 @@ async function create({
 
 async function read(id) {
   validateListItem(id)
-  return listItems(id)
+  return listItems[id]
 }
 
 async function update(id, updates) {
@@ -105,9 +105,9 @@ async function remove(id) {
 async function readMany(userId, listItemIds) {
   return Promise.all(
     listItemIds.map((id) => {
-      authorize(userId)
+      authorize(userId, id)
       return read(id)
-    })
+    }),
   )
 }
 
