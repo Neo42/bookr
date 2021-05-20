@@ -75,8 +75,9 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 #### Tools
 
-- [Reactjs](https://reactjs.org)
+- [React](https://reactjs.org)
 - [Emotion](https://emotion.sh/docs/introduction)
+- [Vercel Design](https://vercel.com/design/icons)
 - [React Router (web)](https://reactrouter.com/web/guides/quick-start)
 - [msw](https://mswjs.io/)
 - [Reach UI](https://reach.tech/)

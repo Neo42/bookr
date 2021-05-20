@@ -7,6 +7,8 @@ import client from '../utils/api-client'
 import * as mq from '../styles/media-queries'
 import useAsync from '../utils/hooks'
 import bookPlaceholderSvg from '../assets/placeholder.svg'
+import colors from '../styles/colors'
+import {StatusButtons} from '../components/status-button'
 
 const loading = {
   title: '加载中…',
@@ -25,8 +27,8 @@ export default function BookScreen({user}) {
     run(client(`books/${bookId}`, {token: user.token}))
   }, [run, bookId, user.token])
 
-  const {title, author, coverImageUrl, publisher, summary} =
-    data?.book ?? loading
+  const book = data?.book ?? loading
+  const {title, author, coverImageUrl, publisher, summary} = book
 
   return (
     <div>
@@ -55,6 +57,19 @@ export default function BookScreen({user}) {
                 <span css={{marginRight: 6, marginLeft: 6}}>|</span>
                 <i>{publisher}</i>
               </div>
+            </div>
+            <div
+              css={{
+                right: 0,
+                color: colors.grey9,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-around',
+                minHeight: 100,
+              }}>
+              {book.loadingBook ? null : (
+                <StatusButtons user={user} book={book} />
+              )}
             </div>
           </div>
           <br />

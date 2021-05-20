@@ -9,6 +9,7 @@
 		"constants",
 		"styles",
 		"routes",
-		"deps"
+		"deps",
+		"assets"
 	]
 }

@@ -2,9 +2,10 @@
 import {jsx} from '@emotion/react'
 import {Link} from 'react-router-dom'
 import * as mq from '../styles/media-queries'
-import * as colors from '../styles/colors'
+import colors from '../styles/colors'
+import {StatusButtons} from './status-button'
 
-export default function BookItem({book}) {
+export default function BookItem({user, book}) {
   const {title, author, coverImageUrl} = book
 
   const id = `book-item-book-${book.id}`
@@ -34,7 +35,7 @@ export default function BookItem({book}) {
           boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
           transition: '0.25s',
           ':hover,:focus': {
-            boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
+            boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
             color: 'inherit',
           },
         }}>
@@ -93,6 +94,19 @@ export default function BookItem({book}) {
           </small>
         </div>
       </Link>
+      <div
+        css={{
+          marginLeft: '20px',
+          position: 'absolute',
+          right: -20,
+          color: colors.primary,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-around',
+          height: '100%',
+        }}>
+        <StatusButtons user={user} book={book} />
+      </div>
     </div>
   )
 }
