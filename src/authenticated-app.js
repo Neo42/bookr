@@ -1,13 +1,14 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import React from 'react'
+import {Routes, Route, Link, useMatch} from 'react-router-dom'
+import {FiSearch} from 'react-icons/fi'
 import * as mq from './styles/media-queries'
 import DiscoverScreen from './screens/discover'
 import BookScreen from './screens/book'
 import NotFoundScreen from './screens/not-found'
 import {Button} from './components/lib'
-import * as colors from './styles/colors'
-import {Routes, Route, Link, useMatch} from 'react-router-dom'
+import colors from './styles/colors'
 
 export default function AuthorizedApp({user, logout}) {
   const {username} = user
@@ -34,7 +35,7 @@ export default function AuthorizedApp({user, logout}) {
           maxWidth: '840px',
           width: '100%',
           display: 'grid',
-          gap: '1em',
+          gap: '2.5em',
           gridTemplateColumns: '1fr 5fr',
           [mq.small]: {
             gridTemplateColumns: '1fr',
@@ -57,9 +58,10 @@ function Nav() {
   return (
     <nav
       css={{
+        borderLeft: `1px solid ${colors.border}`,
         position: 'sticky',
         top: '64px',
-        padding: '1em 1.5em',
+        padding: '0.5em 0.8em',
         borderRadius: '0.15em',
         [mq.small]: {
           position: 'static',
@@ -72,7 +74,9 @@ function Nav() {
           padding: '0',
         }}>
         <li>
-          <NavLink to="/discover">发现</NavLink>
+          <NavLink to="/discover">
+            <FiSearch />
+          </NavLink>
         </li>
       </ul>
     </nav>
@@ -85,24 +89,23 @@ function NavLink(props) {
     <Link
       css={[
         {
+          textAlign: 'center',
+          fontWeight: 300,
           display: 'block',
           padding: '8px 15px',
           margin: '5px 0',
           width: '100%',
           height: '100%',
           color: colors.primary,
-          borderRadius: '0.2em',
-          borderLeft: '0.3em solid transparent',
           textDecoration: 'none',
           transition: 'ease 0.25s',
           ':hover': {
-            color: colors.grey6,
-            textDecoration: 'none',
+            color: colors.grey4,
           },
         },
         match
           ? {
-              fontWeight: 600,
+              fontWeight: 400,
             }
           : null,
       ]}
