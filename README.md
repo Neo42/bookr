@@ -18,7 +18,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/neo42/booker">
-    <img src="./public/favicon-96x96.png" alt="Logo" width="80" height="80">
+    <img src="./public/mstile-150x150.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Booker 簿客</h3>
@@ -75,9 +75,14 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 #### Tools
 
-- [React](https://reactjs.org) for the frontend
-- [Create React App](https://create-react-app.dev/) for project scaffolding and configuration
-- [Emotion](https://emotion.sh/docs/introduction) for css-in-js
+- [Reactjs](https://reactjs.org)
+- [Emotion](https://emotion.sh/docs/introduction)
+- [React Router (web)](https://reactrouter.com/web/guides/quick-start)
+- [msw](https://mswjs.io/)
+- [Reach UI](https://reach.tech/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Bootstrap](https://getbootstrap.com/)
+- [match-sorter](https://github.com/kentcdodds/match-sorter)
 
 #### Teckniques
 
@@ -156,19 +161,6 @@ Hao Jiang
 - Email: haojiang_neo42@163.com
 
 Project Link: [https://github.com/Neo42/booker](https://github.com/Neo42/booker)
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## Acknowledgements
-
-- [Reactjs](https://reactjs.org)
-- [Emotion](https://emotion.sh/docs/introduction)
-- [React Router (web)](https://reactrouter.com/web/guides/quick-start)
-- [msw](https://mswjs.io/)
-- [Reach UI](https://reach.tech/)
-- [React Icons](https://react-icons.github.io/react-icons/)
-- [Bootstrap](https://getbootstrap.com/)
-- [match-sorter](https://github.com/kentcdodds/match-sorter)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
