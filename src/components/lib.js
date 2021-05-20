@@ -4,8 +4,9 @@ import styled from '@emotion/styled'
 import {Dialog as ReachDialog} from '@reach/dialog'
 import {Link as RouterLink} from 'react-router-dom'
 import {FiLoader as RawSpinner} from 'react-icons/fi'
-import * as colors from '../styles/colors'
+import colors from '../styles/colors'
 import * as mq from '../styles/media-queries'
+import {Tooltip as ReachTooltip} from '@reach/tooltip'
 
 const spin = keyframes({
   '0%': {transform: 'rotate(0deg)'},
@@ -82,17 +83,17 @@ const CircleButton = styled.button({
   justifyContent: 'center',
   background: colors.secondary,
   color: colors.primary,
-  border: `1px solid ${colors.white1}`,
+  border: `1px solid ${colors.border}`,
   cursor: 'pointer',
   transition: 'ease 0.25s',
   ':hover': {
-    filter: 'brightness(0.97)',
+    filter: 'brightness(0.99)',
   },
 })
 
 const Input = styled.input({
   borderRadius: '5px',
-  border: `1px solid ${colors.white2}`,
+  border: `1px solid ${colors.border}`,
   background: colors.secondary,
   padding: `8px 12px`,
   transition: '0.25s',
@@ -173,6 +174,13 @@ const FullPageFallback = ({error: {message}}) => (
   </div>
 )
 
+const Tooltip = styled(ReachTooltip)({
+  padding: '0.5em',
+  backgroundColor: colors.primary,
+  color: colors.secondary,
+  borderRadius: '5px',
+})
+
 export {
   FullPageFallback,
   Link,
@@ -185,4 +193,5 @@ export {
   FullPageSpinner,
   BookListUL,
   ErrorMessage,
+  Tooltip,
 }
