@@ -7,7 +7,7 @@ import useAsync from './utils/hooks'
 import client from './utils/api-client'
 import UnAuthenticatedApp from './unauthenticated-app'
 import AuthenticatedApp from './authenticated-app'
-import {FullPageFallback, FullPageSpinner} from '../src/components/lib'
+import {FullPageFallback, FullPageSpinner} from 'components/lib'
 
 export default function App() {
   const {

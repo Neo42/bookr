@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 import {Dialog as ReachDialog} from '@reach/dialog'
 import {Link as RouterLink} from 'react-router-dom'
 import {FiLoader as RawSpinner} from 'react-icons/fi'
-import colors from '../styles/colors'
-import * as mq from '../styles/media-queries'
+import colors from 'styles/colors'
+import * as mq from 'styles/media-queries'
 import {Tooltip as ReachTooltip} from '@reach/tooltip'
 
 const spin = keyframes({

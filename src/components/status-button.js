@@ -3,11 +3,11 @@ import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {useMutation, useQuery, queryCache} from 'react-query'
 import {FiX, FiCheck, FiMinus, FiBook, FiPlus} from 'react-icons/fi'
-import client from '../utils/api-client'
-import useAsync from '../utils/hooks'
-import colors from '../styles/colors'
+import client from 'utils/api-client'
+import useAsync from 'utils/hooks'
+import colors from 'styles/colors'
 import {CircleButton, Spinner, Tooltip} from './lib'
-import {LISTITEMS, DELETE, PUT} from '../constants'
+import {LISTITEMS, DELETE, PUT} from 'constant'
 
 function TooltipButton({label, highlight, onClick, icon, ...rest}) {
   const {isLoading, isError, error, run} = useAsync()
@@ -111,4 +111,4 @@ function StatusButtons({user, book, ...props}) {
   )
 }
 
-export {StatusButtons}
+export default StatusButtons
