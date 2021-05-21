@@ -36,7 +36,7 @@ export default function AuthorizedApp({user, logout}) {
           width: '100%',
           display: 'grid',
           gap: '2.5em',
-          gridTemplateColumns: '1fr 5fr',
+          gridTemplateColumns: '1fr 10fr',
           [mq.small]: {
             gridTemplateColumns: '1fr',
             gridTemplateRows: 'auto',
