@@ -1,19 +1,3 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -149,7 +133,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`](./LICENSE.md) for more information.
 
 <!-- CONTACT -->
 
@@ -162,17 +146,3 @@ Hao Jiang
 - Email: haojiang_neo42@163.com
 
 Project Link: [https://github.com/Neo42/booker](https://github.com/Neo42/booker)
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[contributors-shield]: https://img.shields.io/github/contributors/Neo42/booker.svg?style=for-the-badge
-[contributors-url]: https://github.com/Neo42/booker/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Neo42/booker.svg?style=for-the-badge
-[forks-url]: https://github.com/Neo42/booker/network/members
-[stars-shield]: https://img.shields.io/github/stars/Neo42/booker.svg?style=for-the-badge
-[stars-url]: https://github.com/Neo42/booker/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Neo42/booker.svg?style=for-the-badge
-[issues-url]: https://github.com/Neo42/booker/issues
-[license-shield]: https://img.shields.io/github/license/Neo42/booker.svg?style=for-the-badge
-[license-url]: https://github.com/Neo42/booker/blob/master/LICENSE.txt
