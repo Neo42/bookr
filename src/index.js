@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './bootstrap'
-import App from './app'
+import 'styles/bootstrap'
+import App from 'apps/app'
 
 ReactDOM.render(<App />, document.querySelector('#root'))
 

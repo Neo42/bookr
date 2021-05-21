@@ -3,31 +3,40 @@ import {jsx} from '@emotion/react'
 
 import * as React from 'react'
 import {useParams} from 'react-router-dom'
-import client from '../utils/api-client'
-import * as mq from '../styles/media-queries'
-import useAsync from '../utils/hooks'
-import bookPlaceholderSvg from '../assets/placeholder.svg'
-import colors from '../styles/colors'
-import {StatusButtons} from '../components/status-button'
+import client from 'utils/api-client'
+import mq from 'styles/media-queries'
+import bookPlaceholderSvg from 'assets/placeholder.svg'
+import colors from 'styles/colors'
+import StatusButtons from 'components/status-button'
+import Rating from 'components/rating'
+import {useQuery} from 'react-query'
+import {LISTITEMS} from 'constant'
 
 const loading = {
   title: '加载中…',
   author: '加载中…',
   publisher: '加载中…',
-  synopsis: '加载中…',
+  summary: '加载中…',
   loading: true,
   coverImageUrl: bookPlaceholderSvg,
 }
 
 export default function BookScreen({user}) {
   const {bookId} = useParams()
-  const {data, run} = useAsync()
 
-  React.useEffect(() => {
-    run(client(`books/${bookId}`, {token: user.token}))
-  }, [run, bookId, user.token])
+  const {data: book = loading} = useQuery({
+    queryKey: ['book', {bookId}],
+    queryFn: () =>
+      client(`books/${bookId}`, {token: user.token}).then((data) => data.book),
+  })
 
-  const book = data?.book ?? loading
+  const {data: listItems} = useQuery({
+    queryKey: LISTITEMS,
+    queryFn: () =>
+      client(LISTITEMS, {token: user.token}).then((data) => data.listItems),
+  })
+  const listItem = listItems?.find((li) => li.bookId === bookId) ?? null
+
   const {title, author, coverImageUrl, publisher, summary} = book
 
   return (
@@ -71,6 +80,11 @@ export default function BookScreen({user}) {
                 <StatusButtons user={user} book={book} />
               )}
             </div>
+          </div>
+          <div css={{marginTop: 10}}>
+            {listItem?.finishDate ? (
+              <Rating user={user} listItem={listItem} />
+            ) : null}
           </div>
           <br />
           <p>{summary}</p>

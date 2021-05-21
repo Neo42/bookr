@@ -3,12 +3,12 @@ import {jsx} from '@emotion/react'
 import React from 'react'
 import {Routes, Route, Link, useMatch} from 'react-router-dom'
 import {FiSearch} from 'react-icons/fi'
-import * as mq from './styles/media-queries'
-import DiscoverScreen from './screens/discover'
-import BookScreen from './screens/book'
-import NotFoundScreen from './screens/not-found'
-import {Button} from './components/lib'
-import colors from './styles/colors'
+import mq from 'styles/media-queries'
+import DiscoverScreen from 'screens/discover'
+import BookScreen from 'screens/book'
+import NotFoundScreen from 'screens/not-found'
+import {Button} from 'components/lib'
+import colors from 'styles/colors'
 
 export default function AuthorizedApp({user, logout}) {
   const {username} = user

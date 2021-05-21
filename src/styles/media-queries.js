@@ -1,1 +1,3 @@
-export const small ="@media (max-width: 991px)"
+const mq = {small: '@media (max-width: 991px)'}
+
+export default mq

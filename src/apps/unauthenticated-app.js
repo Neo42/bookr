@@ -1,10 +1,10 @@
 /**@jsx jsx */
 import {jsx} from '@emotion/react'
 import * as React from 'react'
-import {Button, FormGroup, Input, Spinner, ErrorMessage} from './components/lib'
-import {Modal, ModalContents, ModalOpenButton} from './components/modal'
-import {Logo} from './components/logo'
-import useAsync from './utils/hooks'
+import {Button, FormGroup, Input, Spinner, ErrorMessage} from 'components/lib'
+import {Modal, ModalContents, ModalOpenButton} from 'components/modal'
+import {Logo} from 'components/logo'
+import useAsync from 'utils/hooks'
 
 function LoginForm({onSubmit, submitButton}) {
   const {isLoading, isError, error, run} = useAsync()

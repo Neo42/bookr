@@ -2,23 +2,43 @@
 import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {FiSearch, FiX} from 'react-icons/fi'
+import {useQuery} from 'react-query'
+import client from 'utils/api-client'
 import {BookListUL, Input, Spinner, Tooltip} from 'components/lib'
 import BookItem from 'components/book-item'
+import bookPlaceholderSvg from 'assets/placeholder.svg'
 import colors from 'styles/colors'
-import client from 'utils/api-client'
-import useAsync from 'utils/hooks'
+
+const loading = {
+  title: '加载中…',
+  author: '加载中…',
+  publisher: '加载中…',
+  summary: '加载中…',
+  loading: true,
+  coverImageUrl: bookPlaceholderSvg,
+}
+
+const loadingBooks = Array.from({length: 10}, (_, index) => ({
+  id: `loading-book-${index}`,
+  ...loading,
+}))
 
 export default function DiscoverScreen({user}) {
   const [query, setQuery] = React.useState('')
   const [queried, setQueried] = React.useState(false)
-  const {data, error, run, isSuccess, isError, isLoading} = useAsync()
-
-  React.useEffect(() => {
-    if (!queried) {
-      return
-    }
-    run(client(`books?query=${encodeURIComponent(query)}`, {token: user.token}))
-  }, [queried, query, run, user.token])
+  const {
+    data: books = loadingBooks,
+    error,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useQuery({
+    queryKey: ['bookSearch', {query}],
+    queryFn: () =>
+      client(`books?query=${encodeURIComponent(query)}`, {
+        token: user.token,
+      }).then((data) => data.books),
+  })
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -71,11 +91,24 @@ export default function DiscoverScreen({user}) {
           <pre>{error.message}</pre>
         </div>
       ) : null}
-
+      <div>
+        {queried ? null : (
+          <div css={{marginTop: 20, fontSize: '1.2em', textAlign: 'center'}}>
+            {isLoading ? (
+              <div css={{width: '100%', margin: 'auto'}}>
+                <Spinner />
+              </div>
+            ) : isSuccess && books.length ? null : isSuccess &&
+              !books.length ? (
+              <p>抱歉…书库暂时是空的…</p>
+            ) : null}
+          </div>
+        )}
+      </div>
       {isSuccess ? (
-        data?.books?.length ? (
+        books.length ? (
           <BookListUL css={{marginTop: '2em'}}>
-            {data.books.map((book) => (
+            {books.map((book) => (
               <li key={book.id} aria-label={book.title}>
                 <BookItem key={book.id} book={book} user={user} />
               </li>

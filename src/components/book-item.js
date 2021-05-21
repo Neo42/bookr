@@ -1,13 +1,23 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import {Link} from 'react-router-dom'
-import * as mq from '../styles/media-queries'
-import colors from '../styles/colors'
-import {StatusButtons} from './status-button'
+import {useQuery} from 'react-query'
+import mq from 'styles/media-queries'
+import colors from 'styles/colors'
+import StatusButtons from './status-button'
+import Rating from './rating'
+import {LISTITEMS} from 'constant'
+import client from 'utils/api-client'
 
 export default function BookItem({user, book}) {
-  const {title, author, coverImageUrl} = book
+  const {data: listItems} = useQuery({
+    queryKey: LISTITEMS,
+    queryFn: () =>
+      client(LISTITEMS, {token: user.token}).then(({listItems}) => listItems),
+  })
 
+  const listItem = listItems?.find((li) => li.bookId === book.id) ?? null
+  const {title, author, coverImageUrl} = book
   const id = `book-item-book-${book.id}`
 
   return (
@@ -57,7 +67,7 @@ export default function BookItem({user, book}) {
             css={{
               display: 'flex',
               justifyContent: 'space-between',
-              marginBottom: '1.5em',
+              marginBottom: '1em',
             }}>
             <div css={{flex: 1}}>
               <h2
@@ -65,12 +75,15 @@ export default function BookItem({user, book}) {
                 css={{
                   fontSize: '1.25em',
                   fontWeight: 700,
-                  margin: '0',
+                  marginBottom: '0.5em',
                   color: colors.primary,
                   lineHeight: '1.2em',
                 }}>
                 {title}
               </h2>
+              {listItem?.finishDate ? (
+                <Rating user={user} listItem={listItem} />
+              ) : null}
             </div>
             <div css={{marginLeft: 10}}>
               <div
