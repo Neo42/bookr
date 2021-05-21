@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {PENDING, IDLE, RESOLVED, REJECTED} from 'constant'
+import {PENDING, IDLE, RESOLVED, REJECTED} from '../constants'
 
 function useSafeDispatch(dispatch) {
   const mounted = React.useRef(false)
@@ -10,7 +10,7 @@ function useSafeDispatch(dispatch) {
   return React.useCallback(
     // tricky part: args forward (destructuring) & ref.current
     (...args) => (mounted.current ? dispatch(...args) : void 0),
-    [dispatch],
+    [dispatch]
   )
 }
 
@@ -28,23 +28,23 @@ export default function useAsync(initialState) {
 
   const [{data, error, status}, setState] = React.useReducer(
     (s, a) => ({...s, ...a}),
-    initialStateRef.current,
+    initialStateRef.current
   )
 
   const safeSetState = useSafeDispatch(setState)
 
   const setData = React.useCallback(
     (data) => safeSetState({data, status: RESOLVED}),
-    [safeSetState],
+    [safeSetState]
   )
 
   const setError = React.useCallback(
     (error) => safeSetState({error, status: REJECTED}),
-    [safeSetState],
+    [safeSetState]
   )
   const reset = React.useCallback(
     () => safeSetState(initialStateRef.current),
-    [safeSetState],
+    [safeSetState]
   )
 
   const run = React.useCallback(
@@ -63,7 +63,7 @@ export default function useAsync(initialState) {
           return error
         })
     },
-    [safeSetState, setData, setError],
+    [safeSetState, setData, setError]
   )
   return {
     isSuccess: status === RESOLVED,

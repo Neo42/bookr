@@ -1,4 +1,4 @@
-import * as auth from 'auth-provider'
+import * as auth from '../auth-provider'
 
 export default function client(
   endpoint,

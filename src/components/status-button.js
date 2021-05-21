@@ -3,11 +3,11 @@ import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {useMutation, useQuery, queryCache} from 'react-query'
 import {FiX, FiCheck, FiMinus, FiBook, FiPlus} from 'react-icons/fi'
-import client from 'utils/api-client'
-import useAsync from 'utils/hooks'
-import colors from 'styles/colors'
+import client from '../utils/api-client'
+import useAsync from '../utils/hooks'
+import colors from '../styles/colors'
 import {CircleButton, Spinner, Tooltip} from './lib'
-import {LISTITEMS, DELETE, PUT} from 'constant'
+import {LISTITEMS, DELETE, PUT} from '../constants'
 
 function TooltipButton({label, highlight, onClick, icon, ...rest}) {
   const {isLoading, isError, error, run} = useAsync()
@@ -20,11 +20,11 @@ function TooltipButton({label, highlight, onClick, icon, ...rest}) {
     <Tooltip label={isError ? error.message : label}>
       <CircleButton
         css={{
-          boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
+          boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
           transition: '0.25s',
           backgroundColor: 'white',
           ':hover,:focus': {
-            boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
+            boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
             color: isLoading
               ? colors.grey9
               : isError
@@ -92,7 +92,7 @@ function StatusButtons({user, book, ...props}) {
       ) : null}
       {listItem ? (
         <TooltipButton
-          label="从书单中移除"
+          label="从列表中移除"
           highlight={colors.danger}
           icon={<FiMinus />}
           onClick={() => remove({id: listItem.id})}
@@ -100,7 +100,7 @@ function StatusButtons({user, book, ...props}) {
         />
       ) : (
         <TooltipButton
-          label="加入书单"
+          label="加入列表"
           highlight={colors.highlight}
           onClick={() => create({bookId: book.id})}
           icon={<FiPlus />}
@@ -111,4 +111,4 @@ function StatusButtons({user, book, ...props}) {
   )
 }
 
-export default StatusButtons
+export {StatusButtons}

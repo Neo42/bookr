@@ -1,4 +1,4 @@
-import {usersKey} from 'constant'
+import {usersKey} from '../../constants'
 
 let users = {}
 

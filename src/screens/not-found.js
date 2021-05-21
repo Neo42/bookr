@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import {Link} from 'react-router-dom'
-import colors from 'styles/colors'
+import colors from '../styles/colors'
 
 export default function NotFoundScreen() {
   return (

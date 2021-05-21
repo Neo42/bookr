@@ -2,11 +2,11 @@
 import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {FiSearch, FiX} from 'react-icons/fi'
-import {BookListUL, Input, Spinner, Tooltip} from 'components/lib'
-import BookItem from 'components/book-item'
-import colors from 'styles/colors'
-import client from 'utils/api-client'
-import useAsync from 'utils/hooks'
+import {BookListUL, Input, Spinner, Tooltip} from '../components/lib'
+import BookItem from '../components/book-item'
+import colors from '../styles/colors'
+import client from '../utils/api-client'
+import useAsync from '../utils/hooks'
 
 export default function DiscoverScreen({user}) {
   const [query, setQuery] = React.useState('')
