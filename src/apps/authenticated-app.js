@@ -1,21 +1,35 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
-import React from 'react'
 import {Routes, Route, Link, useMatch} from 'react-router-dom'
 import {FiBook, FiBookOpen, FiSearch} from 'react-icons/fi'
-import mq from 'styles/media-queries'
+import {ErrorBoundary} from 'react-error-boundary'
+import ReadingListScreen from 'screens/reading-list'
+import ReadScreen from 'screens/read'
 import DiscoverScreen from 'screens/discover'
 import BookScreen from 'screens/book'
 import NotFoundScreen from 'screens/not-found'
-import {Button} from 'components/lib'
+import {Button, ErrorMessage, FullPageFallback} from 'components/lib'
 import colors from 'styles/colors'
-import ReadingListScreen from 'screens/reading-list'
-import ReadScreen from 'screens/read'
+import mq from 'styles/media-queries'
 
+function ErrorFallback({error}) {
+  return (
+    <ErrorMessage
+      error={error}
+      css={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    />
+  )
+}
 export default function AuthorizedApp({user, logout}) {
   const {username} = user
   return (
-    <React.Fragment>
+    <ErrorBoundary FallbackComponent={FullPageFallback}>
       <div
         css={{
           display: 'flex',
@@ -50,10 +64,12 @@ export default function AuthorizedApp({user, logout}) {
           <Nav />
         </div>
         <main css={{width: '100%'}}>
-          <AppRoutes user={user} />
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <AppRoutes user={user} />
+          </ErrorBoundary>
         </main>
       </div>
-    </React.Fragment>
+    </ErrorBoundary>
   )
 }
 
