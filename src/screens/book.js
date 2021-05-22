@@ -55,11 +55,7 @@ export default function BookScreen({user}) {
             flexDirection: 'column',
           },
         }}>
-        <img
-          src={coverImageUrl}
-          alt={`${title} book cover`}
-          css={{width: '100%', maxWidth: '14rem'}}
-        />
+        <BookItemCover coverImageUrl={coverImageUrl} title={title} />
         <div>
           <div css={{display: 'flex', position: 'relative'}}>
             <div css={{flex: 1, justifyContent: 'space-between'}}>
@@ -88,10 +84,10 @@ export default function BookScreen({user}) {
             {listItem?.finishDate ? (
               <Rating user={user} listItem={listItem} />
             ) : null}
-            {listItem ? <ListItemTimeframe listItem={listItem} /> : null}
+            {listItem ? <BookItemTimeframe listItem={listItem} /> : null}
           </div>
           <br />
-          <p>{summary}</p>
+          <BookItemSummary summary={summary} />
         </div>
       </div>
       {!book.loadingBook && listItem ? (
@@ -101,14 +97,14 @@ export default function BookScreen({user}) {
   )
 }
 
-function ListItemTimeframe({listItem}) {
+function BookItemTimeframe({listItem}) {
   const timeframeLabel = listItem.finishDate ? '起止日期' : '起始日期'
 
   return (
     <Tooltip label={timeframeLabel}>
       <div aria-label={timeframeLabel} css={{marginTop: 6}}>
-        <FiCalendar css={{marginTop: -2, marginRight: 5}} />
-        <span>
+        <FiCalendar css={{marginTop: -2, marginRight: 5, width: '0.8em'}} />
+        <span css={{fontSize: '0.6em'}}>
           {formatDate(listItem.startDate)}{' '}
           {listItem.finishDate ? `— ${formatDate(listItem.finishDate)}` : null}
         </span>
@@ -116,6 +112,27 @@ function ListItemTimeframe({listItem}) {
     </Tooltip>
   )
 }
+
+const BookItemSummary = ({summary}) => (
+  <Tooltip label="简介">
+    <p
+      css={{
+        fontSize: '0.8em',
+      }}>
+      {summary}
+    </p>
+  </Tooltip>
+)
+
+const BookItemCover = ({coverImageUrl, title}) => (
+  <Tooltip label="封面">
+    <img
+      src={coverImageUrl}
+      alt={`${title} 封面`}
+      css={{width: '100%', maxWidth: '14rem'}}
+    />
+  </Tooltip>
+)
 
 function NotesTextarea({listItem, user}) {
   const [mutate] = useMutation(
@@ -146,7 +163,6 @@ function NotesTextarea({listItem, user}) {
             marginRight: 10,
             marginTop: '0',
             marginBottom: '0.5rem',
-            fontWeight: 'bold',
           }}>
           笔记
         </label>

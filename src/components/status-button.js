@@ -2,7 +2,7 @@
 import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {useMutation, useQuery, queryCache} from 'react-query'
-import {FiX, FiCheck, FiMinus, FiBook, FiPlus} from 'react-icons/fi'
+import {FiX, FiMinus, FiBook, FiBookOpen, FiPlus} from 'react-icons/fi'
 import client from 'utils/api-client'
 import useAsync from 'utils/hooks'
 import colors from 'styles/colors'
@@ -74,8 +74,8 @@ function StatusButtons({user, book, ...props}) {
       {listItem ? (
         Boolean(listItem.finishDate) ? (
           <TooltipButton
-            label="标为未读"
-            highlight={colors.warning}
+            label="标为正在读"
+            highlight={colors.highlight}
             onClick={() => update({id: listItem.id, finishDate: null})}
             icon={<FiBook />}
             {...props}
@@ -85,14 +85,14 @@ function StatusButtons({user, book, ...props}) {
             label="标为已读"
             highlight={colors.highlight}
             onClick={() => update({id: listItem.id, finishDate: Date.now()})}
-            icon={<FiCheck />}
+            icon={<FiBookOpen />}
             {...props}
           />
         )
       ) : null}
       {listItem ? (
         <TooltipButton
-          label="从列表中移除"
+          label="移除"
           highlight={colors.danger}
           icon={<FiMinus />}
           onClick={() => remove({id: listItem.id})}
@@ -100,7 +100,7 @@ function StatusButtons({user, book, ...props}) {
         />
       ) : (
         <TooltipButton
-          label="加入列表"
+          label="标为正在读"
           highlight={colors.highlight}
           onClick={() => create({bookId: book.id})}
           icon={<FiPlus />}

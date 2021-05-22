@@ -2,13 +2,15 @@
 import {jsx} from '@emotion/react'
 import React from 'react'
 import {Routes, Route, Link, useMatch} from 'react-router-dom'
-import {FiSearch} from 'react-icons/fi'
+import {FiBook, FiBookOpen, FiSearch} from 'react-icons/fi'
 import mq from 'styles/media-queries'
 import DiscoverScreen from 'screens/discover'
 import BookScreen from 'screens/book'
 import NotFoundScreen from 'screens/not-found'
 import {Button} from 'components/lib'
 import colors from 'styles/colors'
+import ReadingListScreen from 'screens/reading-list'
+import ReadScreen from 'screens/read'
 
 export default function AuthorizedApp({user, logout}) {
   const {username} = user
@@ -35,12 +37,13 @@ export default function AuthorizedApp({user, logout}) {
           maxWidth: '840px',
           width: '100%',
           display: 'grid',
-          gap: '2.5em',
+          gap: '2em',
           gridTemplateColumns: '1fr 10fr',
           [mq.small]: {
             gridTemplateColumns: '1fr',
             gridTemplateRows: 'auto',
             width: '100%',
+            gap: '1.5em',
           },
         }}>
         <div css={{position: 'relative'}}>
@@ -72,7 +75,22 @@ function Nav() {
         css={{
           listStyle: 'none',
           padding: '0',
+          [mq.small]: {
+            display: 'flex',
+            justifyContent: 'space-around',
+            margin: 0,
+          },
         }}>
+        <li>
+          <NavLink to="/list">
+            <FiBook />
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/read">
+            <FiBookOpen />
+          </NavLink>
+        </li>
         <li>
           <NavLink to="/discover">
             <FiSearch />
@@ -100,7 +118,7 @@ function NavLink(props) {
           textDecoration: 'none',
           transition: 'ease 0.25s',
           ':hover': {
-            color: colors.grey4,
+            color: colors.grey6,
           },
         },
         match
@@ -117,6 +135,8 @@ function NavLink(props) {
 function AppRoutes({user}) {
   return (
     <Routes>
+      <Route path="/list" element={<ReadingListScreen user={user} />} />
+      <Route path="/read" element={<ReadScreen user={user} />} />
       <Route path="/discover" element={<DiscoverScreen user={user} />} />
       <Route path="/book/:bookId" element={<BookScreen user={user} />} />
       <Route path="*" element={<NotFoundScreen />} />
