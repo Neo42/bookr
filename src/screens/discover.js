@@ -5,7 +5,7 @@ import {FiSearch, FiX} from 'react-icons/fi'
 import BookItem from 'components/book-item'
 import {BookListUL, Input, Spinner, Tooltip} from 'components/lib'
 import colors from 'styles/colors'
-import {useBookSearch} from 'utils/books'
+import {useBookSearch, refetchBookSearchQuery} from 'utils/books'
 
 export default function DiscoverScreen({user}) {
   const [query, setQuery] = React.useState('')
@@ -14,6 +14,10 @@ export default function DiscoverScreen({user}) {
     query,
     user,
   )
+
+  React.useEffect(() => {
+    return () => refetchBookSearchQuery(user)
+  }, [user])
 
   function handleSubmit(event) {
     event.preventDefault()
