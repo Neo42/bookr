@@ -1,24 +1,16 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import {Link} from 'react-router-dom'
-import {useQuery} from 'react-query'
 import mq from 'styles/media-queries'
 import colors from 'styles/colors'
 import StatusButtons from './status-button'
 import Rating from './rating'
-import {LISTITEMS} from 'consts'
-import client from 'utils/api-client'
+import {useListItem} from 'utils/list-items'
 
 export default function BookItem({user, book}) {
-  const {data: listItems} = useQuery({
-    queryKey: LISTITEMS,
-    queryFn: () =>
-      client(LISTITEMS, {token: user.token}).then(({listItems}) => listItems),
-  })
-
-  const listItem = listItems?.find((li) => li.bookId === book.id) ?? null
   const {title, author, coverImageUrl} = book
   const id = `book-item-book-${book.id}`
+  const listItem = useListItem(user, book.id)
 
   return (
     <div

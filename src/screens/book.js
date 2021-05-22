@@ -1,45 +1,22 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import * as React from 'react'
-import {queryCache, useMutation, useQuery} from 'react-query'
 import debounceFn from 'debounce-fn'
 import {useParams} from 'react-router-dom'
 import {FiCalendar} from 'react-icons/fi'
-import client from 'utils/api-client'
 import mq from 'styles/media-queries'
-import bookPlaceholderSvg from 'assets/placeholder.svg'
 import colors from 'styles/colors'
 import StatusButtons from 'components/status-button'
 import Rating from 'components/rating'
-import {LISTITEMS, PUT} from 'consts'
 import {Textarea, Tooltip} from 'components/lib'
 import {formatDate} from 'utils/misc'
-
-const loading = {
-  title: '加载中…',
-  author: '加载中…',
-  publisher: '加载中…',
-  summary: '加载中…',
-  loading: true,
-  coverImageUrl: bookPlaceholderSvg,
-}
+import {useBook} from 'utils/books'
+import {useListItem, useUpdateListItem} from 'utils/list-items'
 
 export default function BookScreen({user}) {
   const {bookId} = useParams()
-
-  const {data: book = loading} = useQuery({
-    queryKey: ['book', {bookId}],
-    queryFn: () =>
-      client(`books/${bookId}`, {token: user.token}).then((data) => data.book),
-  })
-
-  const {data: listItems} = useQuery({
-    queryKey: LISTITEMS,
-    queryFn: () =>
-      client(LISTITEMS, {token: user.token}).then((data) => data.listItems),
-  })
-  const listItem = listItems?.find((li) => li.bookId === bookId) ?? null
-
+  const book = useBook(bookId, user)
+  const listItem = useListItem(user, bookId)
   const {title, author, coverImageUrl, publisher, summary} = book
 
   return (
@@ -135,15 +112,7 @@ const BookItemCover = ({coverImageUrl, title}) => (
 )
 
 function NotesTextarea({listItem, user}) {
-  const [mutate] = useMutation(
-    (updates) =>
-      client(`${LISTITEMS}/${updates.id}`, {
-        method: PUT,
-        data: updates,
-        token: user.token,
-      }),
-    {onSettled: () => queryCache.invalidateQueries(LISTITEMS)},
-  )
+  const [mutate] = useUpdateListItem(user)
   const debouncedMutate = React.useMemo(
     () => debounceFn(mutate, {wait: 300}),
     [mutate],

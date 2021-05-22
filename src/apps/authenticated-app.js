@@ -83,12 +83,12 @@ function Nav() {
         }}>
         <li>
           <NavLink to="/list">
-            <FiBook />
+            <FiBookOpen />
           </NavLink>
         </li>
         <li>
           <NavLink to="/read">
-            <FiBookOpen />
+            <FiBook />
           </NavLink>
         </li>
         <li>

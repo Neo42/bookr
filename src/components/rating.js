@@ -2,11 +2,9 @@
 import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {FiFeather} from 'react-icons/fi'
-import {queryCache, useMutation} from 'react-query'
-import client from 'utils/api-client'
 import colors from 'styles/colors'
-import {LISTITEMS, PUT} from 'consts'
 import {Tooltip} from './lib'
+import {useUpdateListItem} from '../utils/list-items'
 
 const visuallyHiddenCSS = {
   border: '0',
@@ -21,15 +19,7 @@ const visuallyHiddenCSS = {
 
 function Rating({listItem, user}) {
   const [isTabbing, setIsTabbing] = React.useState(false)
-  const [update] = useMutation(
-    (updates) =>
-      client(`${LISTITEMS}/${updates.id}`, {
-        method: PUT,
-        data: updates,
-        token: user.token,
-      }),
-    {onSettled: () => queryCache.invalidateQueries(LISTITEMS)},
-  )
+  const [update] = useUpdateListItem(user)
 
   React.useEffect(() => {
     function handleKeyDown(event) {

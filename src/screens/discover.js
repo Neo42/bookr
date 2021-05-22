@@ -2,43 +2,18 @@
 import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {FiSearch, FiX} from 'react-icons/fi'
-import {useQuery} from 'react-query'
-import client from 'utils/api-client'
-import {BookListUL, Input, Spinner, Tooltip} from 'components/lib'
 import BookItem from 'components/book-item'
-import bookPlaceholderSvg from 'assets/placeholder.svg'
+import {BookListUL, Input, Spinner, Tooltip} from 'components/lib'
 import colors from 'styles/colors'
-
-const loading = {
-  title: '加载中…',
-  author: '加载中…',
-  publisher: '加载中…',
-  summary: '加载中…',
-  loading: true,
-  coverImageUrl: bookPlaceholderSvg,
-}
-
-const loadingBooks = Array.from({length: 10}, (_, index) => ({
-  id: `loading-book-${index}`,
-  ...loading,
-}))
+import {useBookSearch} from 'utils/books'
 
 export default function DiscoverScreen({user}) {
   const [query, setQuery] = React.useState('')
   const [queried, setQueried] = React.useState(false)
-  const {
-    data: books = loadingBooks,
-    error,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useQuery({
-    queryKey: ['bookSearch', {query}],
-    queryFn: () =>
-      client(`books?query=${encodeURIComponent(query)}`, {
-        token: user.token,
-      }).then((data) => data.books),
-  })
+  const {books, error, isLoading, isError, isSuccess} = useBookSearch(
+    query,
+    user,
+  )
 
   function handleSubmit(event) {
     event.preventDefault()

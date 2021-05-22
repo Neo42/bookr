@@ -1,13 +1,16 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import * as React from 'react'
-import {useMutation, useQuery, queryCache} from 'react-query'
 import {FiX, FiMinus, FiBook, FiBookOpen, FiPlus} from 'react-icons/fi'
-import client from 'utils/api-client'
 import useAsync from 'utils/hooks'
 import colors from 'styles/colors'
 import {CircleButton, Spinner, Tooltip} from './lib'
-import {LISTITEMS, DELETE, PUT} from 'consts'
+import {
+  useCreateListItem,
+  useListItem,
+  useRemoveListItem,
+  useUpdateListItem,
+} from 'utils/list-items'
 
 function TooltipButton({label, highlight, onClick, icon, ...rest}) {
   const {isLoading, isError, error, run} = useAsync()
@@ -43,31 +46,11 @@ function TooltipButton({label, highlight, onClick, icon, ...rest}) {
 }
 
 function StatusButtons({user, book, ...props}) {
-  const {data: listItems} = useQuery({
-    queryKey: LISTITEMS,
-    queryFn: () =>
-      client(LISTITEMS, {token: user.token}).then(({listItems}) => listItems),
-  })
+  const listItem = useListItem(user, book.id)
 
-  const listItem = listItems?.find((li) => li.bookId === book.id) ?? null
-
-  const [create] = useMutation(
-    ({bookId}) => client(LISTITEMS, {data: {bookId}, token: user.token}),
-    {onSettled: () => queryCache.invalidateQueries(LISTITEMS)},
-  )
-  const [update] = useMutation(
-    (updates) =>
-      client(`${LISTITEMS}/${updates.id}`, {
-        method: PUT,
-        data: updates,
-        token: user.token,
-      }),
-    {onSettled: () => queryCache.invalidateQueries(LISTITEMS)},
-  )
-  const [remove] = useMutation(
-    ({id}) => client(`${LISTITEMS}/${id}`, {method: DELETE, token: user.token}),
-    {onSettled: () => queryCache.invalidateQueries(LISTITEMS)},
-  )
+  const [update] = useUpdateListItem(user)
+  const [create] = useCreateListItem(user)
+  const [remove] = useRemoveListItem(user)
 
   return (
     <React.Fragment>
@@ -77,15 +60,15 @@ function StatusButtons({user, book, ...props}) {
             label="标为正在读"
             highlight={colors.highlight}
             onClick={() => update({id: listItem.id, finishDate: null})}
-            icon={<FiBook />}
             {...props}
+            icon={<FiBookOpen />}
           />
         ) : (
           <TooltipButton
             label="标为已读"
             highlight={colors.highlight}
             onClick={() => update({id: listItem.id, finishDate: Date.now()})}
-            icon={<FiBookOpen />}
+            icon={<FiBook />}
             {...props}
           />
         )
