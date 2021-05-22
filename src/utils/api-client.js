@@ -1,3 +1,4 @@
+import {queryCache} from 'react-query'
 import * as auth from 'utils/auth-provider'
 
 export default function client(
@@ -20,6 +21,7 @@ export default function client(
     .then(async (response) => {
       if (response.status === 401) {
         await auth.logout()
+        queryCache.clear()
         window.location.assign(window.location)
         return Promise.reject({message: '请重新进行用户验证。'})
       }

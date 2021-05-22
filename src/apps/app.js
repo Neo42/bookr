@@ -2,6 +2,7 @@
 import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {BrowserRouter as Router} from 'react-router-dom'
+import {queryCache} from 'react-query'
 import * as auth from 'utils/auth-provider'
 import useAsync from 'utils/hooks'
 import client from 'utils/api-client'
@@ -26,6 +27,7 @@ export default function App() {
   const register = (form) => auth.register(form).then((u) => setUser(u))
   const logout = () => {
     auth.logout()
+    queryCache.clear()
     setUser(null)
   }
 
