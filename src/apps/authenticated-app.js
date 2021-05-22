@@ -77,7 +77,7 @@ function Nav() {
   return (
     <nav
       css={{
-        borderLeft: `1px solid ${colors.border}`,
+        borderRight: `1px solid ${colors.border}`,
         position: 'sticky',
         top: '64px',
         padding: '0.5em 0.8em',
@@ -85,6 +85,8 @@ function Nav() {
         [mq.small]: {
           position: 'static',
           top: 'auto',
+          borderRight: 'none',
+          borderBottom: `1px solid ${colors.border}`,
         },
       }}>
       <ul
@@ -98,17 +100,17 @@ function Nav() {
           },
         }}>
         <li>
-          <NavLink to="/list">
+          <NavLink to="/list" title="正在读">
             <FiBookOpen />
           </NavLink>
         </li>
         <li>
-          <NavLink to="/read">
+          <NavLink to="/read" title="已读">
             <FiBook />
           </NavLink>
         </li>
         <li>
-          <NavLink to="/discover">
+          <NavLink to="/discover" title="发现">
             <FiSearch />
           </NavLink>
         </li>
