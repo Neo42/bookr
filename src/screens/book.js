@@ -106,7 +106,11 @@ const BookItemCover = ({coverImageUrl, title}) => (
     <img
       src={coverImageUrl}
       alt={`${title} 封面`}
-      css={{width: '100%', maxWidth: '14rem'}}
+      css={{
+        width: '100%',
+        maxWidth: '14rem',
+        boxShadow: '0 0 30px rgba(0, 0, 0, .3)',
+      }}
     />
   </Tooltip>
 )

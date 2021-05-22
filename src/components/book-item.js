@@ -51,7 +51,11 @@ export default function BookItem({user, book}) {
           <img
             src={coverImageUrl}
             alt={`${title} book cover`}
-            css={{maxHeight: '100%', width: '100%'}}
+            css={{
+              maxHeight: '100%',
+              width: '100%',
+              boxShadow: '0 0 5px rgba(0, 0, 0, .3)',
+            }}
           />
         </div>
         <div css={{flex: 1}}>
