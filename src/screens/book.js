@@ -8,7 +8,7 @@ import mq from 'styles/media-queries'
 import colors from 'styles/colors'
 import StatusButtons from 'components/status-button'
 import Rating from 'components/rating'
-import {Textarea, Tooltip} from 'components/lib'
+import {ErrorMessage, Textarea, Tooltip} from 'components/lib'
 import {formatDate} from 'utils/misc'
 import {useBook} from 'utils/books'
 import {useListItem, useUpdateListItem} from 'utils/list-items'
@@ -109,14 +109,15 @@ const BookItemCover = ({coverImageUrl, title}) => (
       css={{
         width: '100%',
         maxWidth: '14rem',
-        boxShadow: '8px 8px 4px 0px rgb(151 146 153 / 40%)',
+        boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
+        borderRadius: 5,
       }}
     />
   </Tooltip>
 )
 
 function NotesTextarea({listItem, user}) {
-  const [mutate] = useUpdateListItem(user)
+  const [mutate, {error, isError}] = useUpdateListItem(user)
   const debouncedMutate = React.useMemo(
     () => debounceFn(mutate, {wait: 300}),
     [mutate],
@@ -136,15 +137,24 @@ function NotesTextarea({listItem, user}) {
             marginRight: 10,
             marginTop: '0',
             marginBottom: '0.5rem',
+            fontWeight: 'bold',
           }}>
           笔记
         </label>
       </div>
+      {isError ? (
+        <ErrorMessage
+          error={error}
+          variant="inline"
+          css={{marginLeft: 6, fontSize: '0.7em'}}
+        />
+      ) : null}
       <Textarea
         id="notes"
         defaultValue={listItem.notes}
         onChange={handleNotesChange}
-        css={{width: '100%', minHeight: 300}}
+        css={{width: '100%', minHeight: 300, fontSize: 14, lineHeight: 1.7}}
+        placeholder="写点什么…"
       />
     </React.Fragment>
   )

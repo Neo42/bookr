@@ -54,7 +54,8 @@ export default function BookItem({user, book}) {
             css={{
               maxHeight: '100%',
               width: '100%',
-              boxShadow: '4px 4px 2px 0px rgb(151 146 153 / 20%)',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
+              borderRadius: 5,
             }}
           />
         </div>
