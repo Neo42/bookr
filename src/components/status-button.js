@@ -7,7 +7,7 @@ import client from 'utils/api-client'
 import useAsync from 'utils/hooks'
 import colors from 'styles/colors'
 import {CircleButton, Spinner, Tooltip} from './lib'
-import {LISTITEMS, DELETE, PUT} from 'constant'
+import {LISTITEMS, DELETE, PUT} from 'consts'
 
 function TooltipButton({label, highlight, onClick, icon, ...rest}) {
   const {isLoading, isError, error, run} = useAsync()

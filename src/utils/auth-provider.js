@@ -1,4 +1,4 @@
-import {LOGIN, REGISTER, userTokenKey} from 'constant'
+import {LOGIN, REGISTER, userTokenKey} from 'consts'
 
 async function getToken() {
   return window.localStorage.getItem(userTokenKey)

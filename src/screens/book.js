@@ -11,7 +11,7 @@ import bookPlaceholderSvg from 'assets/placeholder.svg'
 import colors from 'styles/colors'
 import StatusButtons from 'components/status-button'
 import Rating from 'components/rating'
-import {LISTITEMS, PUT} from 'constant'
+import {LISTITEMS, PUT} from 'consts'
 import {Textarea, Tooltip} from 'components/lib'
 import {formatDate} from 'utils/misc'
 

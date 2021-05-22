@@ -5,7 +5,7 @@ import {FiFeather} from 'react-icons/fi'
 import {queryCache, useMutation} from 'react-query'
 import client from 'utils/api-client'
 import colors from 'styles/colors'
-import {LISTITEMS, PUT} from 'constant'
+import {LISTITEMS, PUT} from 'consts'
 import {Tooltip} from './lib'
 
 const visuallyHiddenCSS = {

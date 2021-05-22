@@ -6,7 +6,7 @@ import mq from 'styles/media-queries'
 import colors from 'styles/colors'
 import StatusButtons from './status-button'
 import Rating from './rating'
-import {LISTITEMS} from 'constant'
+import {LISTITEMS} from 'consts'
 import client from 'utils/api-client'
 
 export default function BookItem({user, book}) {
