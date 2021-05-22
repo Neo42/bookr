@@ -6,6 +6,7 @@ import {queryCache, useMutation} from 'react-query'
 import client from 'utils/api-client'
 import colors from 'styles/colors'
 import {LISTITEMS, PUT} from 'constant'
+import {Tooltip} from './lib'
 
 const visuallyHiddenCSS = {
   border: '0',
@@ -61,10 +62,6 @@ function Rating({listItem, user}) {
             {
               [`.${rootClassName} &:checked ~ label`]: {color: colors.grey9},
               [`.${rootClassName} &:checked + label`]: {color: colors.primary},
-              // !important is here because we're doing special non-css-in-js things
-              // and so we have to deal with specificity and cascade. But, I promise
-              // this is better than trying to make this work with JavaScript.
-              // So deal with it 😎
               [`.${rootClassName} &:hover ~ label`]: {
                 color: `${colors.grey9} !important`,
               },
@@ -89,27 +86,29 @@ function Rating({listItem, user}) {
             color: listItem.rating < 0 ? colors.grey9 : colors.primary,
             margin: 0,
           }}>
-          <span css={visuallyHiddenCSS}>
-            {ratingValue} {ratingValue === 1 ? 'star' : 'stars'}
-          </span>
+          <span css={visuallyHiddenCSS}>{ratingValue} 分</span>
           <FiFeather css={{width: '16px', margin: '0 2px'}} />
         </label>
       </React.Fragment>
     )
   })
+
   return (
-    <div
-      onClick={(e) => e.stopPropagation()}
-      className={rootClassName}
-      css={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        [`&.${rootClassName}:hover input + label`]: {
-          color: colors.primary,
-        },
-      }}>
-      <span css={{display: 'flex'}}>{stars}</span>
-    </div>
+    <Tooltip label="评分">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={rootClassName}
+        aria-label="评分"
+        css={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          [`&.${rootClassName}:hover input + label`]: {
+            color: colors.primary,
+          },
+        }}>
+        <span css={{display: 'flex'}}>{stars}</span>
+      </div>
+    </Tooltip>
   )
 }
 

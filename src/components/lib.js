@@ -91,7 +91,7 @@ const CircleButton = styled.button({
   },
 })
 
-const Input = styled.input({
+const inputStyles = {
   borderRadius: '5px',
   border: `1px solid ${colors.border}`,
   background: colors.secondary,
@@ -101,7 +101,10 @@ const Input = styled.input({
   ':focus': {
     borderColor: colors.primary,
   },
-})
+}
+
+const Input = styled.input(inputStyles)
+const Textarea = styled.textarea(inputStyles)
 
 const FormGroup = styled.div({
   display: `flex`,
@@ -185,6 +188,7 @@ export {
   FullPageFallback,
   Link,
   Input,
+  Textarea,
   Button,
   CircleButton,
   Dialog,
