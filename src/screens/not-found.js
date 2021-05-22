@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
-import {Link} from 'react-router-dom'
-import colors from 'styles/colors'
+import {Link} from 'components/lib'
 
 export default function NotFoundScreen() {
   return (
@@ -13,21 +12,7 @@ export default function NotFoundScreen() {
         justifyContent: 'center',
       }}>
       <div>
-        抱歉，这里什么也没有…{' '}
-        <Link
-          to="/discover"
-          css={{
-            color: colors.secondary,
-            textDecoration: 'none',
-            fontWeight: 600,
-            transition: '0.25s',
-            ':hover': {
-              color: colors.secondary,
-              filter: 'brightness(1.2)',
-            },
-          }}>
-          去找书
-        </Link>
+        抱歉，这里什么也没有… <Link to="/discover">去找书</Link>
       </div>
     </div>
   )

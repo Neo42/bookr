@@ -2,11 +2,11 @@
 import {jsx, keyframes} from '@emotion/react'
 import styled from '@emotion/styled'
 import {Dialog as ReachDialog} from '@reach/dialog'
-import {Link as RouterLink} from 'react-router-dom'
 import {FiLoader as RawSpinner} from 'react-icons/fi'
+import {Tooltip as ReachTooltip} from '@reach/tooltip'
+import {Link as RouterLink} from 'react-router-dom'
 import colors from 'styles/colors'
 import mq from 'styles/media-queries'
-import {Tooltip as ReachTooltip} from '@reach/tooltip'
 
 const spin = keyframes({
   '0%': {transform: 'rotate(0deg)'},
@@ -123,14 +123,6 @@ const Dialog = styled(ReachDialog)({
   },
 })
 
-const Link = styled(RouterLink)({
-  color: colors.primary,
-  ':hover': {
-    filter: 'brightness(0.97)',
-    textDecoration: 'underline',
-  },
-})
-
 const BookListUL = styled.ul({
   listStyle: 'none',
   padding: 0,
@@ -184,9 +176,19 @@ const Tooltip = styled(ReachTooltip)({
   borderRadius: '5px',
 })
 
+const Link = styled(RouterLink)({
+  color: colors.primary,
+  textDecoration: 'underline',
+  transition: '0.25s',
+  ':hover': {
+    color: colors.primary,
+    filter: 'brightness(1.2)',
+    textDecoration: 'none',
+  },
+})
+
 export {
   FullPageFallback,
-  Link,
   Input,
   Textarea,
   Button,
@@ -198,4 +200,5 @@ export {
   BookListUL,
   ErrorMessage,
   Tooltip,
+  Link,
 }
