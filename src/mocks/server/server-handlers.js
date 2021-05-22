@@ -1,8 +1,8 @@
 import {rest} from 'msw'
 import {match} from 'node-match-path'
-import * as booksDB from '../data/books'
-import * as usersDB from '../data/users'
-import * as listItemsDB from '../data/list-items'
+import * as booksDB from 'mocks/data/books'
+import * as usersDB from 'mocks/data/users'
+import * as listItemsDB from 'mocks/data/list-items'
 
 let sleep
 if (process.env.CI) {
@@ -12,7 +12,7 @@ if (process.env.CI) {
 } else {
   sleep = (
     t = Math.random() * ls('__bookshelf_variable_request_time__', 400) +
-      ls('__bookshelf_min_request_time__', 400)
+      ls('__bookshelf_min_request_time__', 400),
   ) => new Promise((resolve) => setTimeout(resolve, t))
 }
 
@@ -45,7 +45,7 @@ const handlers = [
     } catch (error) {
       return res(
         ctx.status(400),
-        ctx.json({status: 400, message: error.message})
+        ctx.json({status: 400, message: error.message}),
       )
     }
     return res(ctx.json({user}))
@@ -65,7 +65,7 @@ const handlers = [
       lis.map(async (listItem) => ({
         ...listItem,
         book: await booksDB.read(listItem.bookId),
-      }))
+      })),
     )
     return res(ctx.json({user: {...user, token}, listItems: listItemsAndBooks}))
   }),
@@ -100,7 +100,7 @@ const handlers = [
     if (!book) {
       return res(
         ctx.status(404),
-        ctx.json({status: 404, message: '没有找到书籍。'})
+        ctx.json({status: 404, message: '没有找到书籍。'}),
       )
     }
     return res(ctx.json({book}))
@@ -113,7 +113,7 @@ const handlers = [
       lis.map(async (listItem) => ({
         ...listItem,
         book: await booksDB.read(listItem.bookId),
-      }))
+      })),
     )
     return res(ctx.json({listItems: listItemsAndBooks}))
   }),
@@ -164,7 +164,7 @@ const handlers = [
       const status = error.status || 500
       return res(
         ctx.status(status),
-        ctx.json({status, message: error.message || '未知错误'})
+        ctx.json({status, message: error.message || '未知错误'}),
       )
     } finally {
       await sleep()
@@ -178,7 +178,7 @@ function shouldFail(req) {
   if (req.url.searchParams.toString()?.includes('FAIL')) return true
   if (process.env.NODE_ENV === 'test') return false
   const failureRate = Number(
-    window.localStorage.getItem('__bookshelf_failure_rate__') || 0
+    window.localStorage.getItem('__bookshelf_failure_rate__') || 0,
   )
   if (Math.random() < failureRate) return true
   if (requestMatchesFailConfig(req)) return true
@@ -195,7 +195,7 @@ function requestMatchesFailConfig(req) {
   }
   try {
     const failConfig = JSON.parse(
-      window.localStorage.getItem('__bookshelf_request_fail_config__') || '[]'
+      window.localStorage.getItem('__bookshelf_request_fail_config__') || '[]',
     )
     if (failConfig.some(configMatches)) return true
   } catch (error) {
@@ -228,7 +228,7 @@ async function getUser(req) {
 
 async function getBooksNotInUsersList(userId) {
   const bookIdsInUsersList = (await listItemsDB.readByOwner(userId)).map(
-    (li) => li.bookId
+    (li) => li.bookId,
   )
   const books = await booksDB.readManyNotInList(bookIdsInUsersList)
   return books
