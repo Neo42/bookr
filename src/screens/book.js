@@ -109,7 +109,7 @@ const BookItemCover = ({coverImageUrl, title}) => (
       css={{
         width: '100%',
         maxWidth: '14rem',
-        boxShadow: '0 0 30px rgba(0, 0, 0, .3)',
+        boxShadow: '8px 8px 4px 0px rgb(151 146 153 / 40%)',
       }}
     />
   </Tooltip>
