@@ -65,7 +65,7 @@ export default function UnAuthenticatedApp() {
         height: '100vh',
       }}>
       <Logo width="80" height="80" />
-      <h1>Booker 簿客</h1>
+      <h1>Bookr 簿客</h1>
       <div
         css={{
           display: 'grid',

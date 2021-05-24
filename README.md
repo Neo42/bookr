@@ -1,23 +1,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/neo42/booker">
+  <a href="https://github.com/neo42/bookr">
     <img src="./public/mstile-150x150.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Booker 簿客</h3>
+  <h3 align="center">Bookr 簿客</h3>
 
   <p align="center">
-    An awesome bookshelf app built with React & friends! (Built for private use)
+    An awesome bookshelf app built with React & friends! (Built for personal use)
     <br />
-    <a href="https://github.com/Neo42/booker"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Neo42/bookr"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="#">View Demo</a>
     ·
-    <a href="https://github.com/Neo42/booker/issues">Report Bug</a>
+    <a href="https://github.com/Neo42/bookr/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Neo42/booker/issues">Request Feature</a>
+    <a href="https://github.com/Neo42/bookr/issues">Request Feature</a>
   </p>
 </p>
 
@@ -62,7 +62,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 - [React](https://reactjs.org)
 - [Emotion](https://emotion.sh/docs/introduction)
 - [Vercel Design](https://vercel.com/design)
-- [React Router (web)](https://reactrouter.com/web/guides/quick-start)
+- [React Router Web](https://reactrouter.com/web/guides/quick-start)
 - [msw](https://mswjs.io/)
 - [Reach UI](https://reach.tech/)
 - [React Icons](https://react-icons.github.io/react-icons/)
@@ -104,8 +104,8 @@ TODO: Update techniques
 ### Installation & Usage
 
 ```sh
- git clone https://github.com/Neo42/booker.git
- cd booker
+ git clone https://github.com/Neo42/bookr.git
+ cd bookr
  npm i && npm start
  # or
  yarn && yarn start
@@ -115,7 +115,7 @@ TODO: Update techniques
 
 ## Roadmap
 
-See the [open issues](https://github.com/Neo42/booker/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/Neo42/bookr/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -145,4 +145,4 @@ Hao Jiang
 - Twitter: [@Hao](https://twitter.com/neo42_)
 - Email: haojiang_neo42@163.com
 
-Project Link: [https://github.com/Neo42/booker](https://github.com/Neo42/booker)
+Project Link: [https://github.com/Neo42/bookr](https://github.com/Neo42/bookr)
