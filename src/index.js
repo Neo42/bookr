@@ -3,6 +3,7 @@ import * as React from 'react'
 import ReactDOM from 'react-dom'
 import {ReactQueryConfigProvider} from 'react-query'
 import App from 'apps/app'
+import {AuthProvider} from 'auth/context'
 
 const queryConfig = {
   queries: {
@@ -18,7 +19,9 @@ const queryConfig = {
 
 ReactDOM.render(
   <ReactQueryConfigProvider config={queryConfig}>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </ReactQueryConfigProvider>,
   document.getElementById('root'),
 )
