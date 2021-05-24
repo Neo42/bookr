@@ -3,6 +3,7 @@ import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {queryCache} from 'react-query'
+import {AuthContext} from 'auth/context'
 import * as auth from 'auth/provider'
 import useAsync from 'utils/hooks'
 import client from 'utils/api-client'
@@ -50,12 +51,16 @@ export default function App() {
 
   if (isSuccess) {
     const props = {register, login, logout, user}
-    return user ? (
-      <Router>
-        <AuthenticatedApp {...props} />
-      </Router>
-    ) : (
-      <UnAuthenticatedApp {...props} />
+    return (
+      <AuthContext.Provider value={props}>
+        {user ? (
+          <Router>
+            <AuthenticatedApp />
+          </Router>
+        ) : (
+          <UnAuthenticatedApp />
+        )}
+      </AuthContext.Provider>
     )
   }
 }

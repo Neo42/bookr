@@ -5,19 +5,17 @@ import {FiSearch, FiX} from 'react-icons/fi'
 import BookItem from 'components/book-item'
 import {BookListUL, Input, Spinner, Tooltip} from 'components/lib'
 import colors from 'styles/colors'
-import {useBookSearch, refetchBookSearchQuery} from 'utils/books'
+import {useBookSearch, useRefetchBookSearchQuery} from 'utils/books'
 
-export default function DiscoverScreen({user}) {
+export default function DiscoverScreen() {
   const [query, setQuery] = React.useState('')
   const [queried, setQueried] = React.useState(false)
-  const {books, error, isLoading, isError, isSuccess} = useBookSearch(
-    query,
-    user,
-  )
+  const {books, error, isLoading, isError, isSuccess} = useBookSearch(query)
+  const refetchBookSearchQuery = useRefetchBookSearchQuery()
 
   React.useEffect(() => {
-    return () => refetchBookSearchQuery(user)
-  }, [user])
+    return refetchBookSearchQuery()
+  }, [refetchBookSearchQuery])
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -89,7 +87,7 @@ export default function DiscoverScreen({user}) {
           <BookListUL css={{marginTop: '2em'}}>
             {books.map((book) => (
               <li key={book.id} aria-label={book.title}>
-                <BookItem key={book.id} book={book} user={user} />
+                <BookItem key={book.id} book={book} />
               </li>
             ))}
           </BookListUL>

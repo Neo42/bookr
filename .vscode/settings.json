@@ -1,15 +1,14 @@
 {
-	"conventionalCommits.scopes": [
-		"components",
-		"backend",
-		"dependencies",
-		"ide",
-		"docs",
-		"utils",
-		"constants",
-		"styles",
-		"routes",
-		"deps",
-		"assets"
-	]
+  "conventionalCommits.scopes": [
+    "apps",
+    "assets",
+    "auth",
+    "components",
+    "mocks",
+    "screens",
+    "styles",
+    "utils",
+    "constants",
+    "misc"
+  ]
 }

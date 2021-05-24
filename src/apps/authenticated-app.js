@@ -11,6 +11,7 @@ import NotFoundScreen from 'screens/not-found'
 import {Button, ErrorMessage, FullPageFallback} from 'components/lib'
 import colors from 'styles/colors'
 import mq from 'styles/media-queries'
+import {useAuth} from 'auth/context'
 
 function ErrorFallback({error}) {
   return (
@@ -26,7 +27,8 @@ function ErrorFallback({error}) {
     />
   )
 }
-export default function AuthorizedApp({user, logout}) {
+export default function AuthorizedApp() {
+  const {user, logout} = useAuth()
   const {username} = user
   return (
     <ErrorBoundary FallbackComponent={FullPageFallback}>
@@ -65,7 +67,7 @@ export default function AuthorizedApp({user, logout}) {
         </div>
         <main css={{width: '100%'}}>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <AppRoutes user={user} />
+            <AppRoutes />
           </ErrorBoundary>
         </main>
       </div>
@@ -100,7 +102,7 @@ function Nav() {
           },
         }}>
         <li>
-          <NavLink to="/list" title="正在读">
+          <NavLink to="/reading" title="正在读">
             <FiBookOpen />
           </NavLink>
         </li>
@@ -150,13 +152,13 @@ function NavLink(props) {
   )
 }
 
-function AppRoutes({user}) {
+function AppRoutes() {
   return (
     <Routes>
-      <Route path="/list" element={<ReadingListScreen user={user} />} />
-      <Route path="/read" element={<ReadScreen user={user} />} />
-      <Route path="/discover" element={<DiscoverScreen user={user} />} />
-      <Route path="/book/:bookId" element={<BookScreen user={user} />} />
+      <Route path="/reading" element={<ReadingListScreen />} />
+      <Route path="/read" element={<ReadScreen />} />
+      <Route path="/discover" element={<DiscoverScreen />} />
+      <Route path="/book/:bookId" element={<BookScreen />} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   )

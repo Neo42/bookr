@@ -7,10 +7,10 @@ import StatusButtons from './status-button'
 import Rating from './rating'
 import {useListItem} from 'utils/list-items'
 
-export default function BookItem({user, book}) {
+export default function BookItem({book}) {
   const {title, author, coverImageUrl} = book
   const id = `book-item-book-${book.id}`
-  const listItem = useListItem(user, book.id)
+  const listItem = useListItem(book.id)
 
   return (
     <div
@@ -78,9 +78,7 @@ export default function BookItem({user, book}) {
                 }}>
                 {title}
               </h2>
-              {listItem?.finishDate ? (
-                <Rating user={user} listItem={listItem} />
-              ) : null}
+              {listItem?.finishDate ? <Rating listItem={listItem} /> : null}
             </div>
             <div css={{marginLeft: 10}}>
               <div
@@ -115,7 +113,7 @@ export default function BookItem({user, book}) {
           justifyContent: 'space-around',
           height: '100%',
         }}>
-        <StatusButtons user={user} book={book} />
+        <StatusButtons book={book} />
       </div>
     </div>
   )

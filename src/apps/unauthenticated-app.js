@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import {jsx} from '@emotion/react'
 import * as React from 'react'
+import {useAuth} from 'auth/context'
 import {Button, FormGroup, Input, Spinner, ErrorMessage} from 'components/lib'
 import {Modal, ModalContents, ModalOpenButton} from 'components/modal'
 import {Logo} from 'components/logo'
@@ -50,7 +51,8 @@ function LoginForm({onSubmit, submitButton}) {
   )
 }
 
-export default function UnAuthenticatedApp({login, register}) {
+export default function UnAuthenticatedApp() {
+  const {login, register} = useAuth()
   return (
     <div
       css={{

@@ -142,7 +142,7 @@ const ErrorMessage = ({error: {message}, variant = 'stacked', ...props}) => (
     role="alert"
     css={[{color: colors.danger}, errorMessageVariants[variant]]}
     {...props}>
-    <span>出错了：</span>
+    <span>出错了，刷新试试看~</span>
     <pre
       css={[
         {whiteSpace: 'break-spaces', margin: 0, marginBottom: -5},

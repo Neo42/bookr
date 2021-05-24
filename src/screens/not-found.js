@@ -12,7 +12,7 @@ export default function NotFoundScreen() {
         justifyContent: 'center',
       }}>
       <div>
-        抱歉，这里什么也没有… <Link to="/discover">去找书</Link>
+        抱歉，这里什么也没有… 去<Link to="/discover">找书</Link>
       </div>
     </div>
   )

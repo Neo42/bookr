@@ -13,10 +13,10 @@ import {formatDate} from 'utils/misc'
 import {useBook} from 'utils/books'
 import {useListItem, useUpdateListItem} from 'utils/list-items'
 
-export default function BookScreen({user}) {
+export default function BookScreen() {
   const {bookId} = useParams()
-  const book = useBook(bookId, user)
-  const listItem = useListItem(user, bookId)
+  const book = useBook(bookId)
+  const listItem = useListItem(bookId)
   const {title, author, coverImageUrl, publisher, summary} = book
 
   return (
@@ -52,15 +52,11 @@ export default function BookScreen({user}) {
                 justifyContent: 'space-around',
                 minHeight: 100,
               }}>
-              {book.loadingBook ? null : (
-                <StatusButtons user={user} book={book} />
-              )}
+              {book.loadingBook ? null : <StatusButtons book={book} />}
             </div>
           </div>
           <div css={{marginTop: 10}}>
-            {listItem?.finishDate ? (
-              <Rating user={user} listItem={listItem} />
-            ) : null}
+            {listItem?.finishDate ? <Rating listItem={listItem} /> : null}
             {listItem ? <BookItemTimeframe listItem={listItem} /> : null}
           </div>
           <br />
@@ -68,7 +64,7 @@ export default function BookScreen({user}) {
         </div>
       </div>
       {!book.loadingBook && listItem ? (
-        <NotesTextarea user={user} listItem={listItem} />
+        <NotesTextarea listItem={listItem} />
       ) : null}
     </div>
   )
@@ -116,8 +112,8 @@ const BookItemCover = ({coverImageUrl, title}) => (
   </Tooltip>
 )
 
-function NotesTextarea({listItem, user}) {
-  const [mutate, {error, isError}] = useUpdateListItem(user)
+function NotesTextarea({listItem}) {
+  const [mutate, {error, isError}] = useUpdateListItem()
   const debouncedMutate = React.useMemo(
     () => debounceFn(mutate, {wait: 300}),
     [mutate],

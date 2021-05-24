@@ -4,8 +4,8 @@ import {BookListUL} from './lib'
 import BookItem from './book-item'
 import {useListItems} from 'utils/list-items'
 
-function BookList({user, filterListItems, noListItems, noFilteredListItems}) {
-  const listItems = useListItems(user)
+function BookList({filterListItems, noListItems, noFilteredListItems}) {
+  const listItems = useListItems()
   const filteredListItems = listItems?.filter(filterListItems)
 
   if (!listItems?.length) {
@@ -21,7 +21,7 @@ function BookList({user, filterListItems, noListItems, noFilteredListItems}) {
     <BookListUL>
       {filteredListItems.map((listItem) => (
         <li key={listItem.id}>
-          <BookItem user={user} book={listItem.book} />
+          <BookItem book={listItem.book} />
         </li>
       ))}
     </BookListUL>
