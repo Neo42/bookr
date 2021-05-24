@@ -1,4 +1,4 @@
-import {listItemsKey} from 'consts'
+import {listItemsKey} from 'constant'
 import * as booksDB from './books'
 
 let listItems = {}

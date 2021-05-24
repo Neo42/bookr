@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {PENDING, IDLE, RESOLVED, REJECTED} from 'consts'
+import {PENDING, IDLE, RESOLVED, REJECTED} from 'constant'
 
 function useSafeDispatch(dispatch) {
   const mounted = React.useRef(false)

@@ -1,4 +1,4 @@
-import {usersKey} from 'consts'
+import {usersKey} from 'constant'
 
 let users = {}
 

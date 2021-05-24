@@ -1,5 +1,5 @@
 import {queryCache, useMutation, useQuery} from 'react-query'
-import {DELETE, LISTITEMS, PUT} from 'consts'
+import {DELETE, LISTITEMS, PUT} from 'constant'
 import client from './api-client'
 import {setQueryDataForBook} from './books'
 

@@ -13,6 +13,8 @@ export const userTokenKey = '__uer_token_key__'
 export const LOGIN = 'login'
 export const REGISTER = 'register'
 export const LISTITEMS = 'list-items'
+export const BOOKSEARCH = 'bookSearch'
+export const BOOK = 'book'
 
 // methods
 export const DELETE = 'DELETE'

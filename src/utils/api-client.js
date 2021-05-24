@@ -1,5 +1,5 @@
 import {queryCache} from 'react-query'
-import * as auth from 'utils/auth-provider'
+import * as auth from 'auth/provider'
 
 export default function client(
   endpoint,
