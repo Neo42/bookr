@@ -9,7 +9,10 @@ import colors from 'styles/colors'
 import mq from 'styles/media-queries'
 import {useAuth} from 'auth/context'
 
-const ReadingListScreen = React.lazy(() => import('screens/reading-list'))
+const ReadingListScreen = React.lazy(
+  /* webpackPrefetch: true */
+  () => import('screens/reading-list'),
+)
 const ReadScreen = React.lazy(() => import('screens/read'))
 const DiscoverScreen = React.lazy(() => import('screens/discover'))
 const BookScreen = React.lazy(() => import('screens/book'))
