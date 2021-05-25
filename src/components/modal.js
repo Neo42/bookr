@@ -1,10 +1,13 @@
 /** @jsx jsx */
 import * as React from 'react'
 import {jsx} from '@emotion/react'
-import {CircleButton, Dialog} from './lib'
 import VisuallyHidden from '@reach/visually-hidden'
+import {CircleButton, Dialog} from './lib'
 
-const callAll = (...fns) => (...args) => fns.forEach((fn) => fn && fn(...args))
+const callAll =
+  (...fns) =>
+  (...args) =>
+    fns.forEach((fn) => fn && fn(...args))
 
 const ModalContext = React.createContext()
 
@@ -50,10 +53,4 @@ const ModalContents = ({title, children, ...props}) => {
   )
 }
 
-export {
-  Modal,
-  ModalDismissButton,
-  ModalOpenButton,
-  ModalContentBase,
-  ModalContents,
-}
+export {Modal, ModalDismissButton, ModalOpenButton, ModalContents}
