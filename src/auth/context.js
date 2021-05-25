@@ -18,13 +18,19 @@ const AuthProvider = (props) => {
 
   React.useEffect(() => run(getUser()), [run])
 
-  const login = (form) => auth.login(form).then((u) => setUser(u))
-  const register = (form) => auth.register(form).then((u) => setUser(u))
-  const logout = () => {
+  const login = React.useCallback(
+    (form) => auth.login(form).then((u) => setUser(u)),
+    [setUser],
+  )
+  const register = React.useCallback(
+    (form) => auth.register(form).then((u) => setUser(u)),
+    [setUser],
+  )
+  const logout = React.useCallback(() => {
     auth.logout()
     queryCache.clear()
     setUser(null)
-  }
+  }, [setUser])
 
   async function getUser() {
     const token = await auth.getToken()
@@ -35,6 +41,11 @@ const AuthProvider = (props) => {
     return data.user
   }
 
+  const value = React.useMemo(
+    () => ({register, login, logout, user}),
+    [login, logout, register, user],
+  )
+
   if (isLoading || isIdle) {
     return <FullPageSpinner />
   }
@@ -44,7 +55,6 @@ const AuthProvider = (props) => {
   }
 
   if (isSuccess) {
-    const value = {register, login, logout, user}
     return (
       <AuthContext.Provider value={value} {...props}></AuthContext.Provider>
     )

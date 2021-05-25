@@ -103,7 +103,7 @@ const BookItemCover = ({coverImageUrl, title}) => (
     tiltReverse
     gyroscope
     scale={1.1}
-    transitionSpeed={500}
+    transitionSpeed={2000}
     tiltMaxAngleX={10}
     tiltMaxAngleY={10}>
     <Tooltip label="封面">
@@ -113,7 +113,7 @@ const BookItemCover = ({coverImageUrl, title}) => (
         css={{
           width: '100%',
           maxWidth: '14rem',
-          transition: '0.2s',
+          transition: '1s',
           boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
           ':hover': {
             boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
