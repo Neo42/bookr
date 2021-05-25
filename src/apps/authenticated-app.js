@@ -10,8 +10,7 @@ import mq from 'styles/media-queries'
 import {useAuth} from 'auth/context'
 
 const ReadingScreen = React.lazy(
-  /* webpackPrefetch: true */
-  () => import('screens/reading'),
+  /* webpackPrefetch: true */ () => import('screens/reading'),
 )
 const ReadScreen = React.lazy(() => import('screens/read'))
 const DiscoverScreen = React.lazy(() => import('screens/discover'))
