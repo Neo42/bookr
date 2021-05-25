@@ -1,12 +1,12 @@
 import * as React from 'react'
 import ReactDOM from 'react-dom'
 import App from 'apps/app'
-import AppProvider from 'auth'
+import AppProviders from 'auth'
 import 'styles/bootstrap'
 
 ReactDOM.render(
-  <AppProvider>
+  <AppProviders>
     <App />
-  </AppProvider>,
+  </AppProviders>,
   document.getElementById('root'),
 )
