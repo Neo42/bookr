@@ -1,9 +1,15 @@
 import * as React from 'react'
 import {useAuth} from 'auth/context'
-import UnAuthenticatedApp from './unauthenticated-app'
-import AuthenticatedApp from './authenticated-app'
+import {FullPageSpinner} from 'components/lib'
+
+const AuthenticatedApp = React.lazy(() => import('./authenticated-app'))
+const UnAuthenticatedApp = React.lazy(() => import('./authenticated-app'))
 
 export default function App() {
   const {user} = useAuth()
-  return user ? <AuthenticatedApp /> : <UnAuthenticatedApp />
+  return (
+    <React.Suspense fallback={<FullPageSpinner />}>
+      {user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
+    </React.Suspense>
+  )
 }
