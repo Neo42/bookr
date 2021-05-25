@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {PENDING, IDLE, RESOLVED, REJECTED} from 'constant'
+import {unstable_wrap as wrap} from 'scheduler/tracing'
 
 function useSafeDispatch(dispatch) {
   const mounted = React.useRef(false)
@@ -54,14 +55,18 @@ export default function useAsync(initialState) {
       }
       safeSetState({status: PENDING})
       return promise
-        .then((data) => {
-          setData(data)
-          return data
-        })
-        .catch((error) => {
-          setError(error)
-          return error
-        })
+        .then(
+          wrap((data) => {
+            setData(data)
+            return data
+          }),
+        )
+        .catch(
+          wrap((error) => {
+            setError(error)
+            return error
+          }),
+        )
     },
     [safeSetState, setData, setError],
   )
