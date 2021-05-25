@@ -1,17 +1,19 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
+import React from 'react'
 import {Routes, Route, Link, useMatch} from 'react-router-dom'
 import {FiBook, FiBookOpen, FiSearch} from 'react-icons/fi'
 import {ErrorBoundary} from 'react-error-boundary'
-import ReadingListScreen from 'screens/reading-list'
-import ReadScreen from 'screens/read'
-import DiscoverScreen from 'screens/discover'
-import BookScreen from 'screens/book'
-import NotFoundScreen from 'screens/not-found'
 import {Button, ErrorMessage, FullPageFallback} from 'components/lib'
 import colors from 'styles/colors'
 import mq from 'styles/media-queries'
 import {useAuth} from 'auth/context'
+
+const ReadingListScreen = React.lazy(() => import('screens/reading-list'))
+const ReadScreen = React.lazy(() => import('screens/read'))
+const DiscoverScreen = React.lazy(() => import('screens/discover'))
+const BookScreen = React.lazy(() => import('screens/book'))
+const NotFoundScreen = React.lazy(() => import('screens/not-found'))
 
 function ErrorFallback({error}) {
   return (
@@ -154,12 +156,14 @@ function NavLink(props) {
 
 function AppRoutes() {
   return (
-    <Routes>
-      <Route path="/reading" element={<ReadingListScreen />} />
-      <Route path="/read" element={<ReadScreen />} />
-      <Route path="/discover" element={<DiscoverScreen />} />
-      <Route path="/book/:bookId" element={<BookScreen />} />
-      <Route path="*" element={<NotFoundScreen />} />
-    </Routes>
+    <React.Suspense>
+      <Routes>
+        <Route path="/reading" element={<ReadingListScreen />} />
+        <Route path="/read" element={<ReadScreen />} />
+        <Route path="/discover" element={<DiscoverScreen />} />
+        <Route path="/book/:bookId" element={<BookScreen />} />
+        <Route path="*" element={<NotFoundScreen />} />
+      </Routes>
+    </React.Suspense>
   )
 }
