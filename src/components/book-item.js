@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
+import Tilt from 'react-parallax-tilt'
 import {Link} from 'react-router-dom'
 import mq from 'styles/media-queries'
 import colors from 'styles/colors'
@@ -35,7 +36,7 @@ export default function BookItem({book}) {
           borderRadius: '5px',
           textDecoration: 'none',
           boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
-          transition: '0.25s',
+          transition: '0.5s',
           ':hover,:focus': {
             boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
             color: 'inherit',
@@ -48,16 +49,28 @@ export default function BookItem({book}) {
               width: 100,
             },
           }}>
-          <img
-            src={coverImageUrl}
-            alt={`${title} book cover`}
-            css={{
-              maxHeight: '100%',
-              width: '100%',
-              boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
-              borderRadius: 5,
-            }}
-          />
+          <Tilt
+            tiltReverse
+            gyroscope
+            scale={1.05}
+            transitionSpeed={500}
+            tiltMaxAngleX={12}
+            tiltMaxAngleY={12}>
+            <img
+              src={coverImageUrl}
+              alt={`${title} book cover`}
+              css={{
+                maxHeight: '100%',
+                width: '100%',
+                transition: '0.5s',
+                boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
+                ':hover': {
+                  boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
+                },
+                borderRadius: 5,
+              }}
+            />
+          </Tilt>
         </div>
         <div css={{flex: 1}}>
           <div

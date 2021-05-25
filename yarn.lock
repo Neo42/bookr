@@ -9563,6 +9563,11 @@ react-is@^17.0.1:
   resolved "https://registry.nlark.com/react-is/download/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha1-5pHUqOnHiTZWVVOas3J2Kw77VPA=
 
+react-parallax-tilt@^1.5.14:
+  version "1.5.14"
+  resolved "https://registry.nlark.com/react-parallax-tilt/download/react-parallax-tilt-1.5.14.tgz#723d90d5736f86e455043edd0080851f96807bd7"
+  integrity sha1-cj2Q1XNvhuRVBD7dAICFH5aAe9c=
+
 react-query@2.1.1:
   version "2.1.1"
   resolved "https://registry.nlark.com/react-query/download/react-query-2.1.1.tgz#4bffd8f73d6e93084bc59904618f00bad112e6c0"

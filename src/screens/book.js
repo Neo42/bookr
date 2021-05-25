@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
 import * as React from 'react'
+import Tilt from 'react-parallax-tilt'
 import debounceFn from 'debounce-fn'
 import {useParams} from 'react-router-dom'
 import {FiCalendar} from 'react-icons/fi'
@@ -98,18 +99,30 @@ const BookItemSummary = ({summary}) => (
 )
 
 const BookItemCover = ({coverImageUrl, title}) => (
-  <Tooltip label="封面">
-    <img
-      src={coverImageUrl}
-      alt={`${title} 封面`}
-      css={{
-        width: '100%',
-        maxWidth: '14rem',
-        boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
-        borderRadius: 5,
-      }}
-    />
-  </Tooltip>
+  <Tilt
+    tiltReverse
+    gyroscope
+    scale={1.1}
+    transitionSpeed={500}
+    tiltMaxAngleX={10}
+    tiltMaxAngleY={10}>
+    <Tooltip label="封面">
+      <img
+        src={coverImageUrl}
+        alt={`${title} 封面`}
+        css={{
+          width: '100%',
+          maxWidth: '14rem',
+          transition: '0.2s',
+          boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
+          ':hover': {
+            boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
+          },
+          borderRadius: 10,
+        }}
+      />
+    </Tooltip>
+  </Tilt>
 )
 
 function NotesTextarea({listItem}) {
