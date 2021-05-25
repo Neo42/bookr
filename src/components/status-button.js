@@ -2,6 +2,7 @@
 import {jsx} from '@emotion/react'
 import * as React from 'react'
 import {FiX, FiMinus, FiBook, FiBookOpen, FiPlus} from 'react-icons/fi'
+import {unstable_trace as trace} from 'scheduler/tracing'
 import useAsync from 'utils/hooks'
 import colors from 'styles/colors'
 import {CircleButton, Spinner, Tooltip} from './lib'
@@ -19,7 +20,9 @@ function TooltipButton({label, highlight, onClick, icon, ...rest}) {
     if (isError) {
       reset()
     } else {
-      run(onClick())
+      trace(`点击${label}`, performance.now, () => {
+        run(onClick())
+      })
     }
   }
 
