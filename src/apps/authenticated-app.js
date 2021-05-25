@@ -9,9 +9,9 @@ import colors from 'styles/colors'
 import mq from 'styles/media-queries'
 import {useAuth} from 'auth/context'
 
-const ReadingListScreen = React.lazy(
+const ReadingScreen = React.lazy(
   /* webpackPrefetch: true */
-  () => import('screens/reading-list'),
+  () => import('screens/reading'),
 )
 const ReadScreen = React.lazy(() => import('screens/read'))
 const DiscoverScreen = React.lazy(() => import('screens/discover'))
@@ -161,7 +161,7 @@ function AppRoutes() {
   return (
     <React.Suspense>
       <Routes>
-        <Route path="/reading" element={<ReadingListScreen />} />
+        <Route path="/reading" element={<ReadingScreen />} />
         <Route path="/read" element={<ReadScreen />} />
         <Route path="/discover" element={<DiscoverScreen />} />
         <Route path="/book/:bookId" element={<BookScreen />} />

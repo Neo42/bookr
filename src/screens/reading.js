@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Link} from 'components/lib'
 import BookList from 'components/book-list'
 
-function ReadingListScreen() {
+function ReadingScreen() {
   return (
     <BookList
       filterListItems={(li) => !li.finishDate}
@@ -23,4 +23,4 @@ function ReadingListScreen() {
   )
 }
 
-export default ReadingListScreen
+export default ReadingScreen
