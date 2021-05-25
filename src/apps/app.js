@@ -10,7 +10,7 @@ const AuthenticatedApp = React.lazy(() =>
     './authenticated-app'
   ),
 )
-const UnAuthenticatedApp = React.lazy(() => import('./authenticated-app'))
+const UnAuthenticatedApp = React.lazy(() => import('./unauthenticated-app'))
 
 export default function App() {
   const {user} = useAuth()
