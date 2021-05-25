@@ -53,7 +53,7 @@ export default function BookItem({book}) {
             tiltReverse
             gyroscope
             scale={1.05}
-            transitionSpeed={1000}
+            transitionSpeed={2000}
             tiltMaxAngleX={12}
             tiltMaxAngleY={12}>
             <img
@@ -62,7 +62,7 @@ export default function BookItem({book}) {
               css={{
                 maxHeight: '100%',
                 width: '100%',
-                transition: '1s',
+                transition: '2s',
                 boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
                 ':hover': {
                   boxShadow: '0 30px 60px rgba(0,0,0,0.12)',

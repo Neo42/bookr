@@ -15,6 +15,7 @@ export const REGISTER = 'register'
 export const LISTITEMS = 'list-items'
 export const BOOKSEARCH = 'bookSearch'
 export const BOOK = 'book'
+export const PROFILE = 'profile'
 
 // methods
 export const DELETE = 'DELETE'

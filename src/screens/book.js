@@ -13,6 +13,7 @@ import {ErrorMessage, Textarea, Tooltip} from 'components/lib'
 import {formatDate} from 'utils/misc'
 import {useBook} from 'utils/books'
 import {useListItem, useUpdateListItem} from 'utils/list-items'
+import Profiler from 'components/profiler'
 
 export default function BookScreen() {
   const {bookId} = useParams()
@@ -21,53 +22,55 @@ export default function BookScreen() {
   const {title, author, coverImageUrl, publisher, summary} = book
 
   return (
-    <div>
-      <div
-        css={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 2fr',
-          gridGap: '2em',
-          marginBottom: '1em',
-          [mq.small]: {
-            display: 'flex',
-            flexDirection: 'column',
-          },
-        }}>
-        <BookItemCover coverImageUrl={coverImageUrl} title={title} />
-        <div>
-          <div css={{display: 'flex', position: 'relative'}}>
-            <div css={{flex: 1, justifyContent: 'space-between'}}>
-              <h1>{title}</h1>
-              <div>
-                <i>{author}</i>
-                <span css={{marginRight: 6, marginLeft: 6}}>|</span>
-                <i>{publisher}</i>
+    <Profiler id="Book Screen" metaData={{bookId, listItemId: listItem?.id}}>
+      <div>
+        <div
+          css={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 2fr',
+            gridGap: '2em',
+            marginBottom: '1em',
+            [mq.small]: {
+              display: 'flex',
+              flexDirection: 'column',
+            },
+          }}>
+          <BookItemCover coverImageUrl={coverImageUrl} title={title} />
+          <div>
+            <div css={{display: 'flex', position: 'relative'}}>
+              <div css={{flex: 1, justifyContent: 'space-between'}}>
+                <h1>{title}</h1>
+                <div>
+                  <i>{author}</i>
+                  <span css={{marginRight: 6, marginLeft: 6}}>|</span>
+                  <i>{publisher}</i>
+                </div>
+              </div>
+              <div
+                css={{
+                  right: 0,
+                  color: colors.grey9,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-around',
+                  minHeight: 100,
+                }}>
+                {book.loadingBook ? null : <StatusButtons book={book} />}
               </div>
             </div>
-            <div
-              css={{
-                right: 0,
-                color: colors.grey9,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-around',
-                minHeight: 100,
-              }}>
-              {book.loadingBook ? null : <StatusButtons book={book} />}
+            <div css={{marginTop: 10}}>
+              {listItem?.finishDate ? <Rating listItem={listItem} /> : null}
+              {listItem ? <BookItemTimeframe listItem={listItem} /> : null}
             </div>
+            <br />
+            <BookItemSummary summary={summary} />
           </div>
-          <div css={{marginTop: 10}}>
-            {listItem?.finishDate ? <Rating listItem={listItem} /> : null}
-            {listItem ? <BookItemTimeframe listItem={listItem} /> : null}
-          </div>
-          <br />
-          <BookItemSummary summary={summary} />
         </div>
+        {!book.loadingBook && listItem ? (
+          <NotesTextarea listItem={listItem} />
+        ) : null}
       </div>
-      {!book.loadingBook && listItem ? (
-        <NotesTextarea listItem={listItem} />
-      ) : null}
-    </div>
+    </Profiler>
   )
 }
 

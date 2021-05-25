@@ -6,6 +6,7 @@ import BookItem from 'components/book-item'
 import {BookListUL, Input, Spinner, Tooltip} from 'components/lib'
 import colors from 'styles/colors'
 import {useBookSearch, useRefetchBookSearchQuery} from 'utils/books'
+import Profiler from 'components/profiler'
 
 export default function DiscoverScreen() {
   const [query, setQuery] = React.useState('')
@@ -84,13 +85,17 @@ export default function DiscoverScreen() {
       </div>
       {isSuccess ? (
         books.length ? (
-          <BookListUL css={{marginTop: '2em'}}>
-            {books.map((book) => (
-              <li key={book.id} aria-label={book.title}>
-                <BookItem key={book.id} book={book} />
-              </li>
-            ))}
-          </BookListUL>
+          <Profiler
+            id="Dicover Screen Book List"
+            metaData={{query, bookCount: books.length}}>
+            <BookListUL css={{marginTop: '2em'}}>
+              {books.map((book) => (
+                <li key={book.id} aria-label={book.title}>
+                  <BookItem key={book.id} book={book} />
+                </li>
+              ))}
+            </BookListUL>
+          </Profiler>
         ) : (
           <div>
             <p>非常抱歉，没有找到相关书籍。请重新搜索。</p>
