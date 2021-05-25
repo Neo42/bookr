@@ -68,6 +68,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Bootstrap](https://getbootstrap.com/)
 - [match-sorter](https://github.com/kentcdodds/match-sorter)
+- [react-parallex-tilt](https://www.npmjs.com/package/react-parallax-tilt)
 
 #### Teckniques
 
