@@ -1,4 +1,3 @@
-import 'stop-runaway-react-effects/hijack'
 import 'mocks/server'
 import 'bootstrap/dist/css/bootstrap-reboot.css'
 import '@reach/dialog/styles.css'
