@@ -5,6 +5,18 @@ import client from 'utils/api-client'
 import useAsync from 'utils/hooks'
 import {FullPageFallback, FullPageSpinner} from 'components/lib'
 
+async function getUser() {
+  console.log('Getting user...')
+  const token = await auth.getToken()
+  if (!token) {
+    return null
+  }
+  const data = await client('me', {token})
+  return data.user
+}
+
+const userPromise = getUser()
+
 const AuthProvider = (props) => {
   const {
     data: user,
@@ -16,7 +28,9 @@ const AuthProvider = (props) => {
     run,
   } = useAsync()
 
-  React.useEffect(() => run(getUser()), [run])
+  React.useEffect(() => {
+    run(userPromise)
+  }, [run])
 
   const login = React.useCallback(
     (form) => auth.login(form).then((u) => setUser(u)),
@@ -31,15 +45,6 @@ const AuthProvider = (props) => {
     queryCache.clear()
     setUser(null)
   }, [setUser])
-
-  async function getUser() {
-    const token = await auth.getToken()
-    if (!token) {
-      return null
-    }
-    const data = await client('me', {token})
-    return data.user
-  }
 
   const value = React.useMemo(
     () => ({register, login, logout, user}),

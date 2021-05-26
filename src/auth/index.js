@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {ReactQueryConfigProvider} from 'react-query'
-import {ReactQueryDevtools} from 'react-query-devtools'
 import {BrowserRouter as Router} from 'react-router-dom'
+import {ReactQueryDevtools} from 'react-query-devtools'
 import {AuthProvider} from './context'
 
 const queryConfig = {
@@ -22,7 +22,7 @@ export default function AppProviders({children}) {
       <Router>
         <AuthProvider>{children}</AuthProvider>
       </Router>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </ReactQueryConfigProvider>
   )
 }
