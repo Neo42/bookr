@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
-import React from 'react'
 import {Routes, Route, Link, useMatch} from 'react-router-dom'
 import {FiBook, FiBookOpen, FiSearch} from 'react-icons/fi'
 import {ErrorBoundary} from 'react-error-boundary'
