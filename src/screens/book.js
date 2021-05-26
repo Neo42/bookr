@@ -91,14 +91,12 @@ function BookItemTimeframe({listItem}) {
 }
 
 const BookItemSummary = ({summary}) => (
-  <Tooltip label="简介">
-    <p
-      css={{
-        fontSize: '0.8em',
-      }}>
-      {summary}
-    </p>
-  </Tooltip>
+  <p
+    css={{
+      fontSize: '0.8em',
+    }}>
+    {summary}
+  </p>
 )
 
 const BookItemCover = ({coverImageUrl, title}) => (
@@ -110,22 +108,20 @@ const BookItemCover = ({coverImageUrl, title}) => (
     transitionSpeed={2000}
     tiltMaxAngleX={10}
     tiltMaxAngleY={10}>
-    <Tooltip label="封面">
-      <img
-        src={coverImageUrl}
-        alt={`${title} 封面`}
-        css={{
-          width: '100%',
-          maxWidth: '14rem',
-          transition: '2s',
-          boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
-          ':hover': {
-            boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
-          },
-          borderRadius: 10,
-        }}
-      />
-    </Tooltip>
+    <img
+      src={coverImageUrl}
+      alt={`${title} 封面`}
+      css={{
+        width: '100%',
+        maxWidth: '14rem',
+        transition: '2s',
+        boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
+        ':hover': {
+          boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
+        },
+        borderRadius: 10,
+      }}
+    />
   </Tilt>
 )
 
