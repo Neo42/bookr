@@ -18,6 +18,7 @@ export const BOOK = 'book'
 export const BOOKSEARCH = 'bookSearch'
 export const BOOTSTRAP = 'bootstrap'
 export const PROFILE = 'profile'
+export const TEST = 'test'
 
 // Methods
 export const DELETE = 'DELETE'
