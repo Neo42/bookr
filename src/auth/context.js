@@ -4,15 +4,17 @@ import * as auth from './provider'
 import client from 'utils/api-client'
 import useAsync from 'utils/hooks'
 import {FullPageFallback, FullPageSpinner} from 'components/lib'
+import {BOOTSTRAP, LISTITEMS} from 'constant'
 
 async function getUser() {
-  console.log('Getting user...')
+  let user = null
   const token = await auth.getToken()
-  if (!token) {
-    return null
+  if (token) {
+    const data = await client(BOOTSTRAP, {token})
+    queryCache.setQueryData(LISTITEMS, data.listItems, {staleTime: 5000})
+    user = data.user
   }
-  const data = await client('me', {token})
-  return data.user
+  return user
 }
 
 const userPromise = getUser()
