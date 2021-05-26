@@ -2,7 +2,7 @@
 import {jsx, keyframes} from '@emotion/react'
 import styled from '@emotion/styled'
 import {Dialog as ReachDialog} from '@reach/dialog'
-import {FiLoader as RawSpinner} from 'react-icons/fi'
+import {ImSpinner2 as RawSpinner} from 'react-icons/im'
 import {Tooltip as ReachTooltip} from '@reach/tooltip'
 import {Link as RouterLink} from 'react-router-dom'
 import colors from 'styles/colors'
