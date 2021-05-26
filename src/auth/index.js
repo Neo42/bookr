@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {ReactQueryConfigProvider} from 'react-query'
+import {ReactQueryDevtools} from 'react-query-devtools'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {AuthProvider} from './context'
 
@@ -21,6 +22,7 @@ export default function AppProviders({children}) {
       <Router>
         <AuthProvider>{children}</AuthProvider>
       </Router>
+      <ReactQueryDevtools initialIsOpen={false} />
     </ReactQueryConfigProvider>
   )
 }

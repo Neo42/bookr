@@ -1157,7 +1157,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.14.0"
   resolved "https://registry.nlark.com/@babel/runtime/download/@babel/runtime-7.14.0.tgz?cache=0&sync_timestamp=1619727528467&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
   integrity sha1-RnlLwgthLF915i3QceJN/ZXxy+Y=
@@ -1750,11 +1750,6 @@
     "@types/estree" "0.0.39"
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
-
-"@scarf/scarf@^1.0.6":
-  version "1.1.0"
-  resolved "https://registry.npm.taobao.org/@scarf/scarf/download/@scarf/scarf-1.1.0.tgz#b84b4a91cd938a688d36245b7a7db6fbc476a499"
-  integrity sha1-uEtKkc2TimiNNiRben22+8R2pJk=
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
@@ -7495,6 +7490,14 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+match-sorter@^4.1.0:
+  version "4.2.1"
+  resolved "https://registry.npm.taobao.org/match-sorter/download/match-sorter-4.2.1.tgz#575b4b3737185ba9518b67612b66877ea0b37358"
+  integrity sha1-V1tLNzcYW6lRi2dhK2aHfqCzc1g=
+  dependencies:
+    "@babel/runtime" "^7.10.5"
+    remove-accents "0.4.2"
+
 match-sorter@^6.3.0:
   version "6.3.0"
   resolved "https://registry.npm.taobao.org/match-sorter/download/match-sorter-6.3.0.tgz#454a1b31ed218cddbce6231a0ecb5fdc549fed01"
@@ -9568,13 +9571,17 @@ react-parallax-tilt@^1.5.14:
   resolved "https://registry.nlark.com/react-parallax-tilt/download/react-parallax-tilt-1.5.14.tgz#723d90d5736f86e455043edd0080851f96807bd7"
   integrity sha1-cj2Q1XNvhuRVBD7dAICFH5aAe9c=
 
-react-query@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.nlark.com/react-query/download/react-query-2.1.1.tgz#4bffd8f73d6e93084bc59904618f00bad112e6c0"
-  integrity sha1-S//Y9z1ukwhLxZkEYY8AutES5sA=
+react-query-devtools@^2.6.3:
+  version "2.6.3"
+  resolved "https://registry.nlark.com/react-query-devtools/download/react-query-devtools-2.6.3.tgz#f7c982839d4b0001cee4d5ddfa826493c2f6341f"
+  integrity sha1-98mCg51LAAHO5NXd+oJkk8L2NB8=
   dependencies:
-    "@scarf/scarf" "^1.0.6"
-    ts-toolbelt "^6.9.4"
+    match-sorter "^4.1.0"
+
+react-query@2.15.4:
+  version "2.15.4"
+  resolved "https://registry.nlark.com/react-query/download/react-query-2.15.4.tgz#0447510fc30aebba5a4b99879ec4b7155d9b3f20"
+  integrity sha1-BEdRD8MK67paS5mHnsS3FV2bPyA=
 
 react-refresh@^0.8.3:
   version "0.8.3"
@@ -11247,11 +11254,6 @@ ts-pnp@1.2.0, ts-pnp@^1.1.6:
   version "1.2.0"
   resolved "https://registry.nlark.com/ts-pnp/download/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha1-pQCtCEsHmPHDBxrzkeZZEshrypI=
-
-ts-toolbelt@^6.9.4:
-  version "6.15.5"
-  resolved "https://registry.npm.taobao.org/ts-toolbelt/download/ts-toolbelt-6.15.5.tgz#cb3b43ed725cb63644782c64fbcad7d8f28c0a83"
-  integrity sha1-yztD7XJctjZEeCxk+8rX2PKMCoM=
 
 tsconfig-paths@^3.9.0:
   version "3.9.0"
