@@ -23,7 +23,9 @@ export default function client(
         await auth.logout()
         queryCache.clear()
         window.location.assign(window.location)
-        return Promise.reject({message: '请重新进行用户验证。'})
+        return Promise.reject({
+          message: '因用户身份无效而请求失败，请重新登录。',
+        })
       }
       const data = await response.json()
       if (response.ok) {
