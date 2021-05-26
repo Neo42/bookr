@@ -4,22 +4,15 @@ import React from 'react'
 import {Routes, Route, Link, useMatch} from 'react-router-dom'
 import {FiBook, FiBookOpen, FiSearch} from 'react-icons/fi'
 import {ErrorBoundary} from 'react-error-boundary'
+import ReadingScreen from 'screens/reading'
+import ReadScreen from 'screens/read'
+import DiscoverScreen from 'screens/discover'
+import BookScreen from 'screens/book'
+import NotFoundScreen from 'screens/not-found'
 import {Button, ErrorMessage, FullPageFallback} from 'components/lib'
 import colors from 'styles/colors'
 import mq from 'styles/media-queries'
 import {useAuth} from 'auth/context'
-
-const ReadingScreen = React.lazy(() =>
-  import(/* webpackPrefetch: true */ 'screens/reading'),
-)
-const ReadScreen = React.lazy(() =>
-  import(/* webpackPrefetch: true */ 'screens/read'),
-)
-const DiscoverScreen = React.lazy(() =>
-  import(/* webpackPrefetch: true */ 'screens/discover'),
-)
-const BookScreen = React.lazy(() => import('screens/book'))
-const NotFoundScreen = React.lazy(() => import('screens/not-found'))
 
 function ErrorFallback({error}) {
   return (
@@ -142,16 +135,16 @@ function NavLink(props) {
           margin: '5px 0',
           width: '100%',
           height: '100%',
-          color: colors.primary,
+          color: colors.grey10,
           textDecoration: 'none',
-          transition: 'ease 0.25s',
+          transition: 'ease 0.5s',
           ':hover': {
-            color: colors.grey6,
+            color: colors.primary,
           },
         },
         match
           ? {
-              fontWeight: 400,
+              color: colors.primary,
             }
           : null,
       ]}
@@ -162,14 +155,13 @@ function NavLink(props) {
 
 function AppRoutes() {
   return (
-    <React.Suspense>
-      <Routes>
-        <Route path="/reading" element={<ReadingScreen />} />
-        <Route path="/read" element={<ReadScreen />} />
-        <Route path="/discover" element={<DiscoverScreen />} />
-        <Route path="/book/:bookId" element={<BookScreen />} />
-        <Route path="*" element={<NotFoundScreen />} />
-      </Routes>
-    </React.Suspense>
+    <Routes>
+      <Route element={<ReadingScreen />} />
+      <Route path="/reading" element={<ReadingScreen />} />
+      <Route path="/read" element={<ReadScreen />} />
+      <Route path="/discover" element={<DiscoverScreen />} />
+      <Route path="/book/:bookId" element={<BookScreen />} />
+      <Route path="*" element={<NotFoundScreen />} />
+    </Routes>
   )
 }
