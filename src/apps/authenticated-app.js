@@ -128,7 +128,6 @@ function NavLink(props) {
       css={[
         {
           textAlign: 'center',
-          fontWeight: 300,
           display: 'block',
           padding: '8px 15px',
           margin: '5px 0',
@@ -139,6 +138,10 @@ function NavLink(props) {
           transition: 'ease 0.5s',
           ':hover': {
             color: colors.primary,
+          },
+          svg: {
+            height: '1.2em',
+            width: '1.2em',
           },
         },
         match
