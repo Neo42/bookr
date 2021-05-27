@@ -9,7 +9,6 @@ function useSafeDispatch(dispatch) {
     return () => (mounted.current = false)
   }, [])
   return React.useCallback(
-    // tricky part: args forward (destructuring) & ref.current
     (...args) => (mounted.current ? dispatch(...args) : void 0),
     [dispatch],
   )
