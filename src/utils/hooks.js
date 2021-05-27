@@ -50,7 +50,9 @@ export default function useAsync(initialState) {
   const run = React.useCallback(
     (promise) => {
       if (!promise || !promise.then) {
-        throw new Error('TypeError: useAsync.run 需要一个 promise 类型的参数。')
+        throw new Error(
+          'TypeError: useAsync.run requires an argument whose type is Promise.',
+        )
       }
       safeSetState({status: PENDING})
       return promise

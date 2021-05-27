@@ -17,7 +17,7 @@ body {
 
 code,
 .ReactQueryDevtools * {
-  font-family: monospace !important;
+  font-family: Dank Mono, Fira Code, Roboto Mono, Consolas, monospace !important;
 }
 
 /* clears the 'X' from IE */
