@@ -18,8 +18,10 @@ export const BOOK = 'book'
 export const BOOKSEARCH = 'bookSearch'
 export const BOOTSTRAP = 'bootstrap'
 export const PROFILE = 'profile'
-export const TEST = 'test'
+export const TEST_ENDPOINT = 'test'
 
 // Methods
-export const DELETE = 'DELETE'
+export const GET = 'GET'
+export const POST = 'POST'
 export const PUT = 'PUT'
+export const DELETE = 'DELETE'

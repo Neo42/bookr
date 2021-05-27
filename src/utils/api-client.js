@@ -1,12 +1,13 @@
 import {queryCache} from 'react-query'
 import * as auth from 'auth/provider'
+import {GET, POST} from 'constant'
 
 export default function client(
   endpoint,
   {data, token, headers: customHeaders, ...customConfig} = {},
 ) {
   const config = {
-    method: data ? 'POST' : 'GET',
+    method: data ? POST : GET,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
       Authorization: token ? `Bearer ${token}` : undefined,

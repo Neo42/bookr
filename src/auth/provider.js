@@ -1,4 +1,4 @@
-import {LOGIN, REGISTER, userTokenKey} from 'constant'
+import {LOGIN, POST, REGISTER, userTokenKey} from 'constant'
 
 async function getToken() {
   return window.localStorage.getItem(userTokenKey)
@@ -25,7 +25,7 @@ const authURL = process.env.REACT_APP_AUTH_URL
 
 async function client(endpoint, data) {
   const config = {
-    method: 'POST',
+    method: POST,
     body: JSON.stringify(data),
     headers: {'Content-Type': 'application/json'},
   }
