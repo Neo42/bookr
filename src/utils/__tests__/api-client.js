@@ -1,21 +1,14 @@
 import {queryCache} from 'react-query'
 import {server, rest} from 'mocks/server/test-server'
 import client from 'utils/api-client'
-import {POST, PUT, TEST_ENDPOINT} from 'constant'
 import * as auth from 'auth/provider'
+import {POST, PUT, TEST_ENDPOINT} from 'constant'
 
 const apiUrl = process.env.REACT_APP_API_URL
 
 // hand all functions in modules to jest as mock functions
 jest.mock('react-query')
 jest.mock('auth/provider')
-
-// start server before all tests
-beforeAll(() => server.listen())
-// close server after all tests
-afterAll(() => server.close())
-// reset all handlers after each test
-afterEach(() => server.resetHandlers())
 
 test(`send GET requests to the provided endpoint`, async () => {
   const mockResult = {mockValue: 'VALUE'}
