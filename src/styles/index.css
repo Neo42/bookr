@@ -15,8 +15,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: monospace;
+code,
+.ReactQueryDevtools * {
+  font-family: monospace !important;
 }
 
 /* clears the 'X' from IE */
