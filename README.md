@@ -97,10 +97,11 @@ TODO: Update techniques
 
 ### Prerequisites
 
-- npm
-  ```sh
-  npm install npm@latest yarn@latest -g
-  ```
+npm or yarn
+
+```sh
+npm install npm@latest yarn@latest -g
+```
 
 ### Installation & Usage
 
