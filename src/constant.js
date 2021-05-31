@@ -7,7 +7,7 @@ export const REJECTED = 'REJECTED'
 // Keys
 export const listItemsKey = '__list_items_key__'
 export const usersKey = '__users_key__'
-export const userTokenKey = '__uer_token_key__'
+export const userTokenKey = '__user_token_key__'
 
 // Endpoints
 export const ME = 'me'
