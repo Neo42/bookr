@@ -18,7 +18,7 @@ async function bootstrapAppData() {
 }
 
 // ! comment the line below to pass the test for book screen
-const appDataPromise = bootstrapAppData()
+// const appDataPromise = bootstrapAppData()
 
 const AuthProvider = (props) => {
   const {
@@ -34,7 +34,7 @@ const AuthProvider = (props) => {
 
   React.useEffect(() => {
     // ! uncomment the line below to pass the test for book screen
-    // const appDataPromise = bootstrapAppData()
+    const appDataPromise = bootstrapAppData()
     run(appDataPromise)
   }, [run])
 

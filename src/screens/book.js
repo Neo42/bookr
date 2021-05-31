@@ -101,7 +101,7 @@ const BookItemSummary = ({summary}) => (
 
 const BookItemCover = ({coverImageUrl, title}) => (
   <Tilt
-    css={{height: 'fit-content'}}
+    css={{height: 'fit-content', width: 'fit-content'}}
     tiltReverse
     gyroscope
     scale={1.1}
