@@ -8,7 +8,7 @@ import ReadScreen from 'screens/read'
 import DiscoverScreen from 'screens/discover'
 import BookScreen from 'screens/book'
 import NotFoundScreen from 'screens/not-found'
-import {Button, ErrorMessage, FullPageFallback} from 'components/lib'
+import {Button, ErrorMessage, FullPageErrorFallback} from 'components/lib'
 import colors from 'styles/colors'
 import mq from 'styles/media-queries'
 import {useAuth} from 'auth/context'
@@ -31,7 +31,7 @@ export default function AuthorizedApp() {
   const {user, logout} = useAuth()
   const {username} = user
   return (
-    <ErrorBoundary FallbackComponent={FullPageFallback}>
+    <ErrorBoundary FallbackComponent={FullPageErrorFallback}>
       <div
         css={{
           display: 'flex',

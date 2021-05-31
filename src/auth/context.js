@@ -3,10 +3,10 @@ import {queryCache} from 'react-query'
 import * as auth from './provider'
 import client from 'utils/api-client'
 import useAsync from 'utils/hooks'
-import {FullPageFallback, FullPageSpinner} from 'components/lib'
+import {FullPageErrorFallback, FullPageSpinner} from 'components/lib'
 import {BOOTSTRAP, LISTITEMS} from 'constant'
 
-async function getUser() {
+async function bootstrapAppData() {
   let user = null
   const token = await auth.getToken()
   if (token) {
@@ -17,12 +17,14 @@ async function getUser() {
   return user
 }
 
-const userPromise = getUser()
+// ! comment the line below to pass the test for book screen
+const appDataPromise = bootstrapAppData()
 
 const AuthProvider = (props) => {
   const {
     data: user,
     setData: setUser,
+    error,
     isLoading,
     isIdle,
     isError,
@@ -31,7 +33,9 @@ const AuthProvider = (props) => {
   } = useAsync()
 
   React.useEffect(() => {
-    run(userPromise)
+    // ! uncomment the line below to pass the test for book screen
+    // const appDataPromise = bootstrapAppData()
+    run(appDataPromise)
   }, [run])
 
   const login = React.useCallback(
@@ -58,7 +62,7 @@ const AuthProvider = (props) => {
   }
 
   if (isError) {
-    return <FullPageFallback />
+    return <FullPageErrorFallback error={error} />
   }
 
   if (isSuccess) {
@@ -88,4 +92,4 @@ function useClient() {
   )
 }
 
-export {AuthContext, AuthProvider, useAuth, useClient}
+export {AuthProvider, useAuth, useClient}

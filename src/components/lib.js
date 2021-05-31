@@ -153,21 +153,23 @@ const ErrorMessage = ({error: {message}, variant = 'stacked', ...props}) => (
   </div>
 )
 
-const FullPageFallback = ({error: {message}}) => (
-  <div
-    role="alert"
-    css={{
-      color: colors.danger,
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-    <p>Emm…没加载出来…麻烦帮我刷新一下页面</p>
-    <pre>{message}</pre>
-  </div>
-)
+function FullPageErrorFallback({error}) {
+  return (
+    <div
+      role="alert"
+      css={{
+        color: colors.danger,
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <p>出了点问题，刷新一下试试看</p>
+      <pre>{error.message}</pre>
+    </div>
+  )
+}
 
 const Tooltip = styled(ReachTooltip)({
   padding: '0.5em',
@@ -188,7 +190,7 @@ const Link = styled(RouterLink)({
 })
 
 export {
-  FullPageFallback,
+  FullPageErrorFallback,
   Input,
   Textarea,
   Button,
