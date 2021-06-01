@@ -9,7 +9,7 @@ import mq from 'styles/media-queries'
 import colors from 'styles/colors'
 import StatusButtons from 'components/status-button'
 import Rating from 'components/rating'
-import {ErrorMessage, Spinner, Textarea, Tooltip} from 'components/lib'
+import {ErrorMessage, Textarea, Tooltip} from 'components/lib'
 import {formatDate} from 'utils/misc'
 import {useBook} from 'utils/books'
 import {useListItem, useUpdateListItem} from 'utils/list-items'
@@ -127,7 +127,7 @@ const BookItemCover = ({coverImageUrl, title}) => (
 )
 
 function NotesTextarea({listItem}) {
-  const [mutate, {error, isError, isLoading}] = useUpdateListItem()
+  const [mutate, {error, isError}] = useUpdateListItem()
   const debouncedMutate = React.useMemo(
     () => debounceFn(mutate, {wait: 300}),
     [mutate],
@@ -159,7 +159,6 @@ function NotesTextarea({listItem}) {
           css={{marginLeft: 6, fontSize: '0.7em'}}
         />
       ) : null}
-      {isLoading ? <Spinner /> : null}
       <Textarea
         id="notes"
         defaultValue={listItem.notes}
