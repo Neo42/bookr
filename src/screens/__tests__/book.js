@@ -1,50 +1,19 @@
 import * as React from 'react'
-import {queryCache} from 'react-query'
-import {render, screen, waitForElementToBeRemoved} from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import * as auth from 'auth/provider'
-import AppProviders from 'auth'
 import App from 'apps/app'
 import * as booksDB from 'mocks/data/books'
-import * as listItemsDB from 'mocks/data/list-items'
-import * as usersDB from 'mocks/data/users'
-import {mockBook, mockUser} from 'mocks/generate'
-import {userTokenKey} from 'constant'
+import {
+  render,
+  screen,
+  userEvent,
+  waitForLoadingToFinish,
+} from 'mocks/test-utils'
+import {mockBook} from 'mocks/generate'
 import {formatDate} from 'utils/misc'
 
-// general cleanup for test isolation
-afterEach(async () => {
-  queryCache.clear()
-  await Promise.all([
-    auth.logout(),
-    usersDB.reset(),
-    booksDB.reset(),
-    listItemsDB.reset(),
-  ])
-})
-
-const waitForLoadingToFinish = () =>
-  waitForElementToBeRemoved(() => [
-    ...screen.queryAllByLabelText(/加载中/),
-    ...screen.queryAllByText(/加载中/),
-  ])
-
-const loginAsUser = async (userProperty) => {
-  const user = mockUser(userProperty)
-  await usersDB.create(user)
-  const authUser = await usersDB.authenticate(user)
-  window.localStorage.setItem(userTokenKey, authUser.token)
-  return authUser
-}
-
 test('render all the book information', async () => {
-  await loginAsUser()
-
   const book = await booksDB.create(mockBook())
-  window.history.pushState({}, '测试页面', `/book/${book.id}`)
-
-  render(<App />, {wrapper: AppProviders})
-  await waitForLoadingToFinish()
+  const route = `/book/${book.id}`
+  await render(<App />, {route})
 
   expect(screen.getByRole('heading', {name: book.title})).toBeInTheDocument()
   expect(screen.getByText(book.author)).toBeInTheDocument()
@@ -69,14 +38,9 @@ test('render all the book information', async () => {
 })
 
 test('can create a list item for the book', async () => {
-  await loginAsUser()
-
   const book = await booksDB.create(mockBook())
-  window.history.pushState({}, '测试页面', `/book/${book.id}`)
-
-  render(<App />, {wrapper: AppProviders})
-
-  await waitForLoadingToFinish()
+  const route = `/book/${book.id}`
+  await render(<App />, {route})
 
   const addToListButton = screen.getByRole('button', {name: /加入书单/})
   userEvent.click(addToListButton)
@@ -98,6 +62,4 @@ test('can create a list item for the book', async () => {
     screen.queryByRole('button', {name: /标为未读/}),
   ).not.toBeInTheDocument()
   expect(screen.queryByRole('radio', {name: /评分/})).not.toBeInTheDocument()
-
-  // screen.debug(undefined, 300000)
 })
