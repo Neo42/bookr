@@ -48,7 +48,7 @@ function deferred() {
   return {promise, resolve, reject}
 }
 
-test(`call run with a promise that resolves`, async () => {
+test(`用一个将会 resolve 的 promise 调用 run`, async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
   const {promise, resolve} = deferred()
 
@@ -84,7 +84,7 @@ test(`call run with a promise that resolves`, async () => {
   console.error.mockRestore()
 })
 
-test(`call run with a promise that rejects`, async () => {
+test(`用一个将会 reject 的 promise 调用 run`, async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
   const {promise, reject} = deferred()
   // use `renderHook` instead of fire the hook from a component
@@ -119,7 +119,7 @@ test(`call run with a promise that rejects`, async () => {
   console.error.mockRestore()
 })
 
-test(`can specify the initial state`, async () => {
+test(`可设置初始状态`, async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
   const mockData = Symbol('resolved value')
   const customInitialState = {status: RESOLVED, data: mockData}
@@ -147,7 +147,7 @@ test(`can set the data`, async () => {
   console.error.mockRestore()
 })
 
-test(`can set the error`, async () => {
+test(`可设置错误信息`, async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
   const mockData = Symbol('rejected value')
   const {result} = renderHook(() => useAsync())
@@ -163,7 +163,7 @@ test(`can set the error`, async () => {
   console.error.mockRestore()
 })
 
-test(`No state updates happen if the component is unmounted during pending`, async () => {
+test(`当组件在 pending 状态下解除挂载时不会出现状态更新`, async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
 
   const {promise, resolve} = deferred()
@@ -183,7 +183,7 @@ test(`No state updates happen if the component is unmounted during pending`, asy
   console.error.mockRestore()
 })
 
-test(`calling run without a promise causes an early error`, async () => {
+test(`不使用 promise 调用 run 时会导致报错`, async () => {
   const {result} = renderHook(() => useAsync())
   expect(() => result.current.run()).toThrowErrorMatchingInlineSnapshot(
     `"TypeError: useAsync.run requires an argument whose type is Promise."`,

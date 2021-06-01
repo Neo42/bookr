@@ -10,7 +10,7 @@ const apiUrl = process.env.REACT_APP_API_URL
 jest.mock('react-query')
 jest.mock('auth/provider')
 
-test(`send GET requests to the provided endpoint`, async () => {
+test(`发送 GET 请求到传入的 endpoint`, async () => {
   const mockResult = {mockValue: 'VALUE'}
   server.use(
     rest.get(`${apiUrl}/${TEST_ENDPOINT}`, async (_, res, ctx) => {
@@ -23,7 +23,7 @@ test(`send GET requests to the provided endpoint`, async () => {
   expect(result).toEqual(mockResult)
 })
 
-test(`uses auth token when a token is provided`, async () => {
+test(`在 token 被传入时对其进行使用`, async () => {
   let request = null
   const mockResult = {mockValue: 'VALUE'}
   const token = 'TOKEN'
@@ -39,7 +39,7 @@ test(`uses auth token when a token is provided`, async () => {
   expect(request.headers.get('Authorization')).toBe(`Bearer ${token}`)
 })
 
-test(`allows for custom config`, async () => {
+test(`允许自定义配置`, async () => {
   let request = null
   const mockResult = {mockValue: 'VALUE'}
   server.use(
@@ -61,7 +61,7 @@ test(`allows for custom config`, async () => {
   )
 })
 
-test(`stringifies the provided data (if any) and defaults the method to POST`, async () => {
+test(`当有数据传入时将其转化为字符串并自动将方法设置成 POST`, async () => {
   const data = {a: 'b'}
   let request
   server.use(
@@ -77,7 +77,7 @@ test(`stringifies the provided data (if any) and defaults the method to POST`, a
   expect(result).toEqual(data)
 })
 
-test(`log out the user if a request returns a 401`, async () => {
+test(`当请求返回 401 时将用户登出`, async () => {
   const mockResult = {mockValue: 'VALUE'}
   server.use(
     rest.get(`${apiUrl}/${TEST_ENDPOINT}`, async (_, res, ctx) => {

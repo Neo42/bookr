@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import {render, screen, within} from '@testing-library/react'
 import {Modal, ModalContents, ModalOpenButton} from '../modal'
 
-test(`can be opened and closed.`, () => {
+test(`可被打开和关闭.`, () => {
   const label = 'Modal Label'
   const title = 'Modal Title'
   const content = 'Modal Content'
