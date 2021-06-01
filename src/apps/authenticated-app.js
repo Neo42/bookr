@@ -102,13 +102,13 @@ function Nav() {
           },
         }}>
         <li>
-          <NavLink to="/reading" title="正在读">
-            <FiBookOpen />
+          <NavLink to="/reading" title="未读">
+            <FiBook />
           </NavLink>
         </li>
         <li>
           <NavLink to="/read" title="已读">
-            <FiBook />
+            <FiBookOpen />
           </NavLink>
         </li>
         <li>

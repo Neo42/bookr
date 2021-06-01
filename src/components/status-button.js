@@ -64,18 +64,18 @@ function StatusButtons({book, ...props}) {
       {listItem ? (
         Boolean(listItem.finishDate) ? (
           <TooltipButton
-            label="标为正在读"
+            label="标为未读"
             highlight={colors.highlight}
             onClick={() => update({id: listItem.id, finishDate: null})}
             {...props}
-            icon={<FiBookOpen />}
+            icon={<FiBook />}
           />
         ) : (
           <TooltipButton
             label="标为已读"
             highlight={colors.highlight}
             onClick={() => update({id: listItem.id, finishDate: Date.now()})}
-            icon={<FiBook />}
+            icon={<FiBookOpen />}
             {...props}
           />
         )
@@ -90,7 +90,7 @@ function StatusButtons({book, ...props}) {
         />
       ) : (
         <TooltipButton
-          label="标为正在读"
+          label="加入书单"
           highlight={colors.highlight}
           onClick={() => create({bookId: book.id})}
           icon={<FiPlus />}

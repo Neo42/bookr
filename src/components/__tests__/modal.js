@@ -23,7 +23,7 @@ test(`can be opened and closed.`, () => {
       </ModalContents>
     </Modal>,
   )
-  userEvent.click(screen.getByRole(button, {name: /打开/i}))
+  userEvent.click(screen.getByRole(button, {name: /打开/}))
 
   const modal = screen.getByRole(dialog)
   expect(modal).toHaveAttribute(ariaLabel, label)
@@ -31,6 +31,6 @@ test(`can be opened and closed.`, () => {
   expect(inModal.getByRole(heading, {name: title})).toBeInTheDocument()
   expect(inModal.getByText(content)).toBeInTheDocument()
 
-  userEvent.click(screen.getByRole(button, {name: /关闭/i}))
+  userEvent.click(screen.getByRole(button, {name: /关闭/}))
   expect(screen.queryByRole(dialog)).not.toBeInTheDocument()
 })

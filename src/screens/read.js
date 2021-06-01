@@ -14,8 +14,8 @@ function ReadScreen() {
       }
       noFilteredListItems={
         <p>
-          还没有读完一本正在读的书
-          <br />去<Link to="/reading">正在读的书单</Link>或者去
+          还没有已读的书籍
+          <br />去<Link to="/reading">未读书单</Link>或者去
           <Link to="/discover">找书</Link>.
         </p>
       }

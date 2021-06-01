@@ -1,7 +1,5 @@
 import faker from 'faker'
 
-faker.locale = 'zh_CN'
-
 function mockUser(overrides) {
   return {
     id: faker.datatype.uuid(),
@@ -19,7 +17,7 @@ function mockBook(overrides) {
     coverImageUrl: faker.image.imageUrl(),
     pageCount: faker.datatype.number(400),
     publisher: faker.company.companyName(),
-    synopsis: faker.lorem.paragraph(),
+    summary: faker.lorem.paragraph(),
     ...overrides,
   }
 }
