@@ -6,6 +6,8 @@ import * as booksDB from 'mocks/data/books'
 import * as listItemsDB from 'mocks/data/list-items'
 import * as usersDB from 'mocks/data/users'
 
+jest.mock('components/profiler')
+
 beforeAll(() => server.listen())
 afterAll(() => server.close())
 afterEach(() => server.resetHandlers())
