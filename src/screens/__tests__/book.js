@@ -1,6 +1,7 @@
 import * as React from 'react'
 import faker from 'faker'
 import App from 'apps/app'
+import {server, rest} from 'mocks/server/test-server'
 import {
   loginAsUser,
   render,
@@ -12,6 +13,8 @@ import * as booksDB from 'mocks/data/books'
 import * as listItemsDB from 'mocks/data/list-items'
 import {mockBook, mockListItem} from 'mocks/generate'
 import {formatDate} from 'utils/misc'
+
+const apiUrl = process.env.REACT_APP_API_URL
 
 const renderBookScreen = async ({book, user, listItem} = {}) => {
   book = book === undefined ? await booksDB.create(mockBook()) : book
@@ -132,5 +135,52 @@ test('可编辑笔记', async () => {
 
   expect(await listItemsDB.read(listItem.id)).toMatchObject({
     notes: newNotes,
+  })
+})
+
+describe('console errors', () => {
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+  })
+
+  afterAll(() => {
+    console.error.mockRestore()
+  })
+
+  test('当书籍载入失败时显示错误信息', async () => {
+    const book = {id: 'FAKE_BAD_ID'}
+    await renderBookScreen({listItem: null, book})
+
+    expect(
+      (await screen.findByRole('alert')).textContent,
+    ).toMatchInlineSnapshot(`"出错了：没有找到书籍。"`)
+    expect(console.error).toHaveBeenCalled()
+  })
+
+  test('当笔记更新失败时显示错误信息', async () => {
+    jest.useFakeTimers()
+    await renderBookScreen()
+
+    const newNotes = faker.lorem.words()
+    const notesTextarea = screen.getByRole('textbox', {name: /笔记/})
+
+    const testErrorMessage = '__test_error_message__'
+    server.use(
+      rest.put(`${apiUrl}/list-items/:listItemId`, async (req, res, ctx) => {
+        return res(
+          ctx.status(400),
+          ctx.json({status: 400, message: testErrorMessage}),
+        )
+      }),
+    )
+
+    userEvent.type(notesTextarea, newNotes)
+
+    await screen.findByLabelText(/加载中/)
+    await waitForLoadingToFinish()
+
+    expect(screen.getByRole('alert').textContent).toMatchInlineSnapshot(
+      `"出错了：__test_error_message__"`,
+    )
   })
 })
