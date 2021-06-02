@@ -131,7 +131,7 @@ test(`可设置初始状态`, async () => {
   console.error.mockRestore()
 })
 
-test(`can set the data`, async () => {
+test(`可设置数据`, async () => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
   const mockData = Symbol('resolved value')
   const {result} = renderHook(() => useAsync())
