@@ -13,11 +13,27 @@ import * as listItemsDB from 'mocks/data/list-items'
 import {mockBook, mockListItem} from 'mocks/generate'
 import {formatDate} from 'utils/misc'
 
-test('渲染所有书籍信息', async () => {
-  const book = await booksDB.create(mockBook())
-  const route = `/book/${book.id}`
-  await render(<App />, {route})
+const renderBookScreen = async ({book, user, listItem} = {}) => {
+  book = book === undefined ? await booksDB.create(mockBook()) : book
+  user = user === undefined ? await loginAsUser() : user
+  listItem =
+    listItem === undefined
+      ? await listItemsDB.create(mockListItem({owner: user, book}))
+      : listItem
 
+  const route = `/book/${book.id}`
+  const utils = await render(<App />, {route, user})
+
+  return {
+    ...utils,
+    book,
+    user,
+    listItem,
+  }
+}
+
+test('渲染所有书籍信息', async () => {
+  const {book} = await renderBookScreen({listItem: null})
   expect(screen.getByRole('heading', {name: book.title})).toBeInTheDocument()
   expect(screen.getByText(book.author)).toBeInTheDocument()
   expect(screen.getByText(book.publisher)).toBeInTheDocument()
@@ -41,9 +57,7 @@ test('渲染所有书籍信息', async () => {
 })
 
 test('可为书籍创建列表项目', async () => {
-  const book = await booksDB.create(mockBook())
-  const route = `/book/${book.id}`
-  await render(<App />, {route})
+  await renderBookScreen({listItem: null})
 
   const addToListButton = screen.getByRole('button', {name: /加入书单/})
   userEvent.click(addToListButton)
@@ -68,12 +82,7 @@ test('可为书籍创建列表项目', async () => {
 })
 
 test('可为书籍移除列表项目', async () => {
-  const user = await loginAsUser()
-  const book = await booksDB.create(mockBook())
-  const route = `/book/${book.id}`
-  await listItemsDB.create(mockListItem({owner: user, book}))
-
-  await render(<App />, {route, user})
+  await renderBookScreen()
 
   const removeButton = screen.getByRole('button', {name: /移除/})
   userEvent.click(removeButton)
@@ -86,17 +95,8 @@ test('可为书籍移除列表项目', async () => {
 })
 
 test('可将一个列表项目标为已读', async () => {
-  const user = await loginAsUser()
-  const book = await booksDB.create(mockBook())
-  const route = `/book/${book.id}`
-  const listItem = mockListItem({
-    owner: user,
-    book,
-    finishDate: null,
-  })
-  await listItemsDB.create(listItem)
-
-  await render(<App />, {route, user})
+  const {listItem} = await renderBookScreen()
+  await listItemsDB.update(listItem.id, {finishDate: null})
 
   const markAsReadButton = screen.getByRole('button', {name: /标为已读/})
   userEvent.click(markAsReadButton)
@@ -116,12 +116,8 @@ test('可将一个列表项目标为已读', async () => {
 
 test('可编辑笔记', async () => {
   jest.useFakeTimers()
-  const user = await loginAsUser()
-  const book = await booksDB.create(mockBook())
-  const listItem = await listItemsDB.create(mockListItem({owner: user, book}))
-  const route = `/book/${book.id}`
 
-  await render(<App />, {route, user})
+  const {listItem} = await renderBookScreen()
 
   const newNotes = faker.lorem.words()
   const notesTextarea = screen.getByRole('textbox', {name: /笔记/})
