@@ -10,6 +10,8 @@ beforeAll(() => server.listen())
 afterAll(() => server.close())
 afterEach(() => server.resetHandlers())
 
+beforeEach(() => jest.useRealTimers())
+
 // general cleanup for test isolation
 afterEach(async () => {
   queryCache.clear()

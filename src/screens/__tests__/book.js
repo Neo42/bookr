@@ -115,6 +115,7 @@ test('可将一个列表项目标为已读', async () => {
 })
 
 test('可编辑笔记', async () => {
+  jest.useFakeTimers()
   const user = await loginAsUser()
   const book = await booksDB.create(mockBook())
   const listItem = await listItemsDB.create(mockListItem({owner: user, book}))
@@ -130,7 +131,8 @@ test('可编辑笔记', async () => {
 
   expect(notesTextarea).toHaveValue(newNotes)
 
-  await screen.findByLabelText(/加载中/i)
+  await screen.findByLabelText(/加载中/)
+  await waitForLoadingToFinish()
 
   expect(await listItemsDB.read(listItem.id)).toMatchObject({
     notes: newNotes,
