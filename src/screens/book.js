@@ -29,7 +29,7 @@ export default function BookScreen() {
             display: 'grid',
             gridTemplateColumns: '1fr 2fr',
             gridGap: '2em',
-            marginBottom: '1em',
+            marginBottom: '3.5em',
             [mq.small]: {
               display: 'flex',
               flexDirection: 'column',
@@ -151,15 +151,15 @@ function NotesTextarea({listItem}) {
           }}>
           笔记
         </label>
+        {isError ? (
+          <ErrorMessage
+            error={error}
+            variant="inline"
+            css={{marginLeft: 6, fontSize: '0.7em'}}
+          />
+        ) : null}
+        {isLoading ? <Spinner /> : null}
       </div>
-      {isError ? (
-        <ErrorMessage
-          error={error}
-          variant="inline"
-          css={{marginLeft: 6, fontSize: '0.7em'}}
-        />
-      ) : null}
-      {isLoading ? <Spinner /> : null}
       <Textarea
         id="notes"
         defaultValue={listItem.notes}

@@ -8167,7 +8167,7 @@ node-libs-browser@^2.2.1:
     util "^0.11.0"
     vm-browserify "^1.0.1"
 
-node-match-path@^0.6.1, node-match-path@^0.6.3:
+node-match-path@^0.6.1:
   version "0.6.3"
   resolved "https://registry.npm.taobao.org/node-match-path/download/node-match-path-0.6.3.tgz#55dd8443d547f066937a0752dce462ea7dc27551"
   integrity sha1-Vd2EQ9VH8GaTegdS3ORi6n3CdVE=
