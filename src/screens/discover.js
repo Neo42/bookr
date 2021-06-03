@@ -30,6 +30,7 @@ export default function DiscoverScreen() {
         <Input
           placeholder="搜索书籍…"
           id="search"
+          type="search"
           css={{width: '100%'}}
           variant="primary"
         />

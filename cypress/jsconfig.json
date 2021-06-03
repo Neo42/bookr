@@ -1,0 +1,7 @@
+{
+  "extends": "../jsconfig.json",
+  "compilerOptions": {
+    "types": ["cypress"]
+  },
+  "include": ["../node_modules/cypress", "./**/*.js"]
+}
