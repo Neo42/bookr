@@ -40,16 +40,25 @@
     "@types/react-dom": "^17.0.5",
     "cypress": "^7.4.0",
     "faker": "^5.5.3",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "prettier": "^2.3.0",
     "react-test-renderer": "^17.0.2",
     "serve": "^11.3.2"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build --profile",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "lintstaged": "lint-staged",
+    "postinstall": "husky install"
   },
   "jest": {
     "transformIgnorePatterns": [

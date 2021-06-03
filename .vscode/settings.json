@@ -10,6 +10,7 @@
     "styles",
     "utils",
     "constants",
-    "misc"
+    "misc",
+    "testing"
   ]
 }

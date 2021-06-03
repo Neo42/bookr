@@ -1,0 +1,9 @@
+{
+  "semi": false,
+  "embeddedLanguageFormatting": "off",
+  "bracketSpacing": false,
+  "jsxBracketSameLine": true,
+  "proseWrap": "never",
+  "trailingComma": "all",
+  "singleQuote": true
+}
