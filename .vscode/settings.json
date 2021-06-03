@@ -4,6 +4,7 @@
     "assets",
     "auth",
     "components",
+    "dependencies",
     "mocks",
     "screens",
     "styles",

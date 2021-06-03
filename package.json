@@ -34,6 +34,11 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/react-hooks": "^5.1.2",
     "@testing-library/user-event": "^13.1.9",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^10.11.4",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.5",
+    "cypress": "^7.4.0",
     "faker": "^5.5.3",
     "prettier": "^2.3.0",
     "react-test-renderer": "^17.0.2",
@@ -43,7 +48,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build --profile",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress": "cypress open"
   },
   "jest": {
     "transformIgnorePatterns": [
