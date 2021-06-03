@@ -63,12 +63,14 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 - [Emotion](https://emotion.sh/docs/introduction)
 - [Vercel Design](https://vercel.com/design)
 - [React Router Web](https://reactrouter.com/web/guides/quick-start)
-- [msw](https://mswjs.io/)
+- [react-parallex-tilt](https://www.npmjs.com/package/react-parallax-tilt)
 - [Reach UI](https://reach.tech/)
 - [React Icons](https://react-icons.github.io/react-icons/)
+- [lint-staged](https://github.com/okonet/lint-staged)
+- [husky](https://github.com/typicode/husky)
+- [msw](https://mswjs.io/)
 - [Bootstrap](https://getbootstrap.com/)
 - [match-sorter](https://github.com/kentcdodds/match-sorter)
-- [react-parallex-tilt](https://www.npmjs.com/package/react-parallax-tilt)
 
 #### Teckniques
 

@@ -11,6 +11,7 @@
     "utils",
     "constants",
     "misc",
-    "testing"
+    "testing",
+    "docs"
   ]
 }
