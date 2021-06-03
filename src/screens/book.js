@@ -101,29 +101,29 @@ const BookItemSummary = ({summary}) => (
 
 const BookItemCover = ({coverImageUrl, title}) => (
   // comment out <Tilt> wrapper to pass the `BookScreen` test
-  // <Tilt
-  //   css={{height: 'fit-content', width: 'fit-content'}}
-  //   tiltReverse
-  //   gyroscope
-  //   scale={1.1}
-  //   transitionSpeed={2000}
-  //   tiltMaxAngleX={10}
-  //   tiltMaxAngleY={10}>
-  <img
-    src={coverImageUrl}
-    alt={`${title} 封面`}
-    css={{
-      width: '100%',
-      maxWidth: '14rem',
-      transition: '2s',
-      boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
-      ':hover': {
-        boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
-      },
-      borderRadius: 10,
-    }}
-  />
-  // </Tilt>
+  <Tilt
+    css={{height: 'fit-content', width: 'fit-content'}}
+    tiltReverse
+    gyroscope
+    scale={1.1}
+    transitionSpeed={2000}
+    tiltMaxAngleX={10}
+    tiltMaxAngleY={10}>
+    <img
+      src={coverImageUrl}
+      alt={`${title} 封面`}
+      css={{
+        width: '100%',
+        maxWidth: '14rem',
+        transition: '2s',
+        boxShadow: '0 5px 10px rgba(0,0,0,0.12)',
+        ':hover': {
+          boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
+        },
+        borderRadius: 10,
+      }}
+    />
+  </Tilt>
 )
 
 function NotesTextarea({listItem}) {
