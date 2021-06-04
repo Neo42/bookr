@@ -60,16 +60,22 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 #### Tools
 
 - [React](https://reactjs.org)
+- [Create React App](https://create-react-app.dev/)
 - [Emotion](https://emotion.sh/docs/introduction)
+- [React Query](https://react-query.tanstack.com/)
 - [Vercel Design](https://vercel.com/design)
 - [React Router Web](https://reactrouter.com/web/guides/quick-start)
-- [react-parallex-tilt](https://www.npmjs.com/package/react-parallax-tilt)
 - [Reach UI](https://reach.tech/)
 - [React Icons](https://react-icons.github.io/react-icons/)
+- [react-parallex-tilt](https://www.npmjs.com/package/react-parallax-tilt)
+- [Bootstrap](https://getbootstrap.com/)
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [Cypress](https://www.cypress.io/)
+- [Prettier](https://prettier.io/)
 - [lint-staged](https://github.com/okonet/lint-staged)
 - [husky](https://github.com/typicode/husky)
 - [msw](https://mswjs.io/)
-- [Bootstrap](https://getbootstrap.com/)
 - [match-sorter](https://github.com/kentcdodds/match-sorter)
 
 #### Teckniques
