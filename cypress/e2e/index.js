@@ -9,11 +9,15 @@ describe('应用', () => {
 
     cy.visit('/')
 
+    cy.findByLabelText('加载中').should('exist')
+    cy.findByLabelText('加载中').should('not.exist')
+
     cy.findByRole('button', {name: /注册/}).click()
     cy.findByRole('dialog').within(() => {
       cy.findByRole('textbox', {name: /用户名/}).type(user.username)
       cy.findByLabelText(/密码/).type(user.password)
       cy.findByRole('button', {name: /注册/}).click()
+      cy.findByLabelText('加载中').should('exist')
     })
 
     cy.findByRole('navigation').within(() => {
@@ -21,11 +25,13 @@ describe('应用', () => {
     })
 
     cy.findByRole('main').within(() => {
-      cy.findByRole('searchbox', {name: /搜索/}).type('Harry Potter{enter}')
+      cy.findByRole('searchbox', {name: /搜索/}).type('the hobbit{enter}')
       cy.findByRole('listitem', {
-        name: /harry potter and the chamber of secrets/i,
+        name: /the hobbit/i,
       }).within(() => {
         cy.findByRole('button', {name: /加入书单/}).click()
+        cy.findByLabelText('加载中').should('exist')
+        cy.findByLabelText('加载中').should('not.exist')
       })
     })
 
@@ -36,7 +42,7 @@ describe('应用', () => {
     cy.findByRole('main').within(() => {
       cy.findAllByRole('listitem').should('have.length', 1)
       cy.findAllByRole('link', {
-        name: /harry potter and the chamber of secrets/i,
+        name: /the hobbit/i,
       }).click()
     })
 
@@ -57,14 +63,16 @@ describe('应用', () => {
       cy.findAllByRole('listitem').should('have.length', 1)
       cy.findByRole('radio', {name: /5 分/}).should('be.checked')
       cy.findAllByRole('link', {
-        name: /harry potter and the chamber of secrets/i,
+        name: /the hobbit/i,
       }).click()
     })
 
     cy.findByRole('main').within(() => {
       cy.findByRole('button', {name: /移除/}).click()
+      cy.findByLabelText('加载中').should('exist')
       cy.findByRole('textbox', {name: /笔记/}).should('not.exist')
       cy.findByRole('radio', {name: /5 分/}).should('not.exist')
+      cy.findByLabelText('加载中').should('not.exist')
     })
   })
 })
