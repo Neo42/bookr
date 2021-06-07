@@ -78,10 +78,6 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 - [msw](https://mswjs.io/)
 - [match-sorter](https://github.com/kentcdodds/match-sorter)
 
-#### Teckniques
-
-TODO: Update techniques
-
 ### Topics covered in this app
 
 1.  Basic Rendering
